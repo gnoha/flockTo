@@ -45,41 +45,40 @@ inside a single Backbone app.
 
 [Details][phase-two]
 
-### Phase 3: Editing and Displaying Groups and Events (~2 days)
-I plan to use third-party libraries to add functionality to the `PostForm` and
-`PostShow` views in this phase. First I'll need to add a Markdown editor to the
-`PostForm`, and make sure that the Markdown is properly escaped and formatted in
-the `PostShow` view. I also plan to integrate Filepicker for file upload so
-users can add images to blog posts.
+### Phase 3: Editing and Displaying Groups, Events, and Users (~1 day)
+This phase will involve creating the proper forms using Backbone for creating
+and updating groups, events, and user pages.
 
 [Details][phase-three]
 
-### Phase 4: User Feeds (~1-2 days)
-I'll start by adding a `feed` route that uses the `current_user`'s
-`subscribed_blogs` association to serve a list of blog posts ordered
-chronologically. On the Backbone side, I'll make a `FeedShow` view whose `posts`
-collection fetches from the new route.  Ultimately, this will be the page users
-see after logging in.
+### Phase 4: Nav Bar (~0.5 day)
+I'll be adding a nav bar and implementing different features for the nav bar.
+This will allow users to easily navigate throughout the page and it will help
+out in the development and testing process.
 
 [Details][phase-four]
 
-### Phase 5: Searching for Blogs and Posts (~2 days)
-I'll need to add `search` routes to both the Blogs and Posts controllers. On the
-Backbone side, there will be a `SearchResults` composite view has `BlogsIndex`
-and `PostsIndex` subviews. These views will use plain old `blogs` and `posts`
-collections, but they will fetch from the new `search` routes.
+### Phase 5: User Implementation (~1 - 2 days)
+I will be implementing the proper associations for the client side. This will
+allow the users so to be able to create events or update groups only if they are
+administrators. Also, this is where users will be able to join an event or
+request to join a group.
 
 [Details][phase-five]
 
+### Phase 6: Searching for Groups and Events (~2 days)
+I'll need to add search routes to both the Groups and Events controllers. On the
+client side, the view will contain both Group Index Items and Event Index Items.
+
+[Details][phase-six]
+
 ### Bonus Features (TBD)
-- [ ] "Like" button and counter for posts
-- [ ] Custom blog urls
+- [ ] Counter for members of groups and attendees for events
+- [ ] Comments for groups and events
 - [ ] Pagination/infinite scroll
-- [ ] Activity history (e.g. likes, reblogs, taggings)
-- [ ] Post types (image posts, quote posts, etc)
-- [ ] Reblogging
+- [ ] Taggings)
+- [ ] Uploading pictures in groups
 - [ ] Multiple sessions/session management
-- [ ] User avatars
 - [ ] Typeahead search bar
 
 [phase-one]: ./docs/phases/phase1.md
