@@ -1,12 +1,12 @@
-# Flux-capacitr
+# flockTo
 
 [Heroku link][heroku]
 
-[heroku]: http://flux-capacitr.herokuapp.com
+[heroku]:
 
 ## Minimum Viable Product
-Flux-capacitr is a clone of Tumblr built on Rails and Backbone. Users can:
-
+flockTo is a clone of Meetup built with Rails and Backbone.
+Users will be able to:
 <!-- This is a Markdown checklist. Use it to keep track of your progress! -->
 
 - [ ] Create accounts
@@ -14,11 +14,10 @@ Flux-capacitr is a clone of Tumblr built on Rails and Backbone. Users can:
 - [ ] Create groups
 - [ ] Create events
 - [ ] View groups and events
-- [ ] Subscribe to blogs
-- [ ] View a feed of subscribed blogs
-- [ ] Tag blog posts
-- [ ] Search for blogs by title
-- [ ] Search for posts by tag
+- [ ] Request to join groups
+- [ ] Search for events by group
+- [ ] Search for events by location
+- [ ] Search for events by day
 
 ## Design Docs
 * [View Wireframes][views]
@@ -76,7 +75,6 @@ client side, the view will contain both Group Index Items and Event Index Items.
 - [ ] Counter for members of groups and attendees for events
 - [ ] Comments for groups and events
 - [ ] Pagination/infinite scroll
-- [ ] Taggings)
 - [ ] Uploading pictures in groups
 - [ ] Multiple sessions/session management
 - [ ] Typeahead search bar
