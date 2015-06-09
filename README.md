@@ -2,7 +2,7 @@
 
 [Heroku link][heroku]
 
-[heroku]:
+[heroku]: http://flock-to-app.herokuapp.com
 
 ## Minimum Viable Product
 flockTo is a clone of Meetup built with Rails and Backbone.
@@ -84,3 +84,4 @@ client side, the view will contain both Group Index Items and Event Index Items.
 [phase-three]: ./docs/phases/phase3.md
 [phase-four]: ./docs/phases/phase4.md
 [phase-five]: ./docs/phases/phase5.md
+[phase-six]: ./docs/phases/phase6.md
