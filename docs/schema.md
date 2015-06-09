@@ -1,13 +1,22 @@
 # Schema Information
 
-## groups
+## events
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
-admin_id    | integer   | not null, foreign key (references users)
-user_id     | integer   | not null, foreign key (references users)
 title       | string    | not null
 description | text      | not null
+location    | text      | not null
+date        | date      | not null
+time        | time      | not null
+
+## users
+column name     | data type | details
+----------------|-----------|-----------------------
+id              | integer   | not null, primary key
+username        | string    | not null, unique true
+session_token   | string    | not null
+password_digest | string    | not null
 
 
 ## administers
@@ -15,23 +24,15 @@ column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 user_id     | integer   | not null, foreign key (references users)
-group_id    | integer   | not null, foreign key (references groups)
+event_id    | integer   | not null, foreign key (references events)
 
-## events
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-group_id    | integer   | not null, foreign key (references group)
-title       | string    | not null
-description | text      | not null
-
-## memberships
+## reviews
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 user_id     | integer   | not null, foreign key (references users)
-group_id    | integer   | not null, foreign key (references groups)
-
+content     | text      | not null
+rating      | integer   | not null
 
 ## attendees
 column name | data type | details
