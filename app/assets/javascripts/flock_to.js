@@ -8,7 +8,7 @@ window.FlockTo = {
       $el: $('#main'),
       flocks: new FlockTo.Collections.Flocks()
     });
-
+    
     Backbone.history.start();
   }
 };
