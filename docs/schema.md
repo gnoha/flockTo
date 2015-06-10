@@ -1,6 +1,6 @@
 # Schema Information
 
-## events
+## flocks
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
@@ -19,12 +19,12 @@ session_token   | string    | not null
 password_digest | string    | not null
 
 
-## administers
+## organizers
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 user_id     | integer   | not null, foreign key (references users)
-event_id    | integer   | not null, foreign key (references events)
+flock_id    | integer   | not null, foreign key (references events)
 
 ## reviews
 column name | data type | details
@@ -39,4 +39,4 @@ column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 user_id     | integer   | not null, foreign key (references users)
-event_id    | integer   | not null, foreign key (references events)
+flock_id    | integer   | not null, foreign key (references events)
