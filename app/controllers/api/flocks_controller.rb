@@ -1,5 +1,7 @@
 module Api
   class Api::FlocksController < ApplicationController
+    before_action :require_current_user, only: [:create]
+
     def index
       @flocks = Flock.all
     end

@@ -42,7 +42,7 @@ user_id     | integer   | not null, foreign key (references users)
 content     | text      | not null
 rating      | integer   | not null
 
-## attendees
+## attendings
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key

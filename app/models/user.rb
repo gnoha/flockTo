@@ -5,10 +5,32 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token
 
   attr_reader :password
+#this is to authorize current_user to
+#create and update
+  # has_many(:organizations,
+  #          class_name: "Organizer",
+  #          foreign_key: :user_id
+  #         )
+  # has_many(:organized_flocks,
+  #          through: :organizations,
+  #          source: :flock
+  #         )
 
-  has_many :organizations, class_name: "Organizer", foreign_key: :user_id
-  has_many :flocks, through: :organizations, source: :flock
+  has_many(:coordinated_events,
+           class_name: 'Event',
+           foreign_key: :coordinator_id
+           )
 
+  has_many(:coordinated_flocks,
+           class_name: 'Flock',
+           foreign_key: :coordinator_id
+           )
+
+  has_many :attendings
+  has_many(:attendances,
+           through: :attendings,
+           through: :flock,
+           source: :event)
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)

@@ -1,5 +1,7 @@
 module Api
   class Api::EventsController < ApplicationController
+    before_action :require_current_user, only: [:create]
+    
     def index
       @events = Event.all
     end
