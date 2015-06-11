@@ -9,7 +9,8 @@ FlockTo.Views.FlockForm = Backbone.View.extend({
     'click .submit': 'submit'
   },
 
-  initialize: function () {
+  initialize: function (options) {
+    this.parent = options.parent;
     this.listenTo(this.model, 'sync', this.render);
   },
 
@@ -22,10 +23,16 @@ FlockTo.Views.FlockForm = Backbone.View.extend({
 
   submit: function (event) {
     event.preventDefault();
-    var formAttrs = this.$el.serializeJSON();
-    formAttrs.flock.event_id = this.collection.get('id');
+    var formAttrs = this.$el.serializeJSON().flock;
 
-    this.model.save(formAttrs.flock, {
+    if (this.parent) {
+      formAttrs.event_id = this.parent.get('event_id');
+      formAttrs.parent_id = this.parent.get('id');
+    } else {
+      formAttrs.event_id = this.collection.get('id');
+    }
+
+    this.model.save(formAttrs, {
       success: function () {
         this.collection.flocks().add(this.model);
         Backbone.history.navigate(

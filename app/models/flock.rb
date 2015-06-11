@@ -1,6 +1,11 @@
 class Flock < ActiveRecord::Base
   validates :title, :description, :location, :date, :event_id, presence: true
 
+  has_many(:subflocks,
+            class_name: 'Flock',
+            foreign_key: :parent_id)
+
+
   has_many(:organizations,
            class_name: 'Organizer',
            foreign_key: :flock_id

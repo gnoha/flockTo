@@ -1,8 +1,13 @@
 <h1 style="color: blue">Make Me Pretty!!!!!!!</h1>
-<a href='#/events/<%= flock.escape('event_id')%>'>Back to Flocks</a>
+<a href='#/events/<%= flock.escape('event_id')%>'>Event Page</a>
+<% if (flock.escape('parent_id')) {%>
+  <a href='#/flocks/<%= flock.escape('parent_id')%>'>Meet Up With...</a>
+<% }%>
+<div class="subflock-form"></div>
 <ul class="tabs">
   <li><%= flock.escape('title')%></li>
   <li><%= flock.escape('location')%></li>
   <li><%= flock.escape('description')%></li>
 </ul>
+<ul class="sub-flock"></ul>
 <div id="content-tabs"></div>
