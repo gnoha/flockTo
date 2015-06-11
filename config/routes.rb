@@ -5,13 +5,9 @@ Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
 
   namespace :api, defaults: { format: :json } do
-    resources :users, only: [:show, :update] do
-      resources :flocks, only: [:create, :update, :destroy]
-      # resources :vehicles, only: [:create, :destroy]
-    end
-
-    resources :flocks, only: [:index, :show]
-
+    resources :flocks, only: [:index, :show, :create, :update, :destroy]
+    resources :events, only: [:index, :show, :create]
+    resources :users, only: [:show, :update]
     # resources :attending
     # resources :organization
   end

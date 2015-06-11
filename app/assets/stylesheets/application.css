@@ -1,7 +1,36 @@
 * {
   font-family: helvetica;
+  style
+}
+
+#logo {
+  color: black;
+  text-decoration: none;
+}
+
+div#main {
+  width: 66%;
+  margin: auto;
 }
 
 .title {
-  font-weight: bold
+  font-weight: bold;
+}
+
+/*index item cards*/
+.card:hover {
+  cursor: pointer;
+}
+
+.card {
+  display: block;
+  float: left;
+  width: 200px;
+  height: 200px;
+  margin: 5px;
+  border: 1px solid black;
+}
+
+.card p {
+  font-size: 10px;
 }

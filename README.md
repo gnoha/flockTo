@@ -2,7 +2,7 @@
 
 [Heroku link][heroku]
 
-[heroku]: http://flock-to-app.herokuapp.com
+[heroku]: http://flockto.herokuapp.com
 
 ## Minimum Viable Product
 flockTo is a clone of Meetup built with Rails and Backbone.
@@ -12,12 +12,13 @@ Users will be able to:
 - [ ] Create accounts
 - [ ] Create sessions (log in)
 - [ ] Create groups
+- [ ] Create subgroups (to join up main group)
 - [ ] Create events
-- [ ] View groups and events
+- [ ] View groups
 - [ ] Request to join groups
-- [ ] Search for events by group
-- [ ] Search for events by location
-- [ ] Search for events by day
+- [ ] Search for groups by title
+- [ ] Search for groups by location
+- [ ] Search for groups by date
 
 ## Design Docs
 * [View Wireframes][views]

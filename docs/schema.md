@@ -10,6 +10,14 @@ location    | text      | not null
 date        | date      | not null
 time        | time      | not null
 
+##subflockings
+column name     | data type | details
+----------------|-----------|-----------------------
+id              | integer   | not null, primary key
+parent_id       | string    | not null, foreign key (references flocks)
+child_id        | string    | not null, foreign key (references flocks)
+
+
 ## users
 column name     | data type | details
 ----------------|-----------|-----------------------
@@ -19,7 +27,7 @@ session_token   | string    | not null
 password_digest | string    | not null
 
 
-## organizers
+## organizings
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key

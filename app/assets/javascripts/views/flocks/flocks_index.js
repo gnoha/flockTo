@@ -23,7 +23,7 @@ FlockTo.Views.FlocksIndex = Backbone.CompositeView.extend({
 
   addFlocksIndexItem: function (flock) {
     var subview = new FlockTo.Views.FlocksIndexItem({ model: flock });
-    this.addSubview('.flocks-index', subview);
+    this.addSubview('.flocks-list', subview);
   }
 
 });

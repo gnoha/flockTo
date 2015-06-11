@@ -1,3 +1,3 @@
 json.array!(@flocks) do |flock|
-  json.extract! flock, :id, :destination, :title, :description, :date, :time
+  json.extract! flock, :id, :title, :description, :date, :event_id, :parent_id
 end
