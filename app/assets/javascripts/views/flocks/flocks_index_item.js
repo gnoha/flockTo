@@ -3,7 +3,7 @@ FlockTo.Views.FlocksIndexItem = Backbone.View.extend({
 
   tagName: 'li',
 
-  className: 'flocks-index-item',
+  className: 'flocks-index-item card',
 
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
@@ -12,6 +12,7 @@ FlockTo.Views.FlocksIndexItem = Backbone.View.extend({
   render: function () {
     var content = this.template({ flock: this.model });
     this.$el.html(content);
+    this.$el.attr('data-id', this.model.get('id'));
 
     return this;
   }

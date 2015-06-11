@@ -6,9 +6,9 @@ window.FlockTo = {
   initialize: function() {
     var router = new FlockTo.Routers.Router({
       $el: $('#main'),
-      flocks: new FlockTo.Collections.Flocks()
+      collection: new FlockTo.Collections.Events()
     });
-    
+
     Backbone.history.start();
   }
 };

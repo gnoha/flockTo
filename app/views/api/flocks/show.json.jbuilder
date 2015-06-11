@@ -1,1 +1,2 @@
-json.extract! @flock, :id, :title, :description, :destination, :date, :time
+json.extract! @flock, :id, :title, :location, :date,
+              :description, :event_id, :parent_id

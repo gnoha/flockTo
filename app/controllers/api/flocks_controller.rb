@@ -9,12 +9,16 @@ module Api
     end
 
     def create
-      @flock = current_user.flocks.new(flock_params)
-      render json: @flock
+      @flock = Flock.new(flock_params)
+      if @flock.save
+        render json: @flock
+      else
+        render json: @flock.errors.full_messages, status: :unproccessable_entity
+      end
     end
 
     def update
-      @flock = current_user.flocks.find(params[:id])
+      @flock = Flock.find(params[:id])
 
       if @flock
         render json: @flock
@@ -24,7 +28,7 @@ module Api
     end
 
     def destroy
-      @flock = current_user.flocks.find(params[:id])
+      @flock = Flock.find(params[:id])
       @flock.destroy()
       render json: {}
     end
@@ -32,8 +36,8 @@ module Api
     private
 
     def flock_params
-      params.require(:flock).permit(:title, :description, :destination, :date,
-                                    :date, :time)
+      params.require(:flock).permit(:title, :description, :location, :date,
+                                    :event_id, :parent_id)
     end
   end
 end
