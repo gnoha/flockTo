@@ -45,9 +45,9 @@ organizing1 = Organizing.create(user_id: 1, flock_id: 1)
 organizing2 = Organizing.create(user_id: 2, flock_id: 2)
 organizing3 = Organizing.create(user_id: 1, flock_id: 3)
 
-event = Event.create(title: 'Event 1', date: '2015-08-03', coordinator_id: 1
+event = Event.create(title: 'Event 1', date: '2015-08-03', coordinator_id: 1,
         description: 'Tiramisu bonbon dessert. Marshmallow tart halvah sugar plum macaroon ice cream sweet roll jelly. Oat cake candy canes oat cake brownie lollipop. Pie dragée biscuit.')
-event2 = Event.create(title: 'Event 2', date: '2015-08-02', coordinator_id: 5
+event2 = Event.create(title: 'Event 2', date: '2015-08-02', coordinator_id: 5,
         description: 'Halvah dessert chocolate jelly dragée brownie. Brownie macaroon chupa chups cake toffee chupa chups soufflé. Chocolate jelly jujubes gingerbread carrot cake tiramisu soufflé pastry.')
-event3 = Event.create(title: 'Event 3', date: '2015-08-15', coordinator_id: 3
+event3 = Event.create(title: 'Event 3', date: '2015-08-15', coordinator_id: 3,
         description: 'Tiramisu bonbon dessert. Marshmallow tart halvah sugar plum macaroon ice cream sweet roll jelly. Oat cake candy canes oat cake brownie lollipop. Pie dragée biscuit.')
