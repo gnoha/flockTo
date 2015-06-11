@@ -2,7 +2,7 @@
 
 [Heroku link][heroku]
 
-[heroku]: http://flock-to-app.herokuapp.com
+[heroku]: http://flockto.herokuapp.com
 
 ## Minimum Viable Product
 flockTo is a clone of Meetup built with Rails and Backbone.
