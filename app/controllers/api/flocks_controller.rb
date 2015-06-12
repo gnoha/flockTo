@@ -1,6 +1,7 @@
 module Api
-  class Api::FlocksController < ApplicationController
-    before_action :require_current_user, only: [:create]
+  class Api::FlocksController < ApiController
+    before_action :require_current_user
+    before_action :require_coordinator, only: [:update, :destroy]
 
     def index
       @flocks = Flock.all
@@ -22,8 +23,8 @@ module Api
     def update
       @flock = Flock.find(params[:id])
 
-      if @flock
-        render json: @flock
+      if @flock.update(flock_params)
+        render :show
       else
         render json: @flock.errors.full_messages, status: :unprocessable_entity
       end
@@ -35,11 +36,27 @@ module Api
       render json: {}
     end
 
+    def find_nearbys
+      event_flocks = Flock.where({ event_id: params[:event_id] })
+      @nearby_flocks = event_flocks.near(params[:current_location],
+                      params[:distance])
+
+      render :nearby_flocks
+    end
+
     private
+
+    def require_coordinator
+      @flock = Flock.find(params[:id])
+      unless current_user.id == @flock.coordinator_id
+        render json: ["You must be the flock coordinator to perform that action"],
+               status: :unauthorized
+      end
+    end
 
     def flock_params
       params.require(:flock).permit(:title, :description, :location, :date,
-                                    :event_id, :parent_id)
+                                    :event_id, :parent_id, :coordinator_id)
     end
   end
 end

@@ -1,8 +1,4 @@
-json.extract! @event, :id, :title, :description, :date
-
-json.coordinator @event.coordinator do |coordinator|
-  json.extract! coordinator :id, :username, :bio
-end
+json.extract! @event, :id, :title, :description, :date, :coordinator_id, :location
 
 json.flocks @event.flocks do |flock|
   json.extract! flock, :id, :title, :location, :date, :event_id, :parent_id

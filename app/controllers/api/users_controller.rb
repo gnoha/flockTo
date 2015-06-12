@@ -1,4 +1,5 @@
-class Api::UsersController < ApplicationController
+class Api::UsersController < ApiController
+  before_action :require_current_user
   def show
     @user = User.find(params[:id])
   end

@@ -4,7 +4,7 @@ FlockTo.Views.FlockShow = Backbone.CompositeView.extend({
   className: 'flock-show',
 
   events: {
-    'click .flocks-index-item' : 'navToFlock'
+    'click .flocks-index-item' : 'navToFlock',
   },
 
   initialize: function () {
@@ -40,11 +40,11 @@ FlockTo.Views.FlockShow = Backbone.CompositeView.extend({
     var eventModel = events.getOrFetch(post.get('id'));
     var formView = new FlockTo.Views.FlockForm({
       model: post,
-      collection: eventModel, 
+      collection: eventModel,
       parent: this.model
     });
 
-    this.addSubview('.subflock-form', formView);
+    this.addSubview('.subflock-form-container', formView);
   },
 
   navToFlock: function (event) {
@@ -54,7 +54,8 @@ FlockTo.Views.FlockShow = Backbone.CompositeView.extend({
 
   setDatePicker: function () {
     this.$('#datepicker').removeClass("hasDatepicker").datepicker({
-      dateFormat: "yy-mm-dd"
+      dateFormat: "yy-mm-dd",
+      minDate: '+1d'
     });
   }
 });

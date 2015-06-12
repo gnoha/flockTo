@@ -6,8 +6,10 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     resources :flocks, only: [:index, :show, :create, :update, :destroy]
-    resources :events, only: [:index, :show, :create]
+    resources :events, only: [:index, :show, :create, :update, :destroy]
     resources :users, only: [:show, :update]
+
+    post 'flocks/nearbys', :to => 'flocks#find_nearbys'
     # resources :attending
     # resources :organization
   end

@@ -1,9 +1,6 @@
 json.extract! @flock, :id, :title, :location, :date,
-              :description, :event_id, :parent_id
+              :description, :event_id, :parent_id, :coordinator_id
 
-json.coordinator @flock.coordinator do |coordinator|
-  json.extract! coordinator, :id, :username, :bio
-end
 
 json.subflocks @flock.subflocks do |subflock|
   json.extract! subflock, :id, :title, :location, :date,

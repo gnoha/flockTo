@@ -1,25 +1,28 @@
 FlockTo.Routers.Router = Backbone.Router.extend({
   initialize: function (options) {
     this.$rootEl = options.$el;
-    this.collection = options.collection;
+    this.events = options.events;
+    this.flocks = options.flocks;
   },
 
   routes: {
     '': 'index',
     'events/:id': 'showEvent',
-    'flocks/:id': 'showFlock'
+    'flocks/:id': 'showFlock',
+    'events/:id/edit': 'editEvent',
+    'flocks/:id/edit': 'editFlock'
   },
 
   index: function () {
-    this.collection.fetch();
+    this.events.fetch();
     var indexView = new FlockTo.Views.EventsIndex({
-      collection: this.collection
+      collection: this.events
     });
     this._swapView(indexView);
   },
 
   showEvent: function (id) {
-    var eventModel = this.collection.getOrFetch(id);
+    var eventModel = this.events.getOrFetch(id);
     var showView = new FlockTo.Views.EventShow({
       model: eventModel
     });
@@ -27,11 +30,27 @@ FlockTo.Routers.Router = Backbone.Router.extend({
     this._swapView(showView);
   },
 
+  editEvent: function (id) {
+    var eventModel = this.events.getOrFetch(id);
+    var formView = new FlockTo.Views.EventForm({ model: eventModel });
+    this._swapView(formView);
+  },
+
   showFlock: function(id) {
-    var flocks = new FlockTo.Collections.Flocks();
-    var flock = flocks.getOrFetch(id);
+    var flock = this.flocks.getOrFetch(id);
     var showView = new FlockTo.Views.FlockShow({ model: flock });
     this._swapView(showView);
+  },
+
+  editFlock: function (id) {
+    var flock = this.flocks.getOrFetch(id);
+    var eventModel = this.events.getOrFetch(flock.get('event_id'));
+    var formView = new FlockTo.Views.FlockForm({
+      model: flock,
+      collection: eventModel
+    });
+
+    this._swapView(formView);
   },
 
   _swapView: function (view) {

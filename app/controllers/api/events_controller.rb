@@ -1,7 +1,8 @@
 module Api
-  class Api::EventsController < ApplicationController
-    before_action :require_current_user, only: [:create]
-    
+  class Api::EventsController < ApiController
+    before_action :require_current_user
+    before_action :require_coordinator, only: [:update, :destroy]
+
     def index
       @events = Event.all
     end
@@ -19,6 +20,15 @@ module Api
       end
     end
 
+    def update
+      @event = Event.find(params[:id])
+      if @event.update(event_params)
+        render :show
+      else
+        render json: @event.errors.full_messages, status: :unprocessable_entity
+      end
+    end
+
     def destroy
       @event = Event.find(params[:id])
       @event.destroy
@@ -27,8 +37,18 @@ module Api
 
     private
 
+    def require_coordinator
+      @flock = Flock.find(params[:id])
+      unless current_user.id == @flock.coordinator_id
+        render json: ["You must be the flock coordinator to perform that action",
+                      status: :unauthorized]
+      end
+    end
+
     def event_params
-      params.require(:event).permit(:title, :description, :date)
+      params.require(:event).permit(
+        :title, :description, :location,
+        :date, :coordinator_id)
     end
   end
 end

@@ -1,5 +1,24 @@
 <h1 class="title"><%= eventModel.escape('title')%></h1>
+<%= eventModel.escape('location')%>
 <%= eventModel.escape('date')%>
 <p><%= eventModel.escape('description')%></p>
-<div class="form-goes-here"></div>
+<% if (document.CURRENT_USER === eventModel.get('coordinator_id')) {%>
+  <a href='#/flocks/<%= eventModel.escape('id')%>/edit'>Edit Event</a>
+<% }%><br>
+
+<form class='search-form'>
+  <label>Search for flocks within
+    <select name="distance">
+      <option value=5>5</option>
+      <option value=15>15</option>
+      <option value=25 selected>25</option>
+      <option value=50>50</option>
+      <option value=100>100</option>
+    </select>
+    miles of
+    <input type='text' name='current_location'>
+    <button class='search-location'>Search</button>
+</form>
+<hr>
+<div class="flock-form-container"></div>
 <ul class='flocks-list'></ul>

@@ -3,7 +3,12 @@
 <% if (flock.escape('parent_id')) {%>
   <a href='#/flocks/<%= flock.escape('parent_id')%>'>Meet Up With...</a>
 <% }%>
-<div class="subflock-form"></div>
+<% if (document.CURRENT_USER === flock.get('coordinator_id')) {%>
+  <a href='#/flocks/<%= flock.escape('id')%>/edit'>Edit Flock</a>
+<% }%>
+<button class='join-flock'>Join the Flock</button>
+
+<div class="subflock-form-container"></div>
 <ul class="tabs">
   <li><%= flock.escape('title')%></li>
   <li><%= flock.escape('location')%></li>

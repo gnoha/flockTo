@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150611073056) do
+ActiveRecord::Schema.define(version: 20150611200613) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,9 @@ ActiveRecord::Schema.define(version: 20150611073056) do
     t.datetime "updated_at",     null: false
     t.date     "date",           null: false
     t.integer  "coordinator_id", null: false
+    t.float    "latitude",       null: false
+    t.float    "longitude",      null: false
+    t.string   "location",       null: false
   end
 
   create_table "flocks", force: :cascade do |t|
@@ -40,6 +43,8 @@ ActiveRecord::Schema.define(version: 20150611073056) do
     t.integer "parent_id"
     t.date    "date"
     t.integer "coordinator_id", null: false
+    t.float   "latitude",       null: false
+    t.float   "longitude",      null: false
   end
 
   add_index "flocks", ["date"], name: "index_flocks_on_date", using: :btree

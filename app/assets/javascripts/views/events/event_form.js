@@ -23,15 +23,19 @@ FlockTo.Views.EventForm = Backbone.View.extend({
   submit: function (event) {
     event.preventDefault();
     var attrs = this.$el.serializeJSON().event;
+    attrs.coordinator_id = document.CURRENT_USER;
     this.model.save(attrs, {
       success: function () {
         this.collection.add(this.model);
-        debugger
         Backbone.history.navigate(
           '#/events/'+ this.model.get('id'),
           { trigger: true }
         );
       }.bind(this),
+
+      error: function (model, response) {
+        alert(response.responseJSON);
+      }
     });
   }
 });

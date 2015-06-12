@@ -3,10 +3,12 @@ window.FlockTo = {
   Collections: {},
   Views: {},
   Routers: {},
+  CURRENT_USER: document.CURRENT_USER,
   initialize: function() {
     var router = new FlockTo.Routers.Router({
       $el: $('#main'),
-      collection: new FlockTo.Collections.Events()
+      events: new FlockTo.Collections.Events(),
+      flocks: new FlockTo.Collections.Flocks()
     });
 
     Backbone.history.start();

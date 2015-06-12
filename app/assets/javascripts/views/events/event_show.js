@@ -4,16 +4,19 @@ FlockTo.Views.EventShow = Backbone.CompositeView.extend({
   className: 'event-show-page',
 
   events: {
-    'click .flocks-index-item' : 'navToFlock'
+    'click .flocks-index-item' : 'navToFlock',
+    'click .search-location' : 'locationQuery'
   },
 
   initialize: function () {
-    this.listenTo(this.model, 'sync', this.render);
+    this.listenTo(this.model, 'sync reset', this.render);
     this.listenTo(this.model.flocks(), 'sync', this.render);
     this.listenTo(this.model.flocks(), 'add', this.addCardItem);
-    this.model.flocks().each(function (flock) {
-      this.addCardItem(flock);
-    }.bind(this));
+    this.listenTo(this.model.flocks(), 'reset', this.filteredView)
+    this.model.flocks().each(this.addCardItem.bind(this));
+    // this.model.flocks().each(function (flock) {
+    //   this.addCardItem(flock);
+    // }.bind(this));
     this.addFlockForm();
   },
 
@@ -42,12 +45,36 @@ FlockTo.Views.EventShow = Backbone.CompositeView.extend({
       collection: this.model
     });
 
-    this.addSubview('.form-goes-here', form);
+    this.addSubview('.flock-form-container', form);
   },
 
   setDatePicker: function () {
     this.$('#datepicker').removeClass("hasDatepicker").datepicker({
-      dateFormat: "yy-mm-dd"
+      dateFormat: "yy-mm-dd",
+      minDate: '+1d'
+    });
+  },
+
+  filteredView: function () {
+    this.eachSubview(function (subview) {
+      this.removeSubview('.flocks-list', subview)
+    }.bind(this));
+    this.model.flocks().each(this.addCardItem.bind(this));
+    this.render();
+  },
+
+  locationQuery: function (event) {
+    event.preventDefault();
+    var query = $('.search-form').serializeJSON();
+    query.event_id = this.model.get('id');
+
+    $.ajax({
+      url: '/api/flocks/nearbys',
+      type: 'post',
+      data: query,
+      success: function (response) {
+        this.model.flocks().reset(response);
+      }.bind(this)
     });
   }
 });

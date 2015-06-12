@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
   #          source: :flock
   #         )
 
+  geocoded_by :location
+
   has_many(:coordinated_events,
            class_name: 'Event',
            foreign_key: :coordinator_id

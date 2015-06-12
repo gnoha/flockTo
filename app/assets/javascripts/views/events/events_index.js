@@ -46,7 +46,9 @@ FlockTo.Views.EventsIndex = Backbone.CompositeView.extend({
 
   setDatePicker: function () {
     this.$('#datepicker').removeClass("hasDatepicker").datepicker({
-      dateFormat: "yy-mm-dd"
+      dateFormat: "yy-mm-dd",
+      minDate: '+1d',
+      showAnim: 'fadeIn'
     });
   }
 
