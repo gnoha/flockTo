@@ -3,12 +3,14 @@ FlockTo.Routers.Router = Backbone.Router.extend({
     this.$rootEl = options.$el;
     this.events = options.events;
     this.flocks = options.flocks;
+    this.users = options.users;
   },
 
   routes: {
     '': 'index',
     'events/:id': 'showEvent',
     'flocks/:id': 'showFlock',
+    'users/:id' : 'showUser',
     'events/:id/edit': 'editEvent',
     'flocks/:id/edit': 'editFlock'
   },
@@ -51,6 +53,12 @@ FlockTo.Routers.Router = Backbone.Router.extend({
     });
 
     this._swapView(formView);
+  },
+
+  showUser: function(id) {
+    var user = this.users.getOrFetch(id);
+    var showView = new FlockTo.Views.UserShow({ model: user });
+    this._swapView(showView);
   },
 
   _swapView: function (view) {

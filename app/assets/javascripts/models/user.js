@@ -1,21 +1,21 @@
-FlockTo.Models.Users = Backbone.Model.extend({
+FlockTo.Models.User = Backbone.Model.extend({
   urlRoot: '/api/users',
 
-  getOrFetch: function (id) {
-    var collection = this;
-    var user = collection.get(id);
-
-    if (user) {
-    user.fetch();
-    } else {
-    user = new FlockTo.Models.User({ id: id });
-    user.fetch({
-      success: function () {
-        collection.add(user);
-      }
-    });
+  attended_events: function (){
+    if (!this._attended_events) {
+      this._attended_events = new FlockTo.Collections.Events([], { eventModel: this });
     }
 
-    return user;
+    return this._attended_events;
+  },
+
+  parse: function (response) {
+    if (response.attended_events) {
+      this.attended_events().set(response.attended_events);
+      delete response.attended_events;
+    }
+
+    return response;
   }
+
 });

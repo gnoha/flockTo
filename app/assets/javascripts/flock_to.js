@@ -8,7 +8,8 @@ window.FlockTo = {
     var router = new FlockTo.Routers.Router({
       $el: $('#main'),
       events: new FlockTo.Collections.Events(),
-      flocks: new FlockTo.Collections.Flocks()
+      flocks: new FlockTo.Collections.Flocks(),
+      users: new FlockTo.Collections.Users()
     });
 
     Backbone.history.start();

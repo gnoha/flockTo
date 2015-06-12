@@ -1,5 +1,5 @@
 FlockTo.Views.UsersIndexItem = Backbone.View.extend({
-  template: JST['flocks/index_item'],
+  template: JST['users/index_item'],
 
   tagName: 'li',
 
@@ -11,6 +11,7 @@ FlockTo.Views.UsersIndexItem = Backbone.View.extend({
 
   render: function () {
     var content = this.template({ user: this.model });
+    this.$el.attr('data-id', this.model.get('id'));
     this.$el.html(content);
 
     return this;

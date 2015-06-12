@@ -5,20 +5,21 @@ FlockTo.Views.FlockShow = Backbone.CompositeView.extend({
 
   events: {
     'click .flocks-index-item' : 'navToFlock',
-    'click .users-index-item': 'navToUser'
+    'click .user-index-item': 'navToUser'
   },
 
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
     this.listenTo(this.model.subFlocks(), 'sync', this.render);
     this.listenTo(this.model.subFlocks(), 'add', this.addFlockCards);
-    this.model.subFlocks().each(function (subFlock) {
-      this.addFlockCards(subFlock);
-    }.bind(this));
+    this.listenTo(this.model.attendees(), 'sync', this.render);
+    this.listenTo(this.model.attendees(), 'add', this.addAttendeeCards);
+    this.model.subFlocks().each(this.addCardItem.bind(this));
+    this.model.attendees().each(this.addAttendeeCards.bind(this));
     this.addForm();
   },
 
-  addFlockCards: function (subFlock) {
+  addCardItem: function (subFlock) {
     var card = new FlockTo.Views.FlocksIndexItem({
       model: subFlock
     });
@@ -29,7 +30,7 @@ FlockTo.Views.FlockShow = Backbone.CompositeView.extend({
     var card = new FlockTo.Views.UsersIndexItem({
       model: user
     });
-    this.addSubview('.attendees');
+    this.addSubview('.attendees', card);
   },
 
   render: function() {
@@ -58,6 +59,11 @@ FlockTo.Views.FlockShow = Backbone.CompositeView.extend({
   navToFlock: function (event) {
     var flockId = $(event.currentTarget).data('id');
     Backbone.history.navigate('#/flocks/' + flockId, { trigger: true });
+  },
+
+  navToUser: function (event) {
+    var userId = $(event.currentTarget).data('id');
+    Backbone.history.navigate('#/users/' + userId, {trigger: true});
   },
 
   setDatePicker: function () {

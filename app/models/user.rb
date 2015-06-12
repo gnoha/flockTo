@@ -29,9 +29,11 @@ class User < ActiveRecord::Base
            )
 
   has_many :attendings
-  has_many(:attendances,
+  has_many(:attended_flocks,
            through: :attendings,
-           through: :flock,
+           source: :flock)
+  has_many(:attended_events,
+           through: :attended_flocks,
            source: :event)
 
   def self.find_by_credentials(username, password)

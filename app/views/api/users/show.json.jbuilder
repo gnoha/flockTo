@@ -1,4 +1,4 @@
 json.extract! @user, :id, :username, :bio
-json.attendances @user.attendances do |attendance|
-  json.extract! attendance, :id, :title, :description, :date
+json.attended_events @user.attended_events do |event|
+  json.extract! event, :id, :title, :description, :date, :location
 end

@@ -12,11 +12,9 @@ FlockTo.Views.EventShow = Backbone.CompositeView.extend({
     this.listenTo(this.model, 'sync reset', this.render);
     this.listenTo(this.model.flocks(), 'sync', this.render);
     this.listenTo(this.model.flocks(), 'add', this.addCardItem);
-    this.listenTo(this.model.flocks(), 'reset', this.filteredView)
+    this.listenTo(this.model.flocks(), 'reset', this.filteredView);
+
     this.model.flocks().each(this.addCardItem.bind(this));
-    // this.model.flocks().each(function (flock) {
-    //   this.addCardItem(flock);
-    // }.bind(this));
     this.addFlockForm();
   },
 
