@@ -3,7 +3,7 @@ FlockTo.Views.FlockForm = Backbone.View.extend({
 
   tagName: 'form',
 
-  className: 'flock-form',
+  className: 'flock-form form-horizontal',
 
   events: {
     'click .submit': 'submit'

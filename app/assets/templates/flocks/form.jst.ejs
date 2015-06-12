@@ -1,21 +1,29 @@
-<label>Title
-<input type="text" class="flock-title" name="flock[title]"
-  value='<%= flock.escape('title')%>'>
-</label>
+<div class='form-group'>
+  <label>Title
+  <input type="text" class="flock-title form-control"
+    name="flock[title]" placeholder='Is a title necessary?'
+    value='<%= flock.escape('title')%>'>
+  </label>
 
-<label>Date
-<input type="text" class="flock-date" id="datepicker" name="flock[date]"
-  value='<%= flock.escape('date')%>'>
-</label><br>
+  <label>Date
+  <input type="text" class="flock-date form-control"
+    id="datepicker" name="flock[date]"
+    value='<%= flock.escape('date')%>'
+    placeholder='Use default date'>
+  </label>
 
-<label>Location
-<input type="text" class="flock-location" name="flock[location]"
-  value='<%= flock.escape('location')%>'>
-</label><br>
+  <label>Location
+  <input type="text" class="flock-location form-control"
+    name="flock[location]" placeholder='San Francisco, CA'
+    value='<%= flock.escape('location')%>'>
+  </label>
+<div/>
 
-<label>Description<br>
-<textarea class="flock-description" name="flock[description]">
-<%= flock.escape('description')%></textarea>
-</label><br>
+<div class-'form-group'>
+  <label>Description<br>
+  <textarea class="flock-description form-control" name="flock[description]">
+  <%= flock.escape('description')%></textarea>
+  </label><br>
+<div/>
 
 <button class="submit">Submit</button>

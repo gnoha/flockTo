@@ -6,7 +6,7 @@
   <a href='#/flocks/<%= flock.escape('parent_id')%>'>Meet Up With...</a>
 <% }%>
 
-<% if (document.CURRENT_USER === flock.get('coordinator_id')) {%>
+<% if (document.CURRENT_USER=== flock.get('coordinator_id')) {%>
   <a href='#/flocks/<%= flock.escape('id')%>/edit'>Edit Flock</a>
 <% }%>
 
