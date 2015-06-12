@@ -38,8 +38,9 @@ module Api
 
     def find_nearbys
       event_flocks = Flock.where({ event_id: params[:event_id] })
-      @nearby_flocks = event_flocks.near(params[:current_location],
-                      params[:distance])
+      @search_location = params[:current_location]
+      @nearby_flocks = event_flocks.near(@search_location, params[:distance])
+
 
       render :nearby_flocks
     end

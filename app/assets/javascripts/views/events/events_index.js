@@ -4,7 +4,8 @@ FlockTo.Views.EventsIndex = Backbone.CompositeView.extend({
   className: "events-index",
 
   events: {
-    'click .events-index-item': 'navToFlocks'
+    'click .events-index-item': 'navToFlocks',
+    'click .add-event': 'addForm',
   },
 
   initialize: function () {
@@ -13,7 +14,6 @@ FlockTo.Views.EventsIndex = Backbone.CompositeView.extend({
     this.collection.each(function (eventModel) {
       this.addEventCard(eventModel);
     }.bind(this));
-    this.addForm();
   },
 
   addEventCard: function (eventModel) {
@@ -35,13 +35,14 @@ FlockTo.Views.EventsIndex = Backbone.CompositeView.extend({
     Backbone.history.navigate('#/events/'+eventId, { trigger: true });
   },
 
-  addForm: function () {
+  addForm: function (event) {
+    event.preventDefault();
     var eventModel = new FlockTo.Models.Event();
     var newForm = new FlockTo.Views.EventForm({
       model: eventModel,
       collection: this.collection
     });
-    this.addSubview('.new-event-form', newForm);
+    this.$el.prepend(newForm.render().$el);
   },
 
   setDatePicker: function () {
@@ -51,6 +52,4 @@ FlockTo.Views.EventsIndex = Backbone.CompositeView.extend({
       showAnim: 'fadeIn'
     });
   }
-
-
 });

@@ -1,12 +1,11 @@
 FlockTo.Views.EventForm = Backbone.View.extend({
   template: JST['events/form'],
 
-  tagName: 'form',
-
   className: 'event-form',
 
   events: {
-    'click .submit': 'submit'
+    'click .submit': 'submit',
+    'click .a-backdrop': 'remove'
   },
 
   initialize: function () {
@@ -37,5 +36,5 @@ FlockTo.Views.EventForm = Backbone.View.extend({
         alert(response.responseJSON);
       }
     });
-  }
+  },
 });

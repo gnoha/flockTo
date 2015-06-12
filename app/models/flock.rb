@@ -3,6 +3,8 @@ class Flock < ActiveRecord::Base
             :event_id, :coordinator_id,
             presence: true
 
+  attr_accessor :search_distance, :searched_location
+
   has_many(:subflocks,
             class_name: 'Flock',
             foreign_key: :parent_id)
@@ -10,14 +12,6 @@ class Flock < ActiveRecord::Base
   geocoded_by :location
 
   after_validation :geocode
-  # has_many(:organizations,
-  #          class_name: 'Organizer',
-  #          foreign_key: :flock_id
-  #         )
-  # has_many(:organizers,
-  #          through: :organizations,
-  #          source: :organizer
-  #         )
 
   belongs_to(:coordinator,
            class_name: 'User',

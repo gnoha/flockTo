@@ -27,7 +27,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'newrelic_rpm'
 gem 'geocoder'
 
-
+gem 'bootstrap-sass'
 
 
 # Use ActiveModel has_secure_password

@@ -8,10 +8,24 @@ FlockTo.Models.Event = Backbone.Model.extend({
     return this._flocks;
   },
 
+  attendees: function () {
+    if (!this._attendees) {
+      this._attendees = new FlockTo.Collections.Users([], { flock: this });
+    }
+
+    return this._attendees;
+  },
+
+
   parse: function (response) {
     if (response.flocks) {
       this.flocks().set(response.flocks);
       delete response.flocks;
+    }
+
+    if (response.attendees) {
+      this.attendees().set(response.attendees);
+      delete response.attendees;
     }
 
     return response;

@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery.serializejson
 //= require jquery-ui/datepicker
+//= require bootstrap
 //= require underscore
 //= require backbone
 //= require flock_to

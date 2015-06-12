@@ -5,6 +5,7 @@ FlockTo.Views.FlockShow = Backbone.CompositeView.extend({
 
   events: {
     'click .flocks-index-item' : 'navToFlock',
+    'click .users-index-item': 'navToUser'
   },
 
   initialize: function () {
@@ -22,6 +23,13 @@ FlockTo.Views.FlockShow = Backbone.CompositeView.extend({
       model: subFlock
     });
     this.addSubview('.sub-flock', card);
+  },
+
+  addAttendeeCards: function (user) {
+    var card = new FlockTo.Views.UsersIndexItem({
+      model: user
+    });
+    this.addSubview('.attendees');
   },
 
   render: function() {
