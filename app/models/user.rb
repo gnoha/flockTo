@@ -5,16 +5,6 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token
 
   attr_reader :password
-#this is to authorize current_user to
-#create and update
-  # has_many(:organizations,
-  #          class_name: "Organizer",
-  #          foreign_key: :user_id
-  #         )
-  # has_many(:organized_flocks,
-  #          through: :organizations,
-  #          source: :flock
-  #         )
 
   geocoded_by :location
 

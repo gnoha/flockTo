@@ -7,10 +7,7 @@ FlockTo.Views.FlocksIndex = Backbone.CompositeView.extend({
   initialize: function () {
     this.listenTo(this.collection, 'sync', this.render);
     this.listenTo(this.collection, 'add', this.addFlocksIndexItem);
-    this.collection.each(function(flock) {
-      this.addFlocksIndexItem(flock);
-    }.bind(this));
-
+    this.collection.each(this.addFlocksIndexItem.bind(this))
   },
 
   render: function () {

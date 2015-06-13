@@ -30,6 +30,4 @@ FlockTo.Models.Flock = Backbone.Model.extend({
 
     return response;
   }
-
-
 });

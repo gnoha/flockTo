@@ -11,20 +11,19 @@ FlockTo.Views.EventShow = Backbone.CompositeView.extend({
   initialize: function () {
     this.listenTo(this.model, 'sync reset', this.render);
     this.listenTo(this.model.flocks(), 'sync', this.render);
-    this.listenTo(this.model.flocks(), 'add', this.addCardItem);
-    this.listenTo(this.model.flocks(), 'reset', this.filteredView);
-
-    this.model.flocks().each(this.addCardItem.bind(this));
+    this.addFlocksIndex();
     this.addFlockForm();
   },
 
-  addCardItem: function (flock) {
-    var cardSubview = new FlockTo.Views.FlocksIndexItem({ model: flock });
-    this.addSubview('.flocks-list', cardSubview);
+  isCoord: function () {
+    return CURRENT_USER_ID === this.model.get('coordinator_id')
   },
 
   render: function () {
-    var content = this.template({ eventModel: this.model });
+    var content = this.template({
+      eventModel: this.model,
+      coord: this.isCoord()
+      });
     this.$el.html(content);
     this.attachSubviews();
     this.setDatePicker();
@@ -46,6 +45,13 @@ FlockTo.Views.EventShow = Backbone.CompositeView.extend({
     this.addSubview('.flock-form-container', form);
   },
 
+  addFlocksIndex: function () {
+    this._flocksIndex = new FlockTo.Views.FlocksIndex({
+      collection: this.model.flocks()
+    });
+    this.addSubview('.flocks-index', this._flocksIndex);
+  },
+
   setDatePicker: function () {
     this.$('#datepicker').removeClass("hasDatepicker").datepicker({
       dateFormat: "yy-mm-dd",
@@ -54,10 +60,8 @@ FlockTo.Views.EventShow = Backbone.CompositeView.extend({
   },
 
   filteredView: function () {
-    this.eachSubview(function (subview) {
-      this.removeSubview('.flocks-list', subview)
-    }.bind(this));
-    this.model.flocks().each(this.addCardItem.bind(this));
+    this.removeSubview('.flocks-index', this._flocksIndex);
+    this.addFlocksIndex();
     this.render();
   },
 
@@ -66,12 +70,11 @@ FlockTo.Views.EventShow = Backbone.CompositeView.extend({
     var query = $('.search-form').serializeJSON();
     query.event_id = this.model.get('id');
 
-    $.ajax({
-      url: '/api/flocks/nearbys',
-      type: 'post',
+    this.model.flocks().fetch({
       data: query,
+      url: '/api/flocks/nearbys',
       success: function (response) {
-        this.model.flocks().reset(response);
+        this.filteredView();
       }.bind(this)
     });
   }

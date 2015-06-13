@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150611200613) do
+ActiveRecord::Schema.define(version: 20150612165300) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 20150611200613) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "attendings", ["user_id", "flock_id"], name: "index_attendings_on_user_id_and_flock_id", unique: true, using: :btree
 
   create_table "events", force: :cascade do |t|
     t.string   "title",          null: false
@@ -49,16 +51,6 @@ ActiveRecord::Schema.define(version: 20150611200613) do
 
   add_index "flocks", ["date"], name: "index_flocks_on_date", using: :btree
   add_index "flocks", ["location"], name: "index_flocks_on_location", using: :btree
-
-  create_table "organizings", force: :cascade do |t|
-    t.integer  "flock_id",   null: false
-    t.integer  "user_id",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "organizings", ["flock_id"], name: "index_organizings_on_flock_id", using: :btree
-  add_index "organizings", ["user_id"], name: "index_organizings_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username",        null: false

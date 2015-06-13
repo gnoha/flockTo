@@ -1,8 +1,6 @@
 FlockTo.Views.FlocksIndexItem = Backbone.View.extend({
   template: JST['flocks/index_item'],
 
-  tagName: 'li',
-
   className: 'flocks-index-item card',
 
   initialize: function () {

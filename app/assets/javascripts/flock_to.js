@@ -3,7 +3,7 @@ window.FlockTo = {
   Collections: {},
   Views: {},
   Routers: {},
-  CURRENT_USER: document.CURRENT_USER,
+  CURRENT_USER_ID: window.CURRENT_USER_ID,
   initialize: function() {
     var router = new FlockTo.Routers.Router({
       $el: $('#main'),
@@ -17,5 +17,5 @@ window.FlockTo = {
 };
 
 $(document).ready(function(){
-  FlockTo.initialize();
+    FlockTo.initialize();
 });
