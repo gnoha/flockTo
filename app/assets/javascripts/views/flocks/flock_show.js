@@ -68,23 +68,9 @@ FlockTo.Views.FlockShow = Backbone.CompositeView.extend({
     Backbone.history.navigate('#/users/' + userId, {trigger: true});
   },
 
-  // // joining: function () {
-  // //   $('.join-flock').toggleClass('joining').attr('disabled');
-  // // },
-  // //
-  // isJoined: function () {
-  //   this.model.attributes.attendeeIds.indexOf(CURRENT_USER_ID) !== -1;
-  // },
-  //
-  // joinAction: function () {
-  //   //Not joined -> Join
-  //   $joinButton = $('button.join-flock');
-  //
-  //   if ($joinButton)
-  //   $joinButton.removeClass('not-joined');
-  //   $joinButton.addClass('joined');
-  //   $joinButton.text('Leave Flock')
-  // },
+  joinGroup: function () {
+    $('.join-flock').removeClass()
+  },
 
   join: function (event) {
     event.preventDefault();
@@ -92,8 +78,12 @@ FlockTo.Views.FlockShow = Backbone.CompositeView.extend({
     attending.fetch({
       data: {'attending': {'flock_id': this.model.id}},
       success: function (response) {
-        debugger
-      }
+        if (response.id === undefined) {
+          this.joinGroup();
+        } else {
+          this.leaveGroup();
+        }
+      }.bind(this)
     });
 
   },

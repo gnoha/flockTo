@@ -5,7 +5,7 @@ FlockTo.Views.EventForm = Backbone.View.extend({
 
   events: {
     'click .submit': 'submit',
-    'click .a-backdrop': 'remove'
+    // 'click .a-backdrop': 'remove'
   },
 
   initialize: function () {

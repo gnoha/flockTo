@@ -26,7 +26,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'newrelic_rpm'
 gem 'geocoder'
-
+gem 'figaro'
 gem 'bootstrap-sass'
 
 

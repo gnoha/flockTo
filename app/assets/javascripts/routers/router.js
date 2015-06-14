@@ -4,6 +4,8 @@ FlockTo.Routers.Router = Backbone.Router.extend({
     this.events = options.events;
     this.flocks = options.flocks;
     this.users = options.users;
+
+    this.navbar();
   },
 
   routes: {
@@ -13,6 +15,14 @@ FlockTo.Routers.Router = Backbone.Router.extend({
     'users/:id' : 'showUser',
     'events/:id/edit': 'editEvent',
     'flocks/:id/edit': 'editFlock'
+  },
+
+  navbar: function () {
+    var currentUser = this.users.getOrFetch(CURRENT_USER_ID);
+    var nav = new FlockTo.Views.Navbar({
+      model: currentUser
+    });
+    $('#navbar').html(nav.render().$el);
   },
 
   index: function () {
@@ -39,8 +49,11 @@ FlockTo.Routers.Router = Backbone.Router.extend({
   },
 
   showFlock: function(id) {
+    var currentUser = this.users.getOrFetch(CURRENT_USER_ID);
     var flock = this.flocks.getOrFetch(id);
-    var showView = new FlockTo.Views.FlockShow({ model: flock });
+    var showView = new FlockTo.Views.FlockShow({
+      model: flock,
+      currentUser: currentUser});
     this._swapView(showView);
   },
 

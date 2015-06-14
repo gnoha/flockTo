@@ -3,7 +3,7 @@ module Api
     def create
       @attending = current_user.attendings.new(attending_params);
       if @attending.save
-        render :index
+        render json: {}
       else
         render json: @attending.errors.full_messages,
                status: :unprocessable_entity
@@ -13,8 +13,7 @@ module Api
     def index
       @attending = Attending.find_by_pair(current_user.id,
                                           params[:attending][:flock_id])
-      debugger                                    
-      render :index
+      render json: @attending
     end
 
     def destroy
