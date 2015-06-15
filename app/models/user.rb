@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
            )
 
   has_many :attendings
+
   has_many(:attended_flocks,
            through: :attendings,
            source: :flock)

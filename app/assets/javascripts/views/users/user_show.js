@@ -3,9 +3,7 @@ FlockTo.Views.UserShow = Backbone.CompositeView.extend({
 
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
-    this.listenTo(this.model.attended_events(), 'sync', this.render);
-    this.listenTo(this.model.attended_events(), 'add', this.addEventCards);
-    this.model.attended_events().each(this.addEventCards.bind(this));
+    this.addEventsIndex();
   },
 
   render: function () {
@@ -16,10 +14,17 @@ FlockTo.Views.UserShow = Backbone.CompositeView.extend({
     return this;
   },
 
-  addEventCards: function (e) {
-    var card = new FlockTo.Views.EventsIndexItem({ model: e });
-    this.addSubview('.user-events', card);
+  addEventsIndex: function () {
+    var indexView = new FlockTo.Views.EventsIndex({
+      collection: this.model.attendedEvents()
+    });
+    this.addSubview('.events-index', indexView);
   }
+  //
+  // addEventCards: function (e) {
+  //   var card = new FlockTo.Views.EventsIndexItem({ model: e });
+  //   this.addSubview('.user-events', card);
+  // }
 
 
 });

@@ -3,14 +3,9 @@ FlockTo.Views.FlockShow = Backbone.CompositeView.extend({
 
   className: 'flock-show',
 
-  events: {
-    'click .flocks-index-item' : 'navToFlock',
-    'click .user-index-item': 'navToUser',
-    'click .join-flock': 'join'
-  },
-
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
+    this.addButton();
     this.addFlocksIndex();
     this.addAttendeesIndex();
     this.model.fetch({
@@ -23,6 +18,14 @@ FlockTo.Views.FlockShow = Backbone.CompositeView.extend({
       collection: this.model.attendees()
     });
     this.addSubview('.attendees-index', this._attendeesIndex);
+  },
+
+  addButton: function () {
+    this._button = new FlockTo.Views.JoinButton({
+      attending: this.attending(),
+      flockId: this.model.id
+    });
+    this.addSubview('.join-button', this._button);
   },
 
   addFlocksIndex: function () {
@@ -58,40 +61,19 @@ FlockTo.Views.FlockShow = Backbone.CompositeView.extend({
     this.addSubview('.subflock-form-container', formView);
   },
 
-  navToFlock: function (event) {
-    var flockId = $(event.currentTarget).data('id');
-    Backbone.history.navigate('#/flocks/' + flockId, { trigger: true });
-  },
-
-  navToUser: function (event) {
-    var userId = $(event.currentTarget).data('id');
-    Backbone.history.navigate('#/users/' + userId, {trigger: true});
-  },
-
-  joinGroup: function () {
-    $('.join-flock').removeClass()
-  },
-
-  join: function (event) {
-    event.preventDefault();
-    var attending = new FlockTo.Models.Attending();
-    attending.fetch({
-      data: {'attending': {'flock_id': this.model.id}},
-      success: function (response) {
-        if (response.id === undefined) {
-          this.joinGroup();
-        } else {
-          this.leaveGroup();
-        }
-      }.bind(this)
-    });
-
-  },
-
   setDatePicker: function () {
     this.$('#datepicker').removeClass("hasDatepicker").datepicker({
       dateFormat: "yy-mm-dd",
       minDate: '+1d'
     });
+  },
+
+  attending: function () {
+    this._attending = new FlockTo.Models.Attending();
+    this._attending.fetch({
+      data: {'attending': {'flock_id': this.model.id}}
+    });
+
+    return this._attending
   }
 });

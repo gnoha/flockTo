@@ -36,7 +36,8 @@ FlockTo.Routers.Router = Backbone.Router.extend({
   showEvent: function (id) {
     var eventModel = this.events.getOrFetch(id);
     var showView = new FlockTo.Views.EventShow({
-      model: eventModel
+      model: eventModel,
+      users: this.users
     });
 
     this._swapView(showView);
@@ -44,7 +45,9 @@ FlockTo.Routers.Router = Backbone.Router.extend({
 
   editEvent: function (id) {
     var eventModel = this.events.getOrFetch(id);
-    var formView = new FlockTo.Views.EventForm({ model: eventModel });
+    var formView = new FlockTo.Views.EventForm({
+      model: eventModel
+    });
     this._swapView(formView);
   },
 

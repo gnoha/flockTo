@@ -4,7 +4,7 @@ module Api
     before_action :require_coordinator, only: [:update, :destroy]
 
     def index
-      @events = Event.all
+      @events = Event.all.order(:date)
     end
 
     def show

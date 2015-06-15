@@ -4,19 +4,22 @@ FlockTo.Views.EventShow = Backbone.CompositeView.extend({
   className: 'event-show-page',
 
   events: {
-    'click .flocks-index-item' : 'navToFlock',
     'click .search-location' : 'locationQuery'
   },
 
-  initialize: function () {
+  initialize: function (options) {
+    this.users = options.users;
+
     this.listenTo(this.model, 'sync reset', this.render);
-    this.listenTo(this.model.flocks(), 'sync', this.render);
+    this.listenTo(this.model, 'sync', this.addCoordinator);
+
+    this.addAttendeesIndex();
     this.addFlocksIndex();
     this.addFlockForm();
   },
 
   isCoord: function () {
-    return CURRENT_USER_ID === this.model.get('coordinator_id')
+    return CURRENT_USER_ID === this.model.get('coordinator_id');
   },
 
   render: function () {
@@ -30,16 +33,11 @@ FlockTo.Views.EventShow = Backbone.CompositeView.extend({
     return this;
   },
 
-  navToFlock: function (event) {
-    var flockId = $(event.currentTarget).data('id');
-    Backbone.history.navigate('#/flocks/' + flockId, { trigger: true });
-  },
-
   addFlockForm: function () {
     var flock = new FlockTo.Models.Flock();
     var form = new FlockTo.Views.FlockForm({
       model: flock,
-      collection: this.model
+      eventId: this.model.id
     });
 
     this.addSubview('.flock-form-container', form);
@@ -50,6 +48,21 @@ FlockTo.Views.EventShow = Backbone.CompositeView.extend({
       collection: this.model.flocks()
     });
     this.addSubview('.flocks-index', this._flocksIndex);
+  },
+
+  addAttendeesIndex: function () {
+    this._attendeesIndex = new FlockTo.Views.UsersIndex({
+      collection: this.model.attendees()
+    });
+    this.addSubview('.attendees-index', this._attendeesIndex);
+  },
+
+  addCoordinator: function () {
+    var coord = this.users.getOrFetch(this.model.get('coordinator_id'));
+    var coordView = new FlockTo.Views.UsersIndexItem({
+      model: coord
+    });
+    this.addSubview('.coordinator', coordView);
   },
 
   setDatePicker: function () {

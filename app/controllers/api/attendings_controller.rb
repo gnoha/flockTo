@@ -1,7 +1,9 @@
 module Api
   class Api::AttendingsController < ApiController
     def create
-      @attending = current_user.attendings.new(attending_params);
+      @attending = current_user.attendings.new(
+        { user_id: current_user.id,
+          flock_id: params[:data][:attending][:flock_id] })
       if @attending.save
         render json: {}
       else
@@ -20,12 +22,6 @@ module Api
       @attending = Attending.find(params[:id])
       @attending.destroy
       render json: {}
-    end
-
-    private
-
-    def attending_params
-      params.require(:attending).permit(:user_id, :flock_id)
     end
   end
 end

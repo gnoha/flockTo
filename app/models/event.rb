@@ -4,7 +4,7 @@ class Event < ActiveRecord::Base
 
   geocoded_by :location
 
-  after_validation :geocode 
+  after_validation :geocode
 
   has_many :flocks
 
@@ -15,4 +15,6 @@ class Event < ActiveRecord::Base
   belongs_to(:coordinator,
              class_name: 'User',
              foreign_key: :coordinator_id)
+
+  
 end
