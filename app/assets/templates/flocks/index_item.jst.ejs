@@ -1,3 +1,7 @@
-<div class="list-index title"><%= flock.escape('title')%></div>
-<%= flock.escape('location')%>
-<p class='index-description'><%= flock.escape('description')%></p>
+<div class="title card-title"
+  <div class="list-index title"><%= flock.escape('title')%></div>
+</div>
+<div class="card-details">
+  <%= flock.escape('location')%><br>
+  <%= flock.escape('distance')%>
+</div>

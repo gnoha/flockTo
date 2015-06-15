@@ -1,4 +1,5 @@
-<div class="title"><%= eventModel.escape('title')%></div>
-<%= eventModel.escape('location')%>
-<%= eventModel.escape('date')%>
-<p><%= eventModel.escape('description')%></p>
+<div class="title card-title"><%= eventModel.escape('title')%></div>
+<div class="location card-details">
+  <%= eventModel.escape('location')%><br>
+  <%= eventModel.escape('date')%>
+</div>
