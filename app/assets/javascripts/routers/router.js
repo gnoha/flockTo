@@ -55,8 +55,8 @@ FlockTo.Routers.Router = Backbone.Router.extend({
     var currentUser = this.users.getOrFetch(CURRENT_USER_ID);
     var flock = this.flocks.getOrFetch(id);
     var showView = new FlockTo.Views.FlockShow({
-      model: flock,
-      currentUser: currentUser});
+      model: flock
+    });
     this._swapView(showView);
   },
 

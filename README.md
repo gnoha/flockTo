@@ -77,7 +77,6 @@ client side, the view will contain both Group Index Items and Event Index Items.
 - [ ] Comments for groups and events
 - [ ] Pagination/infinite scroll
 - [ ] Uploading pictures in groups
-- [ ] Multiple sessions/session management
 - [ ] Typeahead search bar
 
 [phase-one]: ./docs/phases/phase1.md

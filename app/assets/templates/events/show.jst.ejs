@@ -1,3 +1,4 @@
+<div id='map-container'></div>
 <h1 class="title"><%= eventModel.escape('title')%></h1>
 <%= eventModel.escape('location')%>
 <%= eventModel.escape('date')%>
@@ -20,7 +21,15 @@
     <button class='search-location'>Search</button>
 </form>
 <hr>
-<div class="coordinator"></div>
-<div class="flock-form-container"></div>
-<div class="flocks-index"></div>
-<div class="attendees-index"</div>
+<label>Coordinator
+  <div class="coordinator"></div>
+</label>
+<label>New Flock
+  <div class="flock-form-container"></div>
+</label>
+<label>Flocks
+  <div class="flocks-index"></div>
+</label>
+<label>Attending
+  <div class="attendees-index"</div>
+</label>

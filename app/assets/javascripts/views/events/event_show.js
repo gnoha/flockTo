@@ -16,6 +16,11 @@ FlockTo.Views.EventShow = Backbone.CompositeView.extend({
     this.addAttendeesIndex();
     this.addFlocksIndex();
     this.addFlockForm();
+    this.model.fetch({
+      success: function () {
+        this.addMap();
+      }.bind(this)
+    });
   },
 
   isCoord: function () {
@@ -63,6 +68,16 @@ FlockTo.Views.EventShow = Backbone.CompositeView.extend({
       model: coord
     });
     this.addSubview('.coordinator', coordView);
+  },
+
+  addMap: function () {
+    var map = new FlockTo.Views.MapShow({
+      collection: this.model.flocks(),
+      currentModel: this.model,
+      eventModel: this.model
+    });
+    this.addSubview('#map-container', map);
+    map.initMap();
   },
 
   setDatePicker: function () {

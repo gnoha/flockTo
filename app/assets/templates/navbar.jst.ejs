@@ -7,24 +7,24 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">flockTo</a>
+      <a class="navbar-brand" href="#">f l o c k T o</a>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <form class="navbar-form navbar-left" role="search">
+      <form class="navbar-form navbar-left event-search" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Enter Event Name">
         </div>
-        <button type="submit" class="btn btn-default">Find Event</button>
+        <span class="glyphicon glyphicon-search submit" aria-hidden="true"></span>
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= current_user.escape('username')%><span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Action</a></li>
+            <li><a href="#/users/<%= current_user.escape('id')%>">User Page</a></li>
             <li><a href="#">Another action</a></li>
             <li><a href="#">Something else here</a></li>
             <li class="divider"></li>
-            <li><a class='sign-out'>Sign Out</a></li>
+            <li><a class='sign-out' href='/session'>Sign Out</a></li>
           </ul>
         </li>
       </ul>

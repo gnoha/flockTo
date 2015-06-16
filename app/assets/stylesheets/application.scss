@@ -2,7 +2,7 @@
 @import 'bootstrap';
 
 * {
-  font-family: helvetica;
+  font-family: raleway;
 }
 
 .content {
@@ -11,36 +11,11 @@
 
 #map-canvas {
   width: 100%;
-  height: 300px
-}
-#logo {
-  color: black;
-  text-decoration: none;
+  height: 400px
 }
 
 .title {
   font-size: 24px;
-}
-
-.a-backdrop {
-  position: absolute;
-  background-color: rgba(165, 157, 168, 0.5);
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  z-index: 15;
-}
-
-.a-content {
-  z-index: 100;
-  background-color: rgb(246, 249, 255);;
-  padding: 20px;
-  height: 256px;
-  width: 564px;
-  position: fixed;
-  margin-top: 40px;
-  left: 25%;
 }
 
 // navbar
@@ -49,8 +24,11 @@
   left: 45%;
 }
 
-.field {
+.glyphicon-search {
+  cursor: pointer;
 }
+
+
 /*index item cards*/
 .card:hover {
   cursor: pointer;
@@ -85,7 +63,7 @@
   margin: 5px;
   border: 1px solid black;
   background-color: rgba(250, 250, 230, 0.73);
-  border-radius: 5px;
+  border-radius: 3px;
   padding: 3px;
 }
 

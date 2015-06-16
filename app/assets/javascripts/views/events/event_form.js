@@ -4,8 +4,7 @@ FlockTo.Views.EventForm = Backbone.View.extend({
   className: 'event-form',
 
   events: {
-    'click .submit': 'submit',
-    'click .a-backdrop': 'remove'
+    'click .submit': 'submit'
   },
 
   initialize: function () {
@@ -21,7 +20,7 @@ FlockTo.Views.EventForm = Backbone.View.extend({
 
   submit: function (event) {
     event.preventDefault();
-    var attrs = this.$el.serializeJSON().event;
+    var attrs = $('form').serializeJSON().event;
     attrs.coordinator_id = CURRENT_USER_ID;
     this.model.save(attrs, {
       success: function () {

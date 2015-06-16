@@ -1,29 +1,51 @@
-<div class='form-group'>
-  <label>Title
-  <input type="text" class="flock-title form-control"
-    name="flock[title]" placeholder='Is a title necessary?'
-    value='<%= flock.escape('title')%>'>
-  </label>
+<button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+  data-target="#myModal">Create an Event</button>
 
-  <label>Date
-  <input type="text" class="flock-date form-control"
-    id="datepicker" name="flock[date]"
-    value='<%= flock.escape('date')%>'
-    placeholder='Use default date'>
-  </label>
 
-  <label>Location
-  <input type="text" class="flock-location form-control"
-    name="flock[location]" placeholder='San Francisco, CA'
-    value='<%= flock.escape('location')%>'>
-  </label>
-<div/>
+<div class='modal fade' id='myModal' tabindex=-1 role='dialog'
+  aria-labelledby='myModalLabel' aria-hidden='true'>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"
+          aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class='modal-body'>
+        <form>
+          <div class='form-group'>
+            <label>Title
+            <input type="text" class="flock-title form-control"
+              name="flock[title]" placeholder='Is a title necessary?'
+              value='<%= flock.escape('title')%>'>
+            </label>
 
-<div class-'form-group'>
-  <label>Description<br>
-  <textarea class="flock-description form-control" name="flock[description]">
-  <%= flock.escape('description')%></textarea>
-  </label><br>
-<div/>
+            <label>Date
+            <input type="text" class="flock-date form-control"
+              id="datepicker" name="flock[date]"
+              value='<%= flock.escape('date')%>'
+              placeholder='Use default date'>
+            </label>
 
-<button class="submit">Submit</button>
+            <label>Location
+            <input type="text" class="flock-location form-control"
+              name="flock[location]" placeholder='San Francisco, CA'
+              value='<%= flock.escape('location')%>'>
+            </label>
+          <div/>
+
+          <div class-'form-group'>
+            <label>Description<br>
+            <textarea class="flock-description form-control" name="flock[description]">
+            <%= flock.escape('description')%></textarea>
+            </label><br>
+          <div/>
+        </form>
+      </div>
+      <div 'modal-footer'>
+        <button class="submit btn btn-primary btn-sm">Create Flock</button>
+      </div>
+    </div>
+  </div>
+</div>

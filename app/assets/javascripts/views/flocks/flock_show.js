@@ -8,8 +8,12 @@ FlockTo.Views.FlockShow = Backbone.CompositeView.extend({
     this.addButton();
     this.addFlocksIndex();
     this.addAttendeesIndex();
+    //Refactor this
     this.model.fetch({
-      success: this.addForm.bind(this)
+      success: function () {
+        this.addForm.bind(this);
+        this.addMap();
+      }.bind(this)
     });
   },
 
@@ -33,6 +37,16 @@ FlockTo.Views.FlockShow = Backbone.CompositeView.extend({
       collection: this.model.subFlocks()
     });
     this.addSubview('.sub-flocks-index', this._flocksIndex);
+  },
+
+  addMap: function () {
+    var map = new FlockTo.Views.MapShow({
+      collection: this.model.eventFlocks(),
+      currentModel: this.model,
+      eventModel: this.model.eventModel()
+    });
+    this.addSubview('#map-container', map);
+    map.initMap();
   },
 
   isCoord: function () {

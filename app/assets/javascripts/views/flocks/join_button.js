@@ -8,8 +8,8 @@ FlockTo.Views.JoinButton = Backbone.View.extend({
   initialize: function (options) {
     this.attending = options.attending;
     this.flockId = options.flockId;
-    this.listenTo(this.attending, 'sync', this.render);
-    this.listenTo(this.collection, 'add remove', this.render)
+    this.listenTo(this.attending, 'add sync remove', this.render);
+    this.listenTo(this.collection, 'add remove', this.render);
   },
 
   render: function () {
@@ -56,7 +56,7 @@ FlockTo.Views.JoinButton = Backbone.View.extend({
     });
   },
 
-//add intermediate state and disable button
+//add intermediate state and disable button?
   toggleJoin: function () {
     var $join = $('button.join-flock');
     if ($join.hasClass('not-joined')) {

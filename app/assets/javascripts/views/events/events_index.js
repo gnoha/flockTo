@@ -11,9 +11,13 @@ FlockTo.Views.EventsIndex = Backbone.CompositeView.extend({
   initialize: function () {
     this.listenTo(this.collection, 'sync reset', this.render);
     this.listenTo(this.collection, 'add', this.addEventCard);
-    this.collection.each(function (eventModel) {
-      this.addEventCard(eventModel);
-    }.bind(this));
+    this.collection.each(this.addEventCard.bind(this));
+    this.collection.fetch({
+      success: function () {
+        this.addMap();
+      }.bind(this)
+    });
+    this.addForm();
   },
 
   addEventCard: function (eventModel) {
@@ -25,7 +29,7 @@ FlockTo.Views.EventsIndex = Backbone.CompositeView.extend({
     var content = this.template();
     this.$el.html(content);
     this.attachSubviews();
-    this.setDatePicker()
+    this.setDatePicker();
     return this;
   },
 
@@ -35,14 +39,22 @@ FlockTo.Views.EventsIndex = Backbone.CompositeView.extend({
     Backbone.history.navigate('#/events/'+eventId, { trigger: true });
   },
 
-  addForm: function (event) {
-    event.preventDefault();
+  addMap: function () {
+    var map = new FlockTo.Views.MapShow({
+      collection: this.collection,
+      isIndex: true
+    });
+    this.addSubview('#map-container', map);
+    map.initMap();
+  },
+
+  addForm: function () {
     var eventModel = new FlockTo.Models.Event();
     var newForm = new FlockTo.Views.EventForm({
       model: eventModel,
       collection: this.collection
     });
-    this.$el.prepend(newForm.render().$el);
+    this.addSubview('.form-container', newForm);
   },
 
   setDatePicker: function () {

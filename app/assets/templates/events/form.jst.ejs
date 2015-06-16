@@ -1,28 +1,46 @@
-<div class='a-backdrop'><div>
-<div class='a-content'>
-  <div class='form-group'>
-    <form class='form-horizontal'>
-      <label>Title
-      <div class='col-md-8'>
-        <input type="text" class="event-title form-control" name="event[title]">
+<button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+  data-target="#myModal">Create an Event</button>
+
+
+<div class='modal fade' id='myModal' tabindex=-1 role='dialog'
+  aria-labelledby='myModalLabel' aria-hidden='true'>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"
+          aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-      </label><br>
-      <label>Date
-        <div class='col-md-8'>
-        <input type="text" class="event-date form-control" id="datepicker" name="event[date]">
-        </label><br>\
+      <div class='modal-body'>
+        <div class='form-group'>
+          <form class='form-horizontal'>
+            <label>Title
+            <div class='col-md-8'>
+              <input type="text" class="event-title form-control" name="event[title]">
+            </div>
+            </label><br>
+            <label>Date
+              <div class='col-md-8'>
+              <input type="text" class="event-date form-control" id="datepicker" name="event[date]">
+              </div>
+            </label><br>
+            <label>Location
+              <div class='col-md-8'>
+                <input type="text" class="event-date form-control" name="event[location]">
+              </div>
+            </label><br>
+            <label>Description<br>
+              <div class='col-md-8'>
+                <textarea class="event-description form-control" name="event[description]"></textarea>
+              </div>
+            </label><br>
+          </form>
+        </div>
       </div>
-      <label>Location
-        <div class='col-md-8'>
-        <input type="text" class="event-date form-control" name="event[location]">
-        </label><br>
+      <div 'modal-footer'>
+        <button class="submit btn btn-primary btn-sm">Create Event</button>
       </div>
-      <label>Description<br>
-        <div class='col-md-8'>
-        <textarea class="event-description form-control" name="event[description]"></textarea>
-        </label><br>
-      </div>
-      <button class="submit">Create Event</button>
-    </form>
+    </div>
   </div>
 </div>

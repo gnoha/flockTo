@@ -10,9 +10,12 @@
       window.CURRENT_USER_ID = <%= current_user.id%>
     <% end%>
   </script>
+  <script type="text/javascript"
+    src="https://maps.googleapis.com/maps/api/js">
+  </script>
+  <link href='http://fonts.googleapis.com/css?family=Raleway:500,400' rel='stylesheet' type='text/css'>
 </head>
 <body>
-
 <%= yield %>
 </body>
 </html>

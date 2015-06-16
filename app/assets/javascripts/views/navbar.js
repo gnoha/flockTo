@@ -1,6 +1,10 @@
 FlockTo.Views.Navbar = Backbone.View.extend({
   template: JST['navbar'],
 
+  events: {
+    'click .submit': 'submit'
+  },
+
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render)
   },
@@ -12,5 +16,13 @@ FlockTo.Views.Navbar = Backbone.View.extend({
     this.$el.html(content);
 
     return this;
+  },
+
+  submit: function (e) {
+    e.preventDefault();
+    var input = $('.event-search').serializeJSON();
+    var query = {};
+    query['search'] = input;
+    debugger
   }
 });
