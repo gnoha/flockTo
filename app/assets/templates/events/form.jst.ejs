@@ -1,5 +1,5 @@
-<button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
-  data-target="#myModal">Create an Event</button>
+''<button type="button"
+  class="btn btn-primary btn-sm open-modal">Create an Event</button>
 
 
 <div class='modal fade' id='myModal' tabindex=-1 role='dialog'
@@ -15,31 +15,28 @@
       <div class='modal-body'>
         <div class='form-group'>
           <form class='form-horizontal'>
-            <label>Title
-            <div class='col-md-8'>
-              <input type="text" class="event-title form-control" name="event[title]">
+            <ul class='error-list'></ul>
+            <div class='form-group'>
+              <label>Title
+                <input type="text" class="event-title form-control" name="event[title]">
+              </label>
+              <label>Date
+                <input type="text" class="event-date form-control" id="datepicker" name="event[date]">
+              </label>
+              <label>Location
+                  <input type="text" class="event-date form-control" name="event[location]">
+              </label>
             </div>
-            </label><br>
-            <label>Date
-              <div class='col-md-8'>
-              <input type="text" class="event-date form-control" id="datepicker" name="event[date]">
-              </div>
-            </label><br>
-            <label>Location
-              <div class='col-md-8'>
-                <input type="text" class="event-date form-control" name="event[location]">
-              </div>
-            </label><br>
-            <label>Description<br>
-              <div class='col-md-8'>
-                <textarea class="event-description form-control" name="event[description]"></textarea>
-              </div>
-            </label><br>
+            <div class='form-group'>
+              <label>Description<br>
+                  <textarea class="event-description form-control" name="event[description]"></textarea>
+              </label><br>
+            </div>
           </form>
         </div>
       </div>
       <div 'modal-footer'>
-        <button class="submit btn btn-primary btn-sm">Create Event</button>
+        <button type='button' class="submit btn btn-primary btn-sm">Create Event</button>
       </div>
     </div>
   </div>

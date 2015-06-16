@@ -2,7 +2,8 @@ FlockTo.Views.Navbar = Backbone.View.extend({
   template: JST['navbar'],
 
   events: {
-    'click .submit': 'submit'
+    'click .submit': 'submit',
+    'click .sign-out': 'signout'
   },
 
   initialize: function () {
@@ -16,6 +17,17 @@ FlockTo.Views.Navbar = Backbone.View.extend({
     this.$el.html(content);
 
     return this;
+  },
+
+  signout: function (e) {
+    e.preventDefault();
+    $.ajax({
+      url: 'session',
+      type: 'DELETE',
+      success: function () {
+        window.location.replace('/session/new');
+      }
+    });
   },
 
   submit: function (e) {

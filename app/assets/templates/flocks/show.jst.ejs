@@ -15,11 +15,28 @@
 <div class='join-button'></div>
 
 <div class="subflock-form-container"></div>
-<ul class="tabs">
+<ul>
   <li><%= flock.escape('title')%></li>
   <li><%= flock.escape('location')%></li>
   <li><%= flock.escape('description')%></li>
+  <li><%= flock.escape('date')%></li>
 </ul>
 
-<div class="sub-flocks-index"></div>
-<div class="attendees-index"></div>
+
+<div role='tabpanel'>
+  <ul class='nav nav-tabs' role='tablist'>
+    <li role='presentation' class='active'><a href="#flocks"
+        aria-controls='flocks' role='tab' data-toggle='tab'>Flocks</a></li>
+    <li role='presentation'><a href='#attending' aria-controls='attending'
+        role='tab' data-toggle='tab'>Attending</a></li>
+  </ul>
+
+  <div class='tab-content clearfix'>
+    <div role='tabpanel' class='tab-pane active' id='flocks'>
+      <div class="sub-flocks-index"></div>
+    </div>
+    <div role='tabpanel' class='tab-pane' id='attending'>
+      <div class="attendees-index"></div>
+    </div>
+  </div>
+</div>

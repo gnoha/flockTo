@@ -4,7 +4,8 @@ FlockTo.Views.EventForm = Backbone.View.extend({
   className: 'event-form',
 
   events: {
-    'click .submit': 'submit'
+    'click .submit': 'submit',
+    'click .open-modal': 'open'
   },
 
   initialize: function () {
@@ -18,6 +19,10 @@ FlockTo.Views.EventForm = Backbone.View.extend({
     return this;
   },
 
+  open: function () {
+    $('#myModal').modal();
+  },
+
   submit: function (event) {
     event.preventDefault();
     var attrs = $('form').serializeJSON().event;
@@ -25,6 +30,8 @@ FlockTo.Views.EventForm = Backbone.View.extend({
     this.model.save(attrs, {
       success: function () {
         this.collection.add(this.model);
+        $('#myModal').modal('toggle');
+        $('.modal-backdrop').remove();
         Backbone.history.navigate(
           '#/events/'+ this.model.get('id'),
           { trigger: true }
@@ -32,7 +39,11 @@ FlockTo.Views.EventForm = Backbone.View.extend({
       }.bind(this),
 
       error: function (model, response) {
-        alert(response.responseJSON);
+        $('ul.error-list').children().remove();
+        response.responseJSON.forEach(function (response){
+          var $error = $('<li>').html(response);
+          $('.error-list').append($error);
+        });
       }
     });
   },

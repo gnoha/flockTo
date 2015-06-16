@@ -4,7 +4,7 @@
 <%= eventModel.escape('date')%>
 <p><%= eventModel.escape('description')%></p>
 <% if (coord) {%>
-  <a href='#/flocks/<%= eventModel.escape('id')%>/edit'>Edit Event</a>
+  <a class='edit-form'>Edit Event</a>
 <% }%><br>
 
 <form class='search-form'>
@@ -18,18 +18,29 @@
     </select>
     miles of
     <input type='text' name='current_location'>
-    <button class='search-location'>Search</button>
+    <button class='search-location btn btn-sm btn-primary'>Search</button>
 </form>
 <hr>
 <label>Coordinator
   <div class="coordinator"></div>
 </label>
-<label>New Flock
-  <div class="flock-form-container"></div>
-</label>
-<label>Flocks
-  <div class="flocks-index"></div>
-</label>
-<label>Attending
-  <div class="attendees-index"</div>
-</label>
+
+<div class="flock-form-container"></div>
+
+<div role='tabpanel'>
+  <ul class='nav nav-tabs' role='tablist'>
+    <li role='presentation' class='active'><a href='#flocks'
+      aria-controls='flocks' role='tab' data-toggle='tab'>Flocks</a></li>
+    <li role='presentation'><a href='#attending' aria-controls='attending'
+      role='tab' data-toggle='tab'>Attending</a></li>
+  </ul>
+
+  <div class='tab-content clearfix'>
+    <div role='tabpanel' class='tab-pane active' id='flocks'>
+      <div class="flocks-index"></div>
+    </div>
+    <div role='tabpanel' class='tab-pane' id='attending'>
+      <div class="attendees-index"</div>
+    </div>
+  </div>
+</div>

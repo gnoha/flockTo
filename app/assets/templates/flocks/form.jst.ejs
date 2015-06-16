@@ -1,5 +1,4 @@
-<button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
-  data-target="#myModal">Create an Event</button>
+<button type="button" class="btn btn-primary btn-sm open-form">Start a Flock</button>
 
 
 <div class='modal fade' id='myModal' tabindex=-1 role='dialog'
@@ -14,6 +13,8 @@
       </div>
       <div class='modal-body'>
         <form>
+          <ul class='error-list'></ul>
+  
           <div class='form-group'>
             <label>Title
             <input type="text" class="flock-title form-control"
@@ -24,8 +25,7 @@
             <label>Date
             <input type="text" class="flock-date form-control"
               id="datepicker" name="flock[date]"
-              value='<%= flock.escape('date')%>'
-              placeholder='Use default date'>
+              value='<%= flock.escape('date')%>'>
             </label>
 
             <label>Location
@@ -37,14 +37,14 @@
 
           <div class-'form-group'>
             <label>Description<br>
-            <textarea class="flock-description form-control" name="flock[description]">
-            <%= flock.escape('description')%></textarea>
+            <textarea class="flock-description form-control"
+              name="flock[description]"><%= flock.escape('description')%></textarea>
             </label><br>
           <div/>
         </form>
       </div>
       <div 'modal-footer'>
-        <button class="submit btn btn-primary btn-sm">Create Flock</button>
+        <button type='button' class="submit btn btn-primary btn-sm">Create Flock</button>
       </div>
     </div>
   </div>

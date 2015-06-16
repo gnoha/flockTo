@@ -16,5 +16,7 @@ class Event < ActiveRecord::Base
              class_name: 'User',
              foreign_key: :coordinator_id)
 
-  
+  def num_attendees
+    attendees.count
+  end
 end

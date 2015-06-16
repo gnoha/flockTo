@@ -11,7 +11,7 @@ FlockTo.Views.FlockShow = Backbone.CompositeView.extend({
     //Refactor this
     this.model.fetch({
       success: function () {
-        this.addForm.bind(this);
+        this.addForm();
         this.addMap();
       }.bind(this)
     });
@@ -39,6 +39,17 @@ FlockTo.Views.FlockShow = Backbone.CompositeView.extend({
     this.addSubview('.sub-flocks-index', this._flocksIndex);
   },
 
+  addForm: function () {
+    var post = new FlockTo.Models.Flock();
+    var formView = new FlockTo.Views.FlockForm({
+      model: post,
+      eventId: this.model.get('event_id'),
+      parentId: this.model.id
+    });
+
+    this.addSubview('.subflock-form-container', formView);
+  },
+
   addMap: function () {
     var map = new FlockTo.Views.MapShow({
       collection: this.model.eventFlocks(),
@@ -47,6 +58,15 @@ FlockTo.Views.FlockShow = Backbone.CompositeView.extend({
     });
     this.addSubview('#map-container', map);
     map.initMap();
+  },
+
+  attending: function () {
+    this._attending = new FlockTo.Models.Attending();
+    this._attending.fetch({
+      data: {'attending': {'flock_id': this.model.id}}
+    });
+
+    return this._attending
   },
 
   isCoord: function () {
@@ -64,30 +84,13 @@ FlockTo.Views.FlockShow = Backbone.CompositeView.extend({
     return this;
   },
 
-  addForm: function () {
-    var post = new FlockTo.Models.Flock();
-    var formView = new FlockTo.Views.FlockForm({
-      model: post,
-      eventId: this.model.get('event_id'),
-      parentId: this.model.id
-    });
-
-    this.addSubview('.subflock-form-container', formView);
-  },
 
   setDatePicker: function () {
+    var date = new Date(this.model.get('date'))
     this.$('#datepicker').removeClass("hasDatepicker").datepicker({
       dateFormat: "yy-mm-dd",
-      minDate: '+1d'
+      minDate: '+1d',
+      maxDate: date
     });
-  },
-
-  attending: function () {
-    this._attending = new FlockTo.Models.Attending();
-    this._attending.fetch({
-      data: {'attending': {'flock_id': this.model.id}}
-    });
-
-    return this._attending
   }
 });

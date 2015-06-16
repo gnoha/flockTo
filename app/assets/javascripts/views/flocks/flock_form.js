@@ -3,16 +3,21 @@ FlockTo.Views.FlockForm = Backbone.View.extend({
 
   tagName: 'form',
 
-  className: 'flock-form form',
+  className: 'flock-form',
 
   events: {
-    'click .submit': 'submit'
+    'click .submit': 'submit',
+    'click .open-form': 'openModal'
   },
 
   initialize: function (options) {
     this.eventId = options.eventId;
     this.parentId = options.parentId;
     this.listenTo(this.model, 'sync', this.render);
+  },
+
+  openModal: function (e) {
+    $('#myModal').modal();
   },
 
   render: function () {
@@ -39,6 +44,8 @@ FlockTo.Views.FlockForm = Backbone.View.extend({
       patch: true,
 
       success: function () {
+        $('#myModal').modal('toggle');
+        $('.modal-backdrop').remove();
         Backbone.history.navigate(
           '#/flocks/' + this.model.get('id'),
           { trigger: true }
@@ -46,7 +53,12 @@ FlockTo.Views.FlockForm = Backbone.View.extend({
       }.bind(this),
 
       error: function (model, response) {
-        alert(response.responseJSON);
+        debugger
+        $('ul.error-list').children().remove();
+        response.responseJSON.forEach(function (response){
+          var $error = $('<li>').html(response);
+          $('.error-list').append($error);
+        });
       }
     });
 

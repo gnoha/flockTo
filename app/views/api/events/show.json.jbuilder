@@ -1,9 +1,9 @@
 json.extract! @event, :id, :title, :description, :date, :coordinator_id,
-              :location, :latitude, :longitude
+              :location, :latitude, :longitude, :num_attendees
 
 json.flocks @event.flocks do |flock|
   json.extract! flock, :id, :title, :location, :date, :event_id, :parent_id,
-                :location, :latitude, :longitude
+                :location, :latitude, :longitude, :num_attendees
 end
 
 json.attendees @event.attendees do |attendee|

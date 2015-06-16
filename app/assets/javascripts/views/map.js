@@ -13,23 +13,69 @@ FlockTo.Views.MapShow = Backbone.View.extend({
     this.listenTo(this.collection, 'remove', this.removeMarker);
   },
 
+  addMarker: function (meeting) {
+    if (this._markers[meeting.id]) { return; }
+    var view = this;
+    var marker = new google.maps.Marker({
+      position: new google.maps.LatLng(meeting.get('latitude'), meeting.get('longitude')),
+      map: this._map,
+      icon: {
+        path: google.maps.SymbolPath.CIRCLE,
+        scale: this.findProp(meeting.get('num_attendees')),
+        fillColor: '#2d4850',
+        fillOpacity: 1,
+        strokeColor: '#ffffff',
+        strokeOpacity: 0.5,
+        strokeWeight: 1
+      },
+      title: meeting.get('title')
+    });
+
+    google.maps.event.addListener(marker, 'click', function (e) {
+      view.showMarkerInfo(e, marker);
+    });
+  },
+
+  addLines: function () {
+    this.collection.each(function (model) {
+      this.drawLine(model);
+    }.bind(this));
+  },
+
+  drawLine: function (model) {
+    var endpoints = []
+    if (model.get('parent_id')) {
+      var parent = this.collection.getOrFetch(model.get('parent_id'));
+      endpoints = [
+        new google.maps.LatLng(model.get('latitude'), model.get('longitude')),
+        new google.maps.LatLng(parent.get('latitude'), parent.get('longitude'))
+      ];
+    } else {
+      endpoints = [
+        new google.maps.LatLng(model.get('latitude'), model.get('longitude')),
+        new google.maps.LatLng(this.eventModel.get('latitude'), this.eventModel.get('longitude'))
+      ];
+    }
+
+    var line = new google.maps.Polyline({
+      path: endpoints,
+      geodesic: true,
+      strokeColor: '#2d4850',
+      strokeOpacity: 1.0,
+      strokeWeight: 0.5
+    });
+
+    line.setMap(this._map);
+  },
+
+  findProp: function (attendees) {
+    return Math.pow(1.618, attendees);
+  },
+
   indexZoom: function () {
     return (!this.isIndex) ? 8 : 3;
   },
 
-  initMap: function () {
-    var mapOptions = {
-      center: { lat: this.initialLat(), lng: this.initialLng()},
-      zoom: this.indexZoom(),
-      mapTypeId: google.maps.MapTypeId.TERRAIN
-    };
-
-    this._map = new google.maps.Map(this.el, mapOptions);
-    this.collection.each(this.addMarker.bind(this));
-    if (!this.isIndex) {
-      this.collection.each(this.addLines.bind(this));
-    }
-  },
 
   initialLat: function () {
     if (this.currentModel) {
@@ -59,21 +105,19 @@ FlockTo.Views.MapShow = Backbone.View.extend({
     }
   },
 
-  addMarker: function (meeting) {
-    if (this._markers[meeting.id]) { return; }
-    var view = this;
-    var marker = new google.maps.Marker({
-      position: {
-        lat: meeting.get('latitude'),
-        lng: meeting.get('longitude')
-      },
-      map: this._map,
-      title: meeting.get('title')
-    });
+  initMap: function () {
+    var mapOptions = {
+      center: { lat: this.initialLat(), lng: this.initialLng()},
+      zoom: this.indexZoom(),
+      mapTypeId: google.maps.MapTypeId.TERRAIN
+    };
 
-    google.maps.event.addListener(marker, 'click', function (e) {
-      view.showMarkerInfo(e, marker);
-    });
+    this._map = new google.maps.Map(this.el, mapOptions);
+    this.collection.each(this.addMarker.bind(this));
+    if (!this.isIndex) {
+      this.addMarker(this.eventModel);
+      this.collection.each(this.addLines.bind(this));
+    }
   },
 
   removeMarker: function (meeting) {
@@ -88,37 +132,5 @@ FlockTo.Views.MapShow = Backbone.View.extend({
     });
 
     infoWindow.open(this._map, marker);
-  },
-
-  addLines: function () {
-    this.collection.each(function (model) {
-      this.drawLine(model);
-    }.bind(this));
-  },
-
-  drawLine: function (model) {
-    var endpoints = []
-    if (model.get('parent_id')) {
-      var parent = this.collection.getOrFetch(model.get('parent_id'));
-      endpoints = [
-        new google.maps.LatLng(model.get('latitude'), model.get('longitude')),
-        new google.maps.LatLng(parent.get('latitude'), parent.get('longitude'))
-      ];
-    } else {
-      endpoints = [
-        new google.maps.LatLng(model.get('latitude'), model.get('longitude')),
-        new google.maps.LatLng(this.eventModel.get('latitude'), this.eventModel.get('longitude'))
-      ];
-    }
-
-    var line = new google.maps.Polyline({
-      path: endpoints,
-      geodesic: true,
-      strokeColor: '#FF0000',
-      strokeOpacity: 1.0,
-      strokeWeight: 1
-    });
-
-    line.setMap(this._map);
   }
 });

@@ -5,7 +5,9 @@ FlockTo.Routers.Router = Backbone.Router.extend({
     this.flocks = options.flocks;
     this.users = options.users;
 
-    this.navbar();
+    if (window.CURRENT_USER_ID) {
+      this.navbar();
+    }
   },
 
   routes: {
