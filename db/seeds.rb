@@ -35,6 +35,7 @@ flock2 = Flock.new(
   title: 'flock2', location: 'Davis, CA',  description: 'I am going to place 2 to go to event 1',
   date: '2015-07-10', event_id: 1, parent_id: 1, coordinator_id: 2)
 
+
 # flock3 = Flock.create(
 #   title: 'flock3', location: 'place3',
 #   description: 'I am going to place 1 to go to event 1',
