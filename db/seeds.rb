@@ -30,7 +30,7 @@ end
 
 flock = Flock.new(
   title: 'flock1', location: 'San Francisco, CA', description: 'I am going to event 1',
-  date: '2015-07-02', event_id: 1, coordinator_id: 1)
+  date: '2015-07-22', event_id: 1, coordinator_id: 1)
 flock2 = Flock.new(
   title: 'flock2', location: 'Davis, CA',  description: 'I am going to place 2 to go to event 1',
   date: '2015-07-10', event_id: 1, parent_id: 1, coordinator_id: 2)

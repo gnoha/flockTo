@@ -16,6 +16,7 @@
 
 .title {
   font-size: 24px;
+
 }
 
 // navbar
@@ -40,11 +41,9 @@
 }
 
 .card {
-  display: block;
-  float: left;
-  width: 250px;
-  height: 250px;
-  margin: 5px;
+  display: inline-block;
+  width: 33.33%;
+  height: 33.33%;
   border: 1px solid black;
   background-color: rgba(250, 250, 230, 0.73);
   border-radius: 3px;
@@ -57,8 +56,7 @@
 }
 
 .thumbnail {
-  display: block;
-  float: left;
+  display: inline-block;
   width: 65px;
   height: 65px;
   margin: 5px;
@@ -70,6 +68,13 @@
 
 .event-index-list, .tab-content {
   margin-bottom: 300px;
+}
+
+.events-index-item {
+  border: 1px solid white;
+  border-radius: 3px;
+  background-color: #172C3D;
+  color: #ffffff;
 }
 
 //card item
@@ -91,4 +96,9 @@
   width: 100px;
   float: left;
   border: 1px solid white;
+}
+
+//Index
+.main-search {
+  margin: 5px;
 }

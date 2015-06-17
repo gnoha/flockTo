@@ -1,7 +1,8 @@
 module Api
   class Api::AttendingsController < ApiController
     def create
-      @attending = current_user.attendings.new( flock_id: params[:data][:attending][:flock_id] })
+      @attending = current_user.attendings.new(
+        flock_id: params[:data][:attending][:flock_id])
       if @attending.save
         render json: {}
       else
