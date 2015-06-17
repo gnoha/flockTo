@@ -1,7 +1,7 @@
 FlockTo.Views.EventsIndexItem = Backbone.View.extend({
   template: JST['events/index_item'],
 
-  className: 'events-index-item col-xs-4',
+  className: 'events-index-item card col-xs-4',
 
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);

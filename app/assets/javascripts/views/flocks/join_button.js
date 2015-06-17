@@ -2,7 +2,7 @@ FlockTo.Views.JoinButton = Backbone.View.extend({
   template: JST['flocks/join_button'],
 
   events: {
-    'click .join-flock': 'joinOrLeave'
+    'click .attending': 'joinOrLeave'
   },
 
   initialize: function (options) {
@@ -10,60 +10,78 @@ FlockTo.Views.JoinButton = Backbone.View.extend({
     this.flockId = options.flockId;
     this.listenTo(this.attending, 'add sync remove', this.render);
     this.listenTo(this.collection, 'add remove', this.render);
+    this.render();
   },
 
   render: function () {
     var button = this.template();
     this.$el.html(button);
-    this.currentStatus();
-
-    return this;
-  },
-
-  currentStatus: function () {
-    if (this.isJoined()) {
-      this.toggleJoin();
+    var $join = $('.attending');
+    if (this.attending.isNew()) {
+      console.log('attending new');
+      $join.addClass('not-joined');
+      $join.html('Join Flock');
+    } else {
+      console.log('attending not new');
+      $join.addClass('joined');
+      $join.html('Leave Flock');
     }
-  },
-
-  isJoined: function () {
-    return this.attending.id !== undefined;
+    return this;
   },
 
   joinOrLeave: function (e) {
     e.preventDefault();
-    if (this.isJoined()) {
-      this.leaveFlock();
+    if (this.attending.isNew()) {
+      this.attending.save({'flock_id': this.flockId}, {
+        success: function () {
+          this.render();
+        }.bind(this)
+      });
     } else {
-      this.joinFlock();
+      this.attending.destroy({
+        success: function () {
+          this.attending.clear();
+          this.render();
+        }.bind(this)
+      });
     }
   },
 
-  joinFlock: function () {
-    this.attending.save({
-      data: {'attending': {'flock_id': this.flockId}},
-      success: function () {
-        this.toggleJoin();
-      }.bind(this)
-    });
+  toggleJoin: function () {
+    // var $join = $('.attending');
+    // if (this.attending.isNew()) {
+    //   $join.addClass('joined');
+    //   $join.html('Leave Flock');
+    // } else {
+    //   $join.removeClass('joined');
+    //   $join.addClass('not-joined');
+    //   $join.html('Join Flock');
+    // }
   },
 
-  leaveFlock: function () {
-    this.attending.destroy({
-      success: function () {
-        this.toggleJoin();
-      }.bind(this)
-    });
-  },
+
+  //
+  // isJoined: function () {
+  //   return this.attending.id !== undefined;
+  // },
+  //
+  // joinFlock: function () {
+  //   this.attending.save({
+  //     data: {'attending': {'flock_id': this.flockId}},
+  //     success: function () {
+  //       this.toggleJoin();
+  //     }.bind(this)
+  //   });
+  // },
+
+  // leaveFlock: function () {
+  //   this.attending.destroy({
+  //     success: function () {
+  //       this.toggleJoin();
+  //       this.attending.clear();
+  //     }.bind(this)
+  //   });
+  // },
 
 //add intermediate state and disable button?
-  toggleJoin: function () {
-    var $join = $('button.join-flock');
-    if ($join.hasClass('not-joined')) {
-      $join.removeClass('not-joined').addClass('joined');
-      $join.html('Leave Flock');
-    } else {
-      $join.html('Join Flock');
-    }
-  },
 });

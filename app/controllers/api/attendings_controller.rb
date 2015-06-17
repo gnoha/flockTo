@@ -2,9 +2,9 @@ module Api
   class Api::AttendingsController < ApiController
     def create
       @attending = current_user.attendings.new(
-        flock_id: params[:data][:attending][:flock_id])
+        flock_id: params[:attending][:flock_id])
       if @attending.save
-        render json: {}
+        render json: @attending
       else
         render json: @attending.errors.full_messages,
                status: :unprocessable_entity
