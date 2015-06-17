@@ -6,17 +6,15 @@ FlockTo.Views.EventsIndex = Backbone.CompositeView.extend({
   events: {
     'click .events-index-item': 'navToFlocks',
     'click .add-event': 'addForm',
+    'click .submit': 'submit'
   },
 
-  initialize: function () {
+  initialize: function (options) {
+    this.router = options.router
     this.listenTo(this.collection, 'sync reset', this.render);
     this.listenTo(this.collection, 'add', this.addEventCard);
+    this.listenTo(this.collection, 'sync', this.addMap)
     this.collection.each(this.addEventCard.bind(this));
-    this.collection.fetch({
-      success: function () {
-        this.addMap();
-      }.bind(this)
-    });
     this.addForm();
   },
 
@@ -62,6 +60,23 @@ FlockTo.Views.EventsIndex = Backbone.CompositeView.extend({
       dateFormat: "yy-mm-dd",
       minDate: '+1d',
       showAnim: 'fadeIn'
+    });
+  },
+
+  submit: function (e) {
+    e.preventDefault();
+    var searchedEvents = new FlockTo.Collections.Events();
+    var input = $('form.search-main').serializeJSON();
+    searchedEvents.fetch({
+      data: input,
+      reset: true,
+      success: function (response) {
+        var view = new FlockTo.Views.EventsIndex({
+          collection: response,
+          router: this.router
+        });
+        this.router._swapView(view);
+      }.bind(this)
     });
   }
 });

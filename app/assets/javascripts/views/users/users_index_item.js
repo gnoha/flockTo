@@ -1,8 +1,6 @@
 FlockTo.Views.UsersIndexItem = Backbone.View.extend({
   template: JST['users/index_item'],
 
-  tagName: 'li',
-
   className: 'user-index-item thumbnail',
 
   initialize: function () {

@@ -14,7 +14,7 @@ module Api
     def create
       @flock = Flock.new(flock_params)
       if @flock.save
-        current_user.attendings.new(flock_id: @flock.id)
+        current_user.attendings.create!(flock_id: @flock.id)
         render json: @flock
       else
         render json: @flock.errors.full_messages, status: :unproccessable_entity

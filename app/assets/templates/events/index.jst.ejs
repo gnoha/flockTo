@@ -4,10 +4,15 @@
   <div class='row'>
     <div class='col-xs-12'>
       <div class=" input-append input-group-md main-search">
-        <input type="text" class="form-control span2" placeholder="Search for Event">
-        <span class='input-group-btn'>
-          <button class='btn btn-primary btn-md search" type='button'>Find Event</button>
-        </span>
+        <form class='search-main' role='search'>
+          <div class='form-group'>
+            <input type="text" class="form-control"
+              placeholder="Search for Event" name='search[event]'>
+            <span class='input-group-btn'>
+              <button class='btn btn-primary btn-md submit' type='button'>Find Event</button>
+            </span>
+          </div>
+        </form>
       </div>
     </div>
   </div>

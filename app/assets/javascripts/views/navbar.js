@@ -6,7 +6,8 @@ FlockTo.Views.Navbar = Backbone.View.extend({
     'click .sign-out': 'signout'
   },
 
-  initialize: function () {
+  initialize: function (options) {
+    this.router = options.router,
     this.listenTo(this.model, 'sync', this.render)
   },
 
@@ -32,9 +33,18 @@ FlockTo.Views.Navbar = Backbone.View.extend({
 
   submit: function (e) {
     e.preventDefault();
+    var searchedEvents = new FlockTo.Collections.Events();
     var input = $('.event-search').serializeJSON();
-    var query = {};
-    query['search'] = input;
-    debugger
+    searchedEvents.fetch({
+      data: input,
+      reset: true,
+      success: function (response) {
+        debugger
+        var view = new FlockTo.Views.EventsIndex({
+          collection: response
+        });
+        this.router._swapView(view);
+      }.bind(this)
+    });
   }
 });

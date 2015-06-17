@@ -69,7 +69,7 @@ FlockTo.Views.MapShow = Backbone.View.extend({
   },
 
   findProp: function (attendees) {
-    return Math.pow(1.618, attendees);
+    return Math.pow(1.618, attendees) ;
   },
 
   indexZoom: function () {

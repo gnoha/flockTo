@@ -4,7 +4,11 @@ module Api
     before_action :require_coordinator, only: [:update, :destroy]
 
     def index
-      @events = Event.all.order(:date)
+      if params[:search]
+        @events = Event.search_for(params[:search][:event])
+      else
+        @events = Event.all.order(:date)
+      end
     end
 
     def show

@@ -3,7 +3,8 @@ FlockTo.Views.FlockShow = Backbone.CompositeView.extend({
 
   className: 'flock-show',
 
-  initialize: function () {
+  initialize: function (options) {
+    this.currentUser = options.currentUser;
     this.listenTo(this.model, 'sync', this.render);
     this.addButton();
     this.addFlocksIndex();
@@ -27,7 +28,9 @@ FlockTo.Views.FlockShow = Backbone.CompositeView.extend({
   addButton: function () {
     this._button = new FlockTo.Views.JoinButton({
       attending: this.attending(),
-      flockId: this.model.id
+      flockId: this.model.id,
+      collection: this.model.attendees(),
+      currentUser: this.currentUser
     });
     this.addSubview('.join-button', this._button);
   },
@@ -83,7 +86,6 @@ FlockTo.Views.FlockShow = Backbone.CompositeView.extend({
     this.setDatePicker();
     return this;
   },
-
 
   setDatePicker: function () {
     var date = new Date(this.model.get('date'))
