@@ -52,7 +52,7 @@ FlockTo.Views.EventsIndex = Backbone.CompositeView.extend({
       model: eventModel,
       collection: this.collection
     });
-    this.addSubview('.form-container', newForm);
+    this.addSubview('.event-index-list', newForm, true);
   },
 
   setDatePicker: function () {

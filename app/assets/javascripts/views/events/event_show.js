@@ -58,7 +58,7 @@ FlockTo.Views.EventShow = Backbone.CompositeView.extend({
       eventId: this.model.id
     });
 
-    this.addSubview('.flock-form-container', form);
+    this.addSubview('.flocks-index', form, true);
   },
 
   addFlocksIndex: function () {

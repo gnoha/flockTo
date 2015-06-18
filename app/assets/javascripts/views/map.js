@@ -61,8 +61,8 @@ FlockTo.Views.MapShow = Backbone.View.extend({
       path: endpoints,
       geodesic: false,
       strokeColor: '#ff0000',
-      strokeOpacity: 0.5,
-      strokeWeight: 0.3
+      strokeOpacity: 0.35,
+      strokeWeight: 0.2
     });
 
     line.setMap(this._map);
@@ -71,7 +71,7 @@ FlockTo.Views.MapShow = Backbone.View.extend({
   findProp: function (attendees) {
     var proportion = Math.pow(1.618, attendees);
     var x = proportion/20;
-    var tempScaled = proportion / 3;
+    var tempScaled = proportion / 2;
     return tempScaled >= 20 ? 20 : tempScaled;
   },
 
