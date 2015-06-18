@@ -1,13 +1,21 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 
+body {
+  background: url(map.png) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 * {
   font-family: raleway;
 }
 
-.content {
-  background: #FFF9E7
-}
+// .content {
+//   background: #FFF9E7
+// }
 
 #map-canvas {
   width: 100%;
@@ -73,10 +81,16 @@
 }
 
 .events-index-item {
-  border: 1px solid white;
+  border: 1px solid #172C3D;
   border-radius: 3px;
-  background-color: #172C3D;
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #172C3D;
+  height: 250px;
+}
+
+.events-index-item:hover{
+  cursor: pointer;
+  box-shadow: 3px 3px 5px #888888
 }
 
 //card item

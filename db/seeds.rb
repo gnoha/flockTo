@@ -4,8 +4,7 @@
 end
 
 # Events
-["San Francisco, CA", "New York, NY", "Tokyo, Japan",
- "Dubai, United Arab Emirites"].each do |city|
+["San Francisco, CA", "New York, NY", "Tokyo, Japan", "Dubai, United Arab Emirites"].each do |city|
   FactoryGirl.create(
     :event,
     location: city,

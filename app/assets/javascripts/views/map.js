@@ -22,11 +22,11 @@ FlockTo.Views.MapShow = Backbone.View.extend({
       icon: {
         path: google.maps.SymbolPath.CIRCLE,
         scale: this.findProp(meeting.get('num_attendees')),
-        fillColor: '#ffffff',
-        fillOpacity: 1,
-        strokeColor: '#ffffff',
+        fillColor: '#ff0000',
+        fillOpacity: 0.5,
+        strokeColor: '#ff0000',
         strokeOpacity: 0.5,
-        strokeWeight: 2
+        strokeWeight: 1
       },
       title: meeting.get('title')
     });
@@ -60,9 +60,9 @@ FlockTo.Views.MapShow = Backbone.View.extend({
     var line = new google.maps.Polyline({
       path: endpoints,
       geodesic: false,
-      strokeColor: '#ffffff',
-      strokeOpacity: 0.4,
-      strokeWeight: 0.5
+      strokeColor: '#ff0000',
+      strokeOpacity: 0.5,
+      strokeWeight: 0.3
     });
 
     line.setMap(this._map);
@@ -149,108 +149,123 @@ FlockTo.Views.MapShow = Backbone.View.extend({
 
   style: function () {
     return [
-    {
-        "featureType": "water",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "color": "#193341"
-            }
-        ]
-    },
-    {
-        "featureType": "landscape",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "color": "#2c5a71"
-            }
-        ]
-    },
-    {
-        "featureType": "road",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "color": "#29768a"
-            },
-            {
-                "lightness": -37
-            }
-        ]
-    },
-    {
-        "featureType": "poi",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "color": "#406d80"
-            }
-        ]
-    },
-    {
-        "featureType": "transit",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "color": "#406d80"
-            }
-        ]
-    },
-    {
-        "elementType": "labels.text.stroke",
-        "stylers": [
-            {
-                "visibility": "on"
-            },
-            {
-                "color": "#3e606f"
-            },
-            {
-                "weight": 2
-            },
-            {
-                "gamma": 0.84
-            }
-        ]
-    },
-    {
-        "elementType": "labels.text.fill",
-        "stylers": [
-            {
-                "color": "#989898"
-            }
-        ]
-    },
-    {
-        "featureType": "administrative",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "weight": 0.6
-            },
-            {
-                "color": "#1a3541"
-            }
-        ]
-    },
-    {
-        "elementType": "labels.icon",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "poi.park",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "color": "#2c5a71"
-            }
-        ]
-    }
-  ];
+          {
+              "featureType": "administrative",
+              "elementType": "all",
+              "stylers": [
+                  {
+                      "visibility": "off"
+                  }
+              ]
+          },
+          {
+              "featureType": "landscape",
+              "elementType": "all",
+              "stylers": [
+                  {
+                      "visibility": "simplified"
+                  },
+                  {
+                      "hue": "#0066ff"
+                  },
+                  {
+                      "saturation": 74
+                  },
+                  {
+                      "lightness": 100
+                  }
+              ]
+          },
+          {
+              "featureType": "poi",
+              "elementType": "all",
+              "stylers": [
+                  {
+                      "visibility": "simplified"
+                  }
+              ]
+          },
+          {
+              "featureType": "road",
+              "elementType": "all",
+              "stylers": [
+                  {
+                      "visibility": "simplified"
+                  }
+              ]
+          },
+          {
+              "featureType": "road.highway",
+              "elementType": "all",
+              "stylers": [
+                  {
+                      "visibility": "off"
+                  },
+                  {
+                      "weight": 0.6
+                  },
+                  {
+                      "saturation": -85
+                  },
+                  {
+                      "lightness": 61
+                  }
+              ]
+          },
+          {
+              "featureType": "road.highway",
+              "elementType": "geometry",
+              "stylers": [
+                  {
+                      "visibility": "on"
+                  }
+              ]
+          },
+          {
+              "featureType": "road.arterial",
+              "elementType": "all",
+              "stylers": [
+                  {
+                      "visibility": "off"
+                  }
+              ]
+          },
+          {
+              "featureType": "road.local",
+              "elementType": "all",
+              "stylers": [
+                  {
+                      "visibility": "on"
+                  }
+              ]
+          },
+          {
+              "featureType": "transit",
+              "elementType": "all",
+              "stylers": [
+                  {
+                      "visibility": "simplified"
+                  }
+              ]
+          },
+          {
+              "featureType": "water",
+              "elementType": "all",
+              "stylers": [
+                  {
+                      "visibility": "simplified"
+                  },
+                  {
+                      "color": "#5f94ff"
+                  },
+                  {
+                      "lightness": 26
+                  },
+                  {
+                      "gamma": 5.86
+                  }
+              ]
+          }
+      ];
   }
 });
