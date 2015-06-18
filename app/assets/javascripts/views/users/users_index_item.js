@@ -3,6 +3,10 @@ FlockTo.Views.UsersIndexItem = Backbone.View.extend({
 
   className: 'user-index-item thumbnail col-xs-4 col-md-2',
 
+  events: {
+    'click': 'navToUser',
+  },
+
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
   },
@@ -13,5 +17,10 @@ FlockTo.Views.UsersIndexItem = Backbone.View.extend({
     this.$el.html(content);
 
     return this;
+  },
+
+  navToUser: function (event) {
+    var userId = $(event.currentTarget).data('id');
+    Backbone.history.navigate('#/users/' + userId, {trigger: true});
   }
 });

@@ -1,14 +1,8 @@
 <div id='map-container'></div>
-<a href='#/events/<%= flock.escape('event_id')%>'>Event Page</a>
 
 <% if (flock.escape('parent_id')) {%>
   <a href='#/flocks/<%= flock.escape('parent_id')%>'>Meet Up With...</a>
 <% }%>
-<div class="buttons">
-  <div class="subflock-form-container"></div>
-</div>
-
-<div class='join-button'></div>
 
 <ul>
   <li><%= flock.escape('title')%></li>
@@ -24,10 +18,19 @@
         aria-controls='flocks' role='tab' data-toggle='tab'>Flocks</a></li>
     <li role='presentation'><a href='#attending' aria-controls='attending'
         role='tab' data-toggle='tab'>Attending</a></li>
+    <li role='presentation'><a href='#/events/<%= flock.escape('event_id')%>'
+        role='tab'>Event Page</a></li>
+    <% if (flock.escape('parent_id')) {%>
+    <li role='presentation'><a href='#/flocks/<%= flock.escape('parent_id')%>'
+        role='tab'>Meet Up With...</a></li>
+    <% }%>
+    <li role='presentation'><a href='#' aria-controls='join-flock'
+        role='tab'><div class='join-button'></div></a></li>
   </ul>
 
   <div class='tab-content clearfix'>
     <div role='tabpanel' class='tab-pane active' id='flocks'>
+      <div class="subflock-form"></div>
       <div class="sub-flocks-index"></div>
     </div>
     <div role='tabpanel' class='tab-pane' id='attending'>

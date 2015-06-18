@@ -59,7 +59,7 @@ FlockTo.Views.FlockShow = Backbone.CompositeView.extend({
       parentId: this.model.id
     });
 
-    this.addSubview('.subflock-form-container', formView);
+    this.addSubview('.subflock-form', formView);
   },
 
   addMap: function () {

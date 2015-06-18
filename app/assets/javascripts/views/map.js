@@ -76,7 +76,7 @@ FlockTo.Views.MapShow = Backbone.View.extend({
   },
 
   indexZoom: function () {
-    return (!this.isIndex) ? 8 : 3;
+    return (!this.isIndex) ? 5 : 3;
   },
 
 
@@ -141,7 +141,7 @@ FlockTo.Views.MapShow = Backbone.View.extend({
 
   showMarkerInfo: function (e, marker) {
     var infoWindow = new google.maps.InfoWindow({
-      content: marker.title
+      content: marker.get('title')
     });
 
     infoWindow.open(this._map, marker);

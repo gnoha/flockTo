@@ -3,8 +3,17 @@ FlockTo.Views.FlocksIndexItem = Backbone.View.extend({
 
   className: 'flocks-index-item card col-xs-12 col-sm-6 col-md-4',
 
+  events: {
+    'click' : 'navToFlock'
+  },
+
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
+  },
+
+  navToFlock: function (event) {
+    var flockId = $(event.currentTarget).data('id');
+    Backbone.history.navigate('#/flocks/' + flockId, { trigger: true });
   },
 
   render: function () {

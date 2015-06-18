@@ -4,9 +4,8 @@ FlockTo.Views.EventsIndex = Backbone.CompositeView.extend({
   className: "events-index",
 
   events: {
-    'click .events-index-item': 'navToFlocks',
     'click .add-event': 'addForm',
-    'click .submit': 'submit'
+    'submit form.search-main': 'submit'
   },
 
   initialize: function (options) {
@@ -29,12 +28,6 @@ FlockTo.Views.EventsIndex = Backbone.CompositeView.extend({
     this.attachSubviews();
     this.setDatePicker();
     return this;
-  },
-
-  navToFlocks: function (event) {
-    event.preventDefault();
-    var eventId = $(event.currentTarget).data('id');
-    Backbone.history.navigate('#/events/'+eventId, { trigger: true });
   },
 
   addMap: function () {

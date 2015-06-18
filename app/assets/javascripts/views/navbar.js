@@ -2,7 +2,7 @@ FlockTo.Views.Navbar = Backbone.View.extend({
   template: JST['navbar'],
 
   events: {
-    'click .submit': 'submit',
+    'submit form.event-search': 'submit',
     'click .sign-out': 'signout'
   },
 
@@ -39,7 +39,6 @@ FlockTo.Views.Navbar = Backbone.View.extend({
       data: input,
       reset: true,
       success: function (response) {
-        debugger
         var view = new FlockTo.Views.EventsIndex({
           collection: response
         });

@@ -10,18 +10,12 @@ FlockTo.Views.EventShow = Backbone.CompositeView.extend({
 
   initialize: function (options) {
     this.users = options.users;
-
     this.listenTo(this.model, 'sync reset', this.render);
-
+    this.listenTo(this.model, 'sync', this.addMap);
+    this.listenTo(this.model, 'sync', this.addCoordinator);
     this.addAttendeesIndex();
     this.addFlocksIndex();
     this.addFlockForm();
-    this.model.fetch({
-      success: function () {
-        this.addMap();
-        this.addCoordinator();
-      }.bind(this)
-    });
   },
 
 
@@ -58,7 +52,7 @@ FlockTo.Views.EventShow = Backbone.CompositeView.extend({
       eventId: this.model.id
     });
 
-    this.addSubview('.flocks-index', form, true);
+    this.addSubview('.flock-form', form);
   },
 
   addFlocksIndex: function () {
