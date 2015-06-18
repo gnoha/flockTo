@@ -1,20 +1,15 @@
 <div id='map-container'></div>
-<h1 style="color: blue">Make Me Pretty!!!!!!!</h1>
-
 <a href='#/events/<%= flock.escape('event_id')%>'>Event Page</a>
 
 <% if (flock.escape('parent_id')) {%>
   <a href='#/flocks/<%= flock.escape('parent_id')%>'>Meet Up With...</a>
 <% }%>
-
-<% if (coord) {%>
-  <a href='#/flocks/<%= flock.escape('id')%>/edit'>Edit Flock</a>
-<% }%>
-
+<div class="buttons">
+  <div class="subflock-form-container"></div>
+</div>
 
 <div class='join-button'></div>
 
-<div class="subflock-form-container"></div>
 <ul>
   <li><%= flock.escape('title')%></li>
   <li><%= flock.escape('location')%></li>

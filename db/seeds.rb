@@ -1,106 +1,81 @@
-#Users
-20.times do
+# Users
+%w(Wes Anderson Blue Bottle slow-carb put a bird on it gentrify chia art party butcher).each do |name|
+  FactoryGirl.create(:user, username: name)
+end
+
+# Events
+["San Francisco, CA", "New York, NY", "Tokyo, Japan",
+ "Dubai, United Arab Emirites"].each do |city|
+  FactoryGirl.create(
+    :event,
+    location: city,
+    date: Faker::Date.between(Date.new(2016, 01, 01), Date.new(2016, 03, 01)))
+end
+
+# Flocks
+sleep(4)
+i = 1
+["Madrid, Spain", "Ho Chi Minh City, Vietnam", "Casablanca, Morocco",
+ "Singapore, Singapore"].each do |city|
+  FactoryGirl.create(
+    :flock,
+    location: city,
+    event_id: i,
+    date: Faker::Date.between(Date.new(2015, 10, 01), Date.new(2015, 12, 30)))
+  i += 1
+end
+
+sleep(4)
+k = 1
+j = 1
+["Mexico City, Mexico", "Guangzhou, China", "Durban, South Africa"].each do |city|
+  FactoryGirl.create(
+    :flock,
+    location: city,
+    parent_id: j,
+    event_id: k,
+    date: Faker::Date.between(Date.new(2015, 8, 01), Date.new(2015, 9, 30)))
+  k += 1
+  j += 1
+end
+
+sleep(4)
+l = 1
+["Bogota, Columbia", "Paris, France",
+ "Berlin, Germany", "Melbourne, Australia"].each do |city|
+  FactoryGirl.create(
+    :flock,
+    location: city,
+    event_id: l,
+    date: Faker::Date.between(Time.zone.today, Date.new(2015, 07, 30)))
+  l += 1
+end
+
+sleep(4)
+m = 1
+n = 1
+["Lima, Peru", "Instanbul, Turkey", "London, United Kingdom",
+ "Saint Petersberg, Russia"].each do |city|
+ FactoryGirl.create(
+   :flock,
+   location: city,
+   event_id: m,
+   parent_id: n,
+   date: Faker::Date.between(Time.zone.today, Date.new(2015, 07, 30)))
+  m += 1
+  n += 1
+end
+
+# Attendings
+user_ids = User.pluck(:id)
+flock_ids = Flock.pluck(:id)
+
+25.times do
   begin
-    FactoryGirl.create(:user)
+    u = user_ids.sample
+    f = flock_ids.sample
+    FactoryGirl.create(:attending, user_id: u, flock_id: f)
   rescue
     retry
   end
 end
-
-#Events
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# user1 = User.create(username: 'user1', password: 'password')
-# user2 = User.create(username: 'user2', password: 'password')
-# user3 = User.create(username: 'user3', password: 'password')
-# user4 = User.create(username: 'user4', password: 'password')
-# user5 = User.create(username: 'user5', password: 'password')
-#
-# Attending.create(user_id: 1, flock_id: 1)
-# Attending.create(user_id: 2, flock_id: 2)
-# Attending.create(user_id: 3, flock_id: 1)
-# Attending.create(user_id: 4, flock_id: 2)
-# Attending.create(user_id: 5, flock_id: 2)
-#
-# event = Event.new(
-#   title: 'Event 1', date: '2015-08-03', coordinator_id: 1,
-#   location: 'Los Angeles, CA',
-#   description: 'Tiramisu bonbon dessert. Marshmallow tart halvah sugar plum macaroon ice cream sweet roll jelly. Oat cake candy canes oat cake brownie lollipop. Pie dragée biscuit.')
-# event2 = Event.new(
-#   title: 'Event 2', date: '2015-08-02', coordinator_id: 5,
-#   location: 'San Francisco, CA',
-#   description: 'Halvah dessert chocolate jelly dragée brownie. Brownie macaroon chupa chups cake toffee chupa chups soufflé. Chocolate jelly jujubes gingerbread carrot cake tiramisu soufflé pastry.')
-# event3 = Event.new(
-#   title: 'Event 3', date: '2015-08-15', coordinator_id: 3,
-#   location: 'Eureka, CA',
-#   description: 'Tiramisu bonbon dessert. Marshmallow tart halvah sugar plum macaroon ice cream sweet roll jelly. Oat cake candy canes oat cake brownie lollipop. Pie dragée biscuit.')
-#
-# [event, event2, event3].each do |e|
-#   e.geocode
-#   e.save!
-# end
-#
-# flock = Flock.new(
-#   title: 'flock1', location: 'San Francisco, CA', description: 'I am going to event 1',
-#   date: '2015-07-22', event_id: 1, coordinator_id: 1)
-# flock2 = Flock.new(
-#   title: 'flock2', location: 'Davis, CA',  description: 'I am going to place 2 to go to event 1',
-#   date: '2015-07-10', event_id: 1, parent_id: 1, coordinator_id: 2)
-#
-# [flock, flock2].each do |f|
-#   f.geocode
-#   f.save!
-# end

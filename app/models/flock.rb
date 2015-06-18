@@ -28,7 +28,7 @@ class Flock < ActiveRecord::Base
   belongs_to :event
 
   has_many :attendings
-  
+
   has_many(:attendees,
            through: :attendings,
            source: :user)

@@ -6,16 +6,12 @@ FlockTo.Views.FlockShow = Backbone.CompositeView.extend({
   initialize: function (options) {
     this.currentUser = options.currentUser;
     this.listenTo(this.model, 'sync', this.render);
+    this.listenTo(this.model, 'sync', this.addMap);
+    this.listenTo(this.model, 'sync', this.addEditForm)
     this.addButton();
     this.addFlocksIndex();
     this.addAttendeesIndex();
-    //Refactor this
-    this.model.fetch({
-      success: function () {
-        this.addForm();
-        this.addMap();
-      }.bind(this)
-    });
+    this.addNewForm();
   },
 
   addAttendeesIndex: function () {
@@ -35,6 +31,19 @@ FlockTo.Views.FlockShow = Backbone.CompositeView.extend({
     this.addSubview('.join-button', this._button);
   },
 
+  addEditForm: function () {
+    if (this.isCoord()) {
+      var formView = new FlockTo.Views.FlockForm({
+        model: this.model,
+        eventId: this.model.get('event_id'),
+        parentId: this.model.id,
+        edit: true
+      });
+
+      this.addSubview('.subflock-form-container', formView);
+    }
+  },
+
   addFlocksIndex: function () {
     this._flocksIndex = new FlockTo.Views.FlocksIndex({
       collection: this.model.subFlocks()
@@ -42,10 +51,10 @@ FlockTo.Views.FlockShow = Backbone.CompositeView.extend({
     this.addSubview('.sub-flocks-index', this._flocksIndex);
   },
 
-  addForm: function () {
-    var post = new FlockTo.Models.Flock();
+  addNewForm: function () {
+    var newFlock = new FlockTo.Models.Flock();
     var formView = new FlockTo.Views.FlockForm({
-      model: post,
+      model: newFlock,
       eventId: this.model.get('event_id'),
       parentId: this.model.id
     });

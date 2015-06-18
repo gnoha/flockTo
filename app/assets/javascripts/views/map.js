@@ -22,11 +22,11 @@ FlockTo.Views.MapShow = Backbone.View.extend({
       icon: {
         path: google.maps.SymbolPath.CIRCLE,
         scale: this.findProp(meeting.get('num_attendees')),
-        fillColor: '#2d4850',
+        fillColor: '#ffffff',
         fillOpacity: 1,
         strokeColor: '#ffffff',
         strokeOpacity: 0.5,
-        strokeWeight: 1
+        strokeWeight: 2
       },
       title: meeting.get('title')
     });
@@ -59,9 +59,9 @@ FlockTo.Views.MapShow = Backbone.View.extend({
 
     var line = new google.maps.Polyline({
       path: endpoints,
-      geodesic: true,
-      strokeColor: '#2d4850',
-      strokeOpacity: 1.0,
+      geodesic: false,
+      strokeColor: '#ffffff',
+      strokeOpacity: 0.4,
       strokeWeight: 0.5
     });
 
@@ -69,7 +69,10 @@ FlockTo.Views.MapShow = Backbone.View.extend({
   },
 
   findProp: function (attendees) {
-    return Math.pow(1.618, attendees) ;
+    var proportion = Math.pow(1.618, attendees);
+    var x = proportion/20;
+    var tempScaled = proportion / 3;
+    return tempScaled >= 2 ? tempScaled : 2;
   },
 
   indexZoom: function () {
@@ -106,13 +109,23 @@ FlockTo.Views.MapShow = Backbone.View.extend({
   },
 
   initMap: function () {
+    var styledMap = new google.maps.StyledMapType(
+      this.style(), {name: 'My map'});
+
     var mapOptions = {
       center: { lat: this.initialLat(), lng: this.initialLng()},
       zoom: this.indexZoom(),
-      mapTypeId: google.maps.MapTypeId.TERRAIN
+      mapTypeControlOptions: {
+        mapTypeId: [google.maps.MapTypeId.TERRAIN, 'map_style']
+      }
     };
 
+
     this._map = new google.maps.Map(this.el, mapOptions);
+    this._map.mapTypes.set('map_style', styledMap);
+    this._map.setMapTypeId('map_style');
+
+
     this.collection.each(this.addMarker.bind(this));
     if (!this.isIndex) {
       this.addMarker(this.eventModel);
@@ -132,5 +145,112 @@ FlockTo.Views.MapShow = Backbone.View.extend({
     });
 
     infoWindow.open(this._map, marker);
+  },
+
+  style: function () {
+    return [
+    {
+        "featureType": "water",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#193341"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#2c5a71"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#29768a"
+            },
+            {
+                "lightness": -37
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#406d80"
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#406d80"
+            }
+        ]
+    },
+    {
+        "elementType": "labels.text.stroke",
+        "stylers": [
+            {
+                "visibility": "on"
+            },
+            {
+                "color": "#3e606f"
+            },
+            {
+                "weight": 2
+            },
+            {
+                "gamma": 0.84
+            }
+        ]
+    },
+    {
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#989898"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "weight": 0.6
+            },
+            {
+                "color": "#1a3541"
+            }
+        ]
+    },
+    {
+        "elementType": "labels.icon",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.park",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#2c5a71"
+            }
+        ]
+    }
+  ];
   }
 });

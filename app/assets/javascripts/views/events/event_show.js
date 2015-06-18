@@ -4,7 +4,7 @@ FlockTo.Views.EventShow = Backbone.CompositeView.extend({
   className: 'event-show-page',
 
   events: {
-    'click .search-location' : 'locationQuery',
+    'click .location-query' : 'locationQuery',
     'click .edit-form': 'openModal',
   },
 
@@ -91,6 +91,7 @@ FlockTo.Views.EventShow = Backbone.CompositeView.extend({
 
   locationQuery: function (event) {
     event.preventDefault();
+    debugger
     var query = $('.search-form').serializeJSON();
     query.event_id = this.model.get('id');
 

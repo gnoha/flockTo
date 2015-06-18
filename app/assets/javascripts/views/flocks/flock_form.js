@@ -11,6 +11,7 @@ FlockTo.Views.FlockForm = Backbone.View.extend({
   },
 
   initialize: function (options) {
+    this.edit = options.edit
     this.eventId = options.eventId;
     this.parentId = options.parentId;
     this.listenTo(this.model, 'sync', this.render);
@@ -21,8 +22,13 @@ FlockTo.Views.FlockForm = Backbone.View.extend({
   },
 
   render: function () {
+    console.log(this.model.escape('title'));
     var content = this.template({ flock: this.model });
     this.$el.html(content);
+    if (this.edit) {
+      $('button.open-form').html('Edit Flock')
+      $('button.submit').html('Update Flock')
+    }
 
     return this;
   },
