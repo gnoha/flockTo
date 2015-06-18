@@ -13,10 +13,6 @@ body {
   font-family: raleway;
 }
 
-// .content {
-//   background: #FFF9E7
-// }
-
 #map-canvas {
   width: 100%;
   height: 400px
@@ -93,6 +89,10 @@ body {
   box-shadow: 3px 3px 5px #888888
 }
 
+//index
+.search-main {
+  margin: 5px;
+}
 //card item
 .card-title {
   position: absolute;
@@ -117,4 +117,8 @@ body {
 //Index
 .main-search {
   margin: 5px;
+}
+
+.flock-show, .event-show-page {
+  color: #ffffff;
 }

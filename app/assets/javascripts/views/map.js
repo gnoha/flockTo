@@ -72,7 +72,7 @@ FlockTo.Views.MapShow = Backbone.View.extend({
     var proportion = Math.pow(1.618, attendees);
     var x = proportion/20;
     var tempScaled = proportion / 3;
-    return tempScaled >= 2 ? tempScaled : 2;
+    return tempScaled >= 20 ? 20 : tempScaled;
   },
 
   indexZoom: function () {
