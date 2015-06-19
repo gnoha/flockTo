@@ -1,8 +1,12 @@
+<% if (!edit) {%>
 <div class='card col-xs-12 col-sm-6 col-md-4 open-form'>
   <div class="title card-title">Start a Flock</div>
 </div>
+<%} else {%>
+  <a class='open-edit-modal'>Edit Flock</a>
+<%}%>
 
-<div class='modal fade' id='myModal' tabindex=-1 role='dialog'
+<div class='modal fade' id='<%= id%>' tabindex=-1 role='dialog'
   aria-labelledby='myModalLabel' aria-hidden='true'>
   <div class="modal-dialog">
     <div class="modal-content">
@@ -44,7 +48,7 @@
         </form>
       </div>
       <div 'modal-footer'>
-        <button type='button' class="submit btn btn-primary btn-sm">Create Flock</button>
+        <button type='button' class="submit btn btn-primary btn-sm"><%= button%></button>
       </div>
     </div>
   </div>

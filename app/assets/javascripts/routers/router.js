@@ -41,6 +41,7 @@ FlockTo.Routers.Router = Backbone.Router.extend({
     var eventModel = this.events.getOrFetch(id);
     var showView = new FlockTo.Views.EventShow({
       model: eventModel,
+      collection: this.events,
       users: this.users
     });
 

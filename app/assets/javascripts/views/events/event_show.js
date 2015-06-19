@@ -45,6 +45,13 @@ FlockTo.Views.EventShow = Backbone.CompositeView.extend({
     this.addSubview('.coordinator', coordView);
   },
 
+  addEventForm: function () {
+    var form = new Flockto.Views.EventForm({
+      model: this.model,
+
+    })
+  },
+
   addFlockForm: function () {
     var flock = new FlockTo.Models.Flock();
     var form = new FlockTo.Views.FlockForm({

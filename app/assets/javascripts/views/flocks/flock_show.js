@@ -40,7 +40,7 @@ FlockTo.Views.FlockShow = Backbone.CompositeView.extend({
         edit: true
       });
 
-      this.addSubview('.subflock-form-container', formView);
+      this.addSubview('.edit-form-container', formView);
     }
   },
 

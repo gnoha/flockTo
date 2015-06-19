@@ -8,9 +8,9 @@
       <%= eventModel.escape('date')%>
       <p><%= eventModel.escape('description')%></p>
 
-      <% if (coord) {%>
+      <!-- <% if (coord) {%>
         <a class='edit-form'>Edit Event</a>
-      <% }%><br>
+      <% }%><br> -->
 
       <label class='coord-description'>Coordinator
         <div class="coordinator"></div>
@@ -46,6 +46,9 @@
       aria-controls='flocks' role='tab' data-toggle='tab'>Flocks</a></li>
     <li role='presentation'><a href='#attending' aria-controls='attending'
       role='tab' data-toggle='tab'>Attending</a></li>
+      <% if (coord) {%>
+        <li role='presentation'><a class='edit-evebt-form' role='tab'>Edit Event</a></li>
+      <% }%><br>
   </ul>
 
   <div class='tab-content clearfix'>

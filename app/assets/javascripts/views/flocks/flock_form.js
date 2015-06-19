@@ -7,7 +7,8 @@ FlockTo.Views.FlockForm = Backbone.View.extend({
 
   events: {
     'click .submit': 'submit',
-    'click .open-form': 'openModal'
+    'click .open-form': 'openModal',
+    'click .open-edit-modal': 'openEditModal'
   },
 
   initialize: function (options) {
@@ -17,18 +18,29 @@ FlockTo.Views.FlockForm = Backbone.View.extend({
     this.listenTo(this.model, 'sync', this.render);
   },
 
+  openEditModal: function (e) {
+    $('#editModal').modal();
+  },
+
   openModal: function (e) {
     $('#myModal').modal();
   },
 
   render: function () {
-    console.log(this.model.escape('title'));
-    var content = this.template({ flock: this.model });
-    this.$el.html(content);
+    var id = 'myModal';
+    var button = 'Create Flock';
     if (this.edit) {
-      $('button.open-form').html('Edit Flock')
-      $('button.submit').html('Update Flock')
+      id = 'editModal';
+      button = 'Update Flock';
     }
+
+    var content = this.template({
+      flock: this.model,
+      edit: this.edit,
+      id: id,
+      button: button
+    });
+    this.$el.html(content);
 
     return this;
   },
@@ -50,7 +62,11 @@ FlockTo.Views.FlockForm = Backbone.View.extend({
       patch: true,
 
       success: function () {
-        $('#myModal').modal('toggle');
+        if (this.edit) {
+          $('#editModal').modal('toggle');
+        } else {
+          $('#myModal').modal('toggle');
+        }
         $('.modal-backdrop').remove();
         Backbone.history.navigate(
           '#/flocks/' + this.model.get('id'),

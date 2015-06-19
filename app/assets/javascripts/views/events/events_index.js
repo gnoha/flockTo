@@ -60,7 +60,6 @@ FlockTo.Views.EventsIndex = Backbone.CompositeView.extend({
     e.preventDefault();
     var searchedEvents = new FlockTo.Collections.Events();
     var input = $('.search-main').serializeJSON();
-    debugger
     searchedEvents.fetch({
       data: input,
       reset: true,

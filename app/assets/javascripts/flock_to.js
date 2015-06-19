@@ -6,10 +6,9 @@ window.FlockTo = {
   CURRENT_USER_ID: window.CURRENT_USER_ID,
   initialize: function() {
     $('.secrets').on('click', function () {
-      var $a = $('<div>').addClass('clearfix').css({
-        'width': '100%', 'height': '100%', 'z-index': '-100', 'background': 'blue'
-      });
-      $('.content').prepend($a);
+      var $a = $('<div>').css({'height': '400px', 'width': '100%', 'overflow': 'hidden'})
+      $('#map-container').html($a);
+      $a.disco();
     });
 
     var router = new FlockTo.Routers.Router({

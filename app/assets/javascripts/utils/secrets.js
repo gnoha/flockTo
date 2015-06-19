@@ -38,5 +38,5 @@ $.Disco.prototype.getColor = function () {
 $.fn.disco = function () {
   return this.each(function () {
     new $.Disco(this);
-  });
+  }.bind(this));
 };

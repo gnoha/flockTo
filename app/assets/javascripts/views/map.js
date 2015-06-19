@@ -140,8 +140,9 @@ FlockTo.Views.MapShow = Backbone.View.extend({
   },
 
   showMarkerInfo: function (e, marker) {
+    debugger
     var infoWindow = new google.maps.InfoWindow({
-      content: marker.get('title')
+      content: marker.title
     });
 
     infoWindow.open(this._map, marker);
