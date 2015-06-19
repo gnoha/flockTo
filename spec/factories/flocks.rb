@@ -5,6 +5,6 @@ FactoryGirl.define do
     event_id { rand(5) }
     date { Faker::Date.forward(100) }
     location { "Los Angeles, CA" }
-    coordinator_id { rand(15) }
+    coordinator_id { rand(1..15) }
   end
 end

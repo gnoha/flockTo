@@ -18,6 +18,7 @@ a:hover {
   cursor: pointer;
 }
 
+//User forms
 .user-form {
   margin-top: 20%;
   border-radius: 3px;
@@ -26,6 +27,8 @@ a:hover {
 .user-form label {
   color: #ffffff;
 }
+
+//Map
 .coord-description {
   width: 100%;
 }
@@ -35,9 +38,9 @@ a:hover {
   height: 400px
 }
 
+//Single Page
 .title {
   font-size: 24px;
-
 }
 
 // navbar
@@ -55,25 +58,28 @@ a:hover {
   cursor: pointer;
 }
 
+//Card Card
 
-/*index item cards*/
-.card:hover {
-  cursor: pointer;
-  box-shadow: 3px 3px 5px #888888
-}
-
+// .card:hover {
+//   cursor: pointer;
+//   box-shadow: 3px 3px 5px #888888
+// }
+//
 .thumbnail:hover {
   cursor: pointer;
 }
-
-.card {
-  border: 1px solid #172C3D;
-  border-radius: 3px;
-  background-color: #ffffff;
-  color: #172C3D;
-  height: 250px;
+//
+// .card {
+//   border: 1px solid #172C3D;
+//   border-radius: 3px;
+//   background-color: #ffffff;
+//   color: #172C3D;
+//   height: 250px;
+// }
+.row {
+  margin-right: 0px;
+  margin-left:0px;
 }
-
 .thumbnail {
   height: 150px;
   border: 1px solid black;
@@ -82,23 +88,31 @@ a:hover {
   padding: 3px;
 }
 
-.event-index-list, .tab-content {
-  margin-bottom: 300px;
+.index-item {
+  padding-right: 0;
+  padding-left: 0;
+  height: 250px;
+  background-color: black;
 }
 
-.events-index-item {
+.item-card {
   border: 1px solid #172C3D;
   border-radius: 3px;
   background-color: #ffffff;
   color: #172C3D;
-  height: 250px;
+  height: 100%;
+  // margin: 0 0 20px 20px;
 }
 
-.events-index-item:hover{
+.item-card:hover{
   cursor: pointer;
-  box-shadow: 3px 3px 5px #888888
+  box-shadow: none;
+  opacity: 0.80;
 }
 
+.event-index-list, .tab-content {
+  margin-bottom: 300px;
+}
 //index
 .search-main {
   margin: 5px;

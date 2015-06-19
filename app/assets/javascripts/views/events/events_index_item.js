@@ -1,7 +1,7 @@
 FlockTo.Views.EventsIndexItem = Backbone.View.extend({
   template: JST['events/index_item'],
 
-  className: 'events-index-item col-xs-12 col-sm-6 col-md-4 ',
+  className: 'index-item col-xs-12 col-sm-6 col-md-4 ',
 
   events: {
     'click': 'navToEvent'
