@@ -29,16 +29,19 @@ FlockTo.Views.FlockForm = Backbone.View.extend({
   render: function () {
     var id = 'myModal';
     var button = 'Create Flock';
+    var title = 'Start a Flock';
     if (this.edit) {
       id = 'editModal';
       button = 'Update Flock';
+      title = 'Edit Flock'
     }
 
     var content = this.template({
       flock: this.model,
       edit: this.edit,
       id: id,
-      button: button
+      button: button,
+      title: title
     });
     this.$el.html(content);
 

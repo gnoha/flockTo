@@ -5,30 +5,19 @@ FlockTo.Views.EventShow = Backbone.CompositeView.extend({
 
   events: {
     'click .location-query' : 'locationQuery',
-    'click .edit-form': 'openModal',
+    // 'click .edit-form': 'openModal',
   },
 
   initialize: function (options) {
     this.users = options.users;
-    this.listenTo(this.model, 'sync reset', this.render);
-    this.listenTo(this.model, 'sync', this.addMap);
-    this.listenTo(this.model, 'sync', this.addCoordinator);
+    this.listenTo(this.model, 'sync change', this.render);
     this.addAttendeesIndex();
     this.addFlocksIndex();
     this.addFlockForm();
+    this.addCoordinator();
+    this.addEditForm();
   },
 
-
-  render: function () {
-    var content = this.template({
-      eventModel: this.model,
-      coord: this.isCoord()
-      });
-    this.$el.html(content);
-    this.attachSubviews();
-    this.setDatePicker();
-    return this;
-  },
 
   addAttendeesIndex: function () {
     this._attendeesIndex = new FlockTo.Views.UsersIndex({
@@ -45,11 +34,17 @@ FlockTo.Views.EventShow = Backbone.CompositeView.extend({
     this.addSubview('.coordinator', coordView);
   },
 
-  addEventForm: function () {
-    var form = new Flockto.Views.EventForm({
-      model: this.model,
+  addEditForm: function () {
+    if (this.isCoord()) {
+      var form = new FlockTo.Views.EventForm({
+        model: this.model,
+        eventId: this.model.id,
+        collection: this.collection,
+        edit: true
+      });
 
-    })
+      this.addSubview('.edit-form-container', form);
+    }
   },
 
   addFlockForm: function () {
@@ -68,7 +63,6 @@ FlockTo.Views.EventShow = Backbone.CompositeView.extend({
     });
     this.addSubview('.flocks-index', this._flocksIndex);
   },
-
 
   addMap: function () {
     var map = new FlockTo.Views.MapShow({
@@ -105,8 +99,15 @@ FlockTo.Views.EventShow = Backbone.CompositeView.extend({
     });
   },
 
-  openModal: function (e) {
-    $('#myModal').modal();
+  render: function () {
+    var content = this.template({
+      eventModel: this.model,
+      coord: this.isCoord()
+      });
+    this.$el.html(content);
+    this.attachSubviews();
+    this.setDatePicker();
+    return this;
   },
 
   setDatePicker: function () {

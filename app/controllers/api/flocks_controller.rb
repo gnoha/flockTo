@@ -23,7 +23,6 @@ module Api
 
     def update
       @flock = Flock.find(params[:id])
-
       if @flock.update(flock_params)
         render :show
       else

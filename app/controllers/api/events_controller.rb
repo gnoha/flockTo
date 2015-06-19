@@ -42,10 +42,10 @@ module Api
     private
 
     def require_coordinator
-      @flock = Flock.find(params[:id])
-      unless current_user.id == @flock.coordinator_id
-        render json: ["You must be the flock coordinator to perform that action",
-                      status: :unauthorized]
+      @event = Event.find(params[:id])
+      unless current_user.id == @event.coordinator_id
+        render json: ["You must be the flock coordinator to perform that action"],
+                      status: :unauthorized
       end
     end
 

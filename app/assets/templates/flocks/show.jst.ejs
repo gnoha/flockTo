@@ -1,13 +1,21 @@
 <div id='map-container'></div>
 <div class='subflock-form-container'></div>
 
-<ul>
-  <li><%= flock.escape('title')%></li>
-  <li><%= flock.escape('location')%></li>
-  <li><%= flock.escape('description')%></li>
-  <li><%= flock.escape('date')%></li>
-</ul>
+<div class='row'>
+  <div class='col-xs-12'>
+    <div class='event-info'>
+      <h1 class="title"><%= flock.escape('title')%></h1>
+      <%= flock.escape('location')%>
+      <%= flock.escape('date')%>s
+      <p><%= flock.escape('description')%></p>
 
+      <label class='coord-description'>Coordinator
+        <div class="coordinator"></div>
+      </label>
+
+    </div>
+  </div>
+</div>
 
 <div role='tabpanel'>
   <ul class='nav nav-tabs' role='tablist'>
@@ -24,7 +32,7 @@
     <li role='presentation'><a aria-controls='join-flock'
         role='tab'><div class='join-button'></div></a></li>
     <% if (coord) {%>
-    <li role='presentation' class='open-edit-model'><a aria-controls='edit-flock'
+    <li role='presentation' class='open-edit-modal'><a aria-controls='edit-flock'
         role='tab'><div class='edit-form-container'></div></a></li>
     <%}%>
   </ul>

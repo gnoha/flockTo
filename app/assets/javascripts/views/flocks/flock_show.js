@@ -5,12 +5,13 @@ FlockTo.Views.FlockShow = Backbone.CompositeView.extend({
 
   initialize: function (options) {
     this.currentUser = options.currentUser;
+    this.users = options.users
     this.listenTo(this.model, 'sync', this.render);
-    this.listenTo(this.model, 'sync', this.addMap);
-    this.listenTo(this.model, 'sync', this.addEditForm)
-    this.addButton();
-    this.addFlocksIndex();
     this.addAttendeesIndex();
+    this.addButton();
+    this.addCoordinator();
+    this.addEditForm();
+    this.addFlocksIndex();
     this.addNewForm();
   },
 
@@ -29,6 +30,14 @@ FlockTo.Views.FlockShow = Backbone.CompositeView.extend({
       currentUser: this.currentUser
     });
     this.addSubview('.join-button', this._button);
+  },
+
+  addCoordinator: function () {
+    var coord = this.users.getOrFetch(this.model.get('coordinator_id'));
+    var coordView = new FlockTo.Views.UsersIndexItem({
+      model: coord
+    });
+    this.addSubview('.coordinator', coordView);
   },
 
   addEditForm: function () {
@@ -60,16 +69,6 @@ FlockTo.Views.FlockShow = Backbone.CompositeView.extend({
     });
 
     this.addSubview('.subflock-form', formView);
-  },
-
-  addMap: function () {
-    var map = new FlockTo.Views.MapShow({
-      collection: this.model.eventFlocks(),
-      currentModel: this.model,
-      eventModel: this.model.eventModel()
-    });
-    this.addSubview('#map-container', map);
-    map.initMap();
   },
 
   attending: function () {

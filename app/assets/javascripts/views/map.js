@@ -34,6 +34,8 @@ FlockTo.Views.MapShow = Backbone.View.extend({
     google.maps.event.addListener(marker, 'click', function (e) {
       view.showMarkerInfo(e, marker);
     });
+
+   this._markers[meeting.id] = marker;
   },
 
   addLines: function () {

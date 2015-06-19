@@ -17,6 +17,20 @@ FlockTo.Models.User = Backbone.Model.extend({
     return this._coordinatedFlocks
   },
 
+  coordinatedEvents: function (user) {
+    if (!this._coordinatedEvents) {
+      this._coordinatedEvents = new FlockTo.Collections.Events();
+    }
+
+    this.attendedEvents().each(function (eventModel) {
+      if (eventModel.get('coordinator_id') === this.id) {
+        this._coordinatedEvents.add(eventModel);
+      }
+    }.bind(this));
+
+    return this._coordinatedEvents;
+  },
+
   parse: function (response) {
     if (response.attended_events) {
       this.attendedEvents().set(response.attended_events);

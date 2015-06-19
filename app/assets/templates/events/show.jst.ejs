@@ -1,16 +1,10 @@
-<div id='map-container'></div>
-
 <div class='row'>
   <div class='col-xs-12'>
-    <div class='flock-info'>
+    <div class='event-info'>
       <h1 class="title"><%= eventModel.escape('title')%></h1>
       <%= eventModel.escape('location')%>
       <%= eventModel.escape('date')%>
       <p><%= eventModel.escape('description')%></p>
-
-      <!-- <% if (coord) {%>
-        <a class='edit-form'>Edit Event</a>
-      <% }%><br> -->
 
       <label class='coord-description'>Coordinator
         <div class="coordinator"></div>
@@ -19,9 +13,6 @@
     </div>
   </div>
 </div>
-
-
-
 
 <form class='search-form'>
   <label>Search for flocks within
@@ -33,7 +24,7 @@
       <option value=1000>1000</option>
     </select>
     miles of
-    <input type='text' name='current_location'>
+    <input class='input-text' type='text' name='current_location'>
     <button class='location-query btn btn-sm'>Search</button>
   </label>
 </form>
@@ -47,7 +38,8 @@
     <li role='presentation'><a href='#attending' aria-controls='attending'
       role='tab' data-toggle='tab'>Attending</a></li>
       <% if (coord) {%>
-        <li role='presentation'><a class='edit-evebt-form' role='tab'>Edit Event</a></li>
+        <li role='presentation' class='open-edit-modal'><a class='edit-event-form'
+          role='tab'><div class='edit-form-container'></div></a></li>
       <% }%><br>
   </ul>
 

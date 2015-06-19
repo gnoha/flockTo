@@ -5,15 +5,32 @@ FlockTo.Views.EventForm = Backbone.View.extend({
 
   events: {
     'click .submit': 'submit',
-    'click .open-modal': 'open'
+    'click .open-modal': 'open',
+    'click .open-edit-modal': 'openEditModal'
   },
 
-  initialize: function () {
+  initialize: function (options) {
+    this.edit = options.edit;
     this.listenTo(this.model, 'sync', this.render);
   },
 
   render: function () {
-    var content = this.template({ eventModel: this.model });
+    var id = 'myModal';
+    var button = 'Create Event';
+    var title = 'Start an Event'
+    if (this.edit) {
+      id = 'editModal';
+      button = 'Update Event';
+      title = 'Edit Event'
+    }
+
+    var content = this.template({
+      eventModel: this.model,
+      edit: this.edit,
+      id: id,
+      button: button,
+      title: title
+      });
     this.$el.html(content);
 
     return this;
@@ -21,6 +38,10 @@ FlockTo.Views.EventForm = Backbone.View.extend({
 
   open: function () {
     $('#myModal').modal();
+  },
+
+  openEditModal: function (e) {
+    $('#editModal').modal();
   },
 
   submit: function (event) {
@@ -32,10 +53,12 @@ FlockTo.Views.EventForm = Backbone.View.extend({
         this.collection.add(this.model);
         $('#myModal').modal('toggle');
         $('.modal-backdrop').remove();
-        Backbone.history.navigate(
-          '#/events/'+ this.model.get('id'),
-          { trigger: true }
-        );
+        if (!this.edit) {
+          Backbone.history.navigate(
+            '#/events/'+ this.model.get('id'),
+            { trigger: true }
+          );
+        }
       }.bind(this),
 
       error: function (model, response) {

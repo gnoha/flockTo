@@ -1,7 +1,7 @@
 FlockTo.Views.EventsIndexItem = Backbone.View.extend({
   template: JST['events/index_item'],
 
-  className: 'index-item col-xs-12 col-sm-6 col-md-4 ',
+  className: 'index-item col-xs-12 col-sm-6 col-md-4 col-lg-3',
 
   events: {
     'click': 'navToEvent'
@@ -21,7 +21,16 @@ FlockTo.Views.EventsIndexItem = Backbone.View.extend({
     var content = this.template({ eventModel: this.model });
     this.$el.attr('data-id', this.model.get('id'));
     this.$el.html(content);
-
+    this.$el.css({'background-color': this.getColor()});
     return this;
+  },
+
+  getColor: function () {
+      var letters = '0123456789ABCDEF'.split('');
+      var color = '#';
+      for (var i = 0; i < 6; i++ ) {
+          color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
   }
 });

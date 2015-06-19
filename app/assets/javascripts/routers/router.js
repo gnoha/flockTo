@@ -1,10 +1,10 @@
 FlockTo.Routers.Router = Backbone.Router.extend({
   initialize: function (options) {
     this.$rootEl = options.$el;
+    this.$map = options.$map;
     this.events = options.events;
     this.flocks = options.flocks;
     this.users = options.users;
-
     if (window.CURRENT_USER_ID) {
       this.navbar();
     }
@@ -15,8 +15,39 @@ FlockTo.Routers.Router = Backbone.Router.extend({
     'events/:id': 'showEvent',
     'flocks/:id': 'showFlock',
     'users/:id' : 'showUser',
-    'events/:id/edit': 'editEvent',
-    'flocks/:id/edit': 'editFlock',
+  },
+
+  addMap: function (options) {
+    var map = new FlockTo.Views.MapShow({
+      collection: options.collection,
+      currentModel: options.currentModel,
+      eventModel: options.eventModel,
+      isIndex: options.index
+    });
+
+    this._mapview && this._mapview.remove();
+    this._mapview = map;
+    this.$map.html(map.$el);
+    map.initMap();
+  },
+
+
+  index: function () {
+    this.events.fetch({
+      success: function () {
+        var indexView = new FlockTo.Views.EventsIndex({
+          collection: this.events,
+          router: this
+        });
+
+        this.addMap({
+          collection: this.events,
+          index: true
+        });
+
+        this._swapView(indexView);
+      }.bind(this)
+    });
   },
 
   navbar: function () {
@@ -28,53 +59,46 @@ FlockTo.Routers.Router = Backbone.Router.extend({
     $('#navbar').html(nav.render().$el);
   },
 
-  index: function () {
-    this.events.fetch();
-    var indexView = new FlockTo.Views.EventsIndex({
-      collection: this.events,
-      router: this
-    });
-    this._swapView(indexView);
-  },
-
   showEvent: function (id) {
     var eventModel = this.events.getOrFetch(id);
-    var showView = new FlockTo.Views.EventShow({
-      model: eventModel,
-      collection: this.events,
-      users: this.users
-    });
+    eventModel.fetch({
+      success: function () {
+        var showView = new FlockTo.Views.EventShow({
+          model: eventModel,
+          collection: this.events,
+          users: this.users
+        });
 
-    this._swapView(showView);
-  },
+        this.addMap({
+          collection: eventModel.flocks(),
+          eventModel: eventModel,
+          currentModel: eventModel,
+        });
 
-  editEvent: function (id) {
-    var eventModel = this.events.getOrFetch(id);
-    var formView = new FlockTo.Views.EventForm({
-      model: eventModel
-    });
-    this._swapView(formView);
+        this._swapView(showView);
+      }.bind(this)
+    })
   },
 
   showFlock: function(id) {
     var currentUser = this.users.getOrFetch(CURRENT_USER_ID);
     var flock = this.flocks.getOrFetch(id);
-    var showView = new FlockTo.Views.FlockShow({
-      model: flock,
-      currentUser: currentUser
-    });
-    this._swapView(showView);
-  },
+    flock.fetch({
+      success: function () {
+        var showView = new FlockTo.Views.FlockShow({
+          model: flock,
+          users: this.users,
+          currentUser: currentUser
+        });
+        this._swapView(showView);
 
-  editFlock: function (id) {
-    var flock = this.flocks.getOrFetch(id);
-    var eventModel = this.events.getOrFetch(flock.get('event_id'));
-    var formView = new FlockTo.Views.FlockForm({
-      model: flock,
-      collection: eventModel
+        this.addMap({
+          collection: flock.eventFlocks(),
+          currentModel: flock,
+          eventModel: flock.eventModel()
+        });
+      }.bind(this)
     });
-
-    this._swapView(formView);
   },
 
   showUser: function(id) {

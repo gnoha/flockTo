@@ -8,6 +8,7 @@ FlockTo.Views.UserShow = Backbone.CompositeView.extend({
 
     this.model.coordinatedFlocks().each(this.addFlockCards.bind(this));
     this.model.attendedEvents().each(this.addEventCards.bind(this));
+    this.model.coordinatedEvents().each(this.addCoordEventCards.bind(this));
   },
 
   render: function () {
@@ -18,6 +19,10 @@ FlockTo.Views.UserShow = Backbone.CompositeView.extend({
     return this;
   },
 
+  addCoordEventCards: function (e) {
+    var card = new FlockTo.Views.EventsIndexItem({ model: e });
+    this.addSubview('.coordinated-events-index', card);
+  },
 
   addEventCards: function (e) {
     var card = new FlockTo.Views.EventsIndexItem({ model: e });
@@ -26,7 +31,7 @@ FlockTo.Views.UserShow = Backbone.CompositeView.extend({
 
   addFlockCards: function (f) {
     var card = new FlockTo.Views.FlocksIndexItem({ model: f });
-    this.addSubview('.coordinated-index', card);
+    this.addSubview('.coordinated-flocks-index', card);
   }
 
 
