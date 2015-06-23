@@ -1,19 +1,31 @@
 <div class='row'>
   <div class='event-info'>
-    <div class='col-xs-9'>
-      <h1 class="title"><%= eventModel.escape('title')%></h1>
-      <%= eventModel.escape('location')%>
-      <%= eventModel.escape('date')%>
-      <p><%= eventModel.escape('description')%></p>
-    </div>
-    <div class='col-xs-3'>
-      <label class='coord-description'>Coordinator
-        <a href='#/users/<%= coord.id%>'><%= coordinator.escape('username')%></a>
-      </label>
-    </div>
+    <div class='row'>
+      <div class='col-xs-12'>
+        <div class='event-info'>
+          <h1 class="title"><%= eventModel.escape('title')%></h1>
+          <div class='row'>
+            <div class='col-xs-2'>Event Location:</div>
+            <div class='col-xs-8'><%= eventModel.escape('location')%></div>
+          </div>
+          <div class='row'>
+            <div class='col-xs-2'>Event Date:</div>
+            <div class='col-xs-8'><%= eventModel.escape('date')%></div>
+          </div>
+          <div class='row'>
+            <div class='col-xs-2'>Coordinator:</div>
+            <div class='col-xs-8'>
+              <a href='#/users/<%= coordinator.id%>'><%= coordinator.escape('username')%></a>
+            </div>
+          </div>
+          <br>
+          <p><%= eventModel.escape('description')%></p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
 <div class='row'>
   <form class='search-form'>
     <label>Search for flocks within

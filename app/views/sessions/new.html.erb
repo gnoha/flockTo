@@ -36,6 +36,16 @@
             <input class='btn btn-sm btn-primary pull-right' type="submit" value="Sign In">
           </div>
         </form>
+
+        <form class= 'guest-user-form' action="<%= users_url%>" method="POST">
+          <input type="hidden" name="authenticity_token"
+                 value="form_authenticity_token">
+          <input type="hidden" class='form-control' name=user[username] value='<%= Faker::Internet.user_name%>'>
+          <input type="hidden" class='form-control' name=user[password] value="password">
+          <div class='form-group'>
+            <input class='btn btn-sm btn-primary pull-right' type="submit" value="Guest">
+          </div>
+        </form>
       </div>
 
       <div class='panel-footer'>
