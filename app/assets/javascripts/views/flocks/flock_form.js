@@ -15,6 +15,7 @@ FlockTo.Views.FlockForm = Backbone.View.extend({
     this.edit = options.edit
     this.eventId = options.eventId;
     this.parentId = options.parentId;
+    this.maxDate = options.maxDate;
     this.listenTo(this.model, 'sync', this.render);
   },
 
@@ -33,15 +34,18 @@ FlockTo.Views.FlockForm = Backbone.View.extend({
     if (this.edit) {
       id = 'editModal';
       button = 'Update Flock';
-      title = 'Edit Flock'
+      title = 'Edit Flock';
     }
 
+    var today = new Date();
     var content = this.template({
       flock: this.model,
       edit: this.edit,
       id: id,
       button: button,
-      title: title
+      title: title,
+      minDate: today.toISOString().split("T")[0],
+      maxDate: this.maxDate
     });
     this.$el.html(content);
 

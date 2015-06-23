@@ -1,30 +1,25 @@
-<div id="map-container"></div>
-
-  <div class='row'>
-    <div class="col-xs-12 index-search-bar">
-      <form class='search-main' role='search'>
-        <div class="input-group">
-          <input type="text" class="form-control" name='search[event]' placeholder="Search for...">
-          <span class="input-group-btn">
-            <button class='btn submit btn-primary' type='submit'>Find Event</button>
-          </span>
-        </div>
-      </form>
+<div class='row'>
+  <div class="col-xs-12 index-search-bar">
+    <form class='search-main' role='search'>
+      <div class="input-group">
+        <input type="text" class="form-control" name='search[event]' placeholder="Search for...">
+        <span class="input-group-btn">
+          <button class='btn submit btn-primary' type='submit'>Find Event</button>
+        </span>
+      </div>
+    </form>
   </div>
 </div>
 
 
-<div class='form-container'></div>
+<!-- <div class='form-container'></div> -->
 <div class='all-card-container clearfix'>
+  <% if (!hasResults) {%>
+    <p class='error'>Whoops! It looks like we couldn't find the event you were
+    looking for... :(</p>
+    <a href=''>Back to all Events</a>
+  <% }%>
   <div class='row'>
-    <div class='event-index-list'>
-      <% if (!hasResults) {%>
-        <div class='error title col-xs-12 col-sm-6'>Whoops!
-          <p>It looks like we couldn't find the event you were
-          looking for... :(</p>
-          <a href=''>Back to all Events</a>
-        </div>
-      <% }%>
-    </div>
+    <div class='event-index-list clearfix'></div>
   </div>
 </div>

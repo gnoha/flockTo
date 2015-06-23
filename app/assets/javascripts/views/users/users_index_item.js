@@ -15,7 +15,7 @@ FlockTo.Views.UsersIndexItem = Backbone.View.extend({
     var content = this.template({ user: this.model });
     this.$el.attr('data-id', this.model.get('id'));
     this.$el.html(content);
-    this.$el.css({'background-color': this.getColor()});
+    // this.$el.css({'background-color': this.getColor()});
     return this;
   },
 

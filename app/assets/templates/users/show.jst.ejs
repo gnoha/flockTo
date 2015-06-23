@@ -4,6 +4,7 @@
 
   <p class='bio'><%= user.escape('bio')%></p>
 </div>
+
 <div role='tabpanel'>
   <ul class='nav nav-tabs' role='tablist'>
     <li role='presentation' class='active'><a href='#attended'
@@ -13,20 +14,25 @@
     <li role='presentation'><a href='#coordinated-flocks' aria-controls='coordinated-flocks'
       role='tab' data-toggle='tab'>Coordinated Flocks</a></li>
   </ul>
+</div>
 
-  <div class='tab-content' clearfix'>
-    <div role='tabpanel' class='tab-pane active' id='attended'>
+<div class='tab-content clearfix'>
+  <div role='tabpanel' class='tab-pane active' id='attended'>
+    <div class='row'>
       <div class='attending-index'></div>
       <div class='old-attending'></div>
     </div>
-    <div role='tabpanel' class='tab-pane' id='coordinated-events'>
+  </div>
+  <div role='tabpanel' class='tab-pane' id='coordinated-events'>
+    <div class='row'>
       <div class='coordinated-events-index'></div>
       <div class='old-coordinated-events'></div>
     </div>
-    <div role='tabpanel' class='tab-pane' id='coordinated-flocks'>
+  </div>
+  <div role='tabpanel' class='tab-pane' id='coordinated-flocks'>
+    <div class='row'>
       <div class='coordinated-flocks-index'></div>
       <div class='old-coordinated-flocks'></div>
     </div>
-
   </div>
 </div>

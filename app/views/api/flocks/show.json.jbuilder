@@ -1,7 +1,7 @@
 json.extract! @flock, :id, :title, :location, :date,
-              :description, :event_id, :parent_id, :coordinator_id,
+              :description, :event_id, :parent_id,
               :latitude, :longitude
-
+json.coordinator @flock.coordinator, :id, :username
 json.event_model @flock.event, :id, :title, :location, :date, :description,
                  :latitude, :longitude
 

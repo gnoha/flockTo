@@ -13,22 +13,22 @@
     </div>
   </div>
 </div>
-
-<form class='search-form'>
-  <label>Search for flocks within
-    <select name="distance">
-      <option value=50>50</option>
-      <option value=100>100</option>
-      <option value=200 selected>200</option>
-      <option value=500>500</option>
-      <option value=1000>1000</option>
-    </select>
-    miles of
-    <input class='input-text' type='text' name='current_location'>
-    <button class='location-query btn btn-sm'>Search</button>
-  </label>
-</form>
-
+<div class='row'>
+  <form class='search-form'>
+    <label>Search for flocks within
+      <select name="distance">
+        <option value=50>50</option>
+        <option value=100>100</option>
+        <option value=200 selected>200</option>
+        <option value=500>500</option>
+        <option value=1000>1000</option>
+      </select>
+      miles of
+      <input class='input-text' type='text' name='current_location'>
+      <button class='location-query btn btn-sm'>Search</button>
+    </label>
+  </form>
+</div>
 <hr>
 
 <div role='tabpanel'>
@@ -42,13 +42,18 @@
           role='tab'><div class='edit-form-container'></div></a></li>
       <% }%><br>
   </ul>
+</div>
 
-  <div class='tab-content clearfix'>
-    <div role='tabpanel' class='tab-pane active' id='flocks'>
+<div class='tab-content clearfix'>
+  <div role='tabpanel' class='tab-pane active' id='flocks'>
+    <div class='row'>
       <div class="flock-form"></div>
       <div class="flocks-index"></div>
     </div>
-    <div role='tabpanel' class='tab-pane' id='attending'>
+  </div>
+
+  <div role='tabpanel' class='tab-pane' id='attending'>
+    <div class='row'>
       <div class="attendees-index"</div>
     </div>
   </div>

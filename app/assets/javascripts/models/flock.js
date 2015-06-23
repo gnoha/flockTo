@@ -17,6 +17,14 @@ FlockTo.Models.Flock = Backbone.Model.extend({
     return this._attendees;
   },
 
+  coordinator: function () {
+    if (!this._coordinator) {
+      this._coordinator = new FlockTo.Models.User();
+    }
+
+    return this._coordinator;
+  },
+
   eventModel: function () {
     if (!this._event) {
       this._event = new FlockTo.Models.Event();
@@ -53,7 +61,12 @@ FlockTo.Models.Flock = Backbone.Model.extend({
       this.eventFlocks().set(response.all_event_flocks);
       delete response.all_event_flocks;
     }
-    
+
+    if (response.coordinator) {
+      this.coordinator().set(response.coordinator);
+      delete response.coordinator;
+    }
+
     return response;
   }
 });

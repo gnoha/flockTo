@@ -8,13 +8,12 @@ FlockTo.Views.MapShow = Backbone.View.extend({
     this.currentModel = options.currentModel;
     this.eventModel = options.eventModel;
     this.isIndex = options.isIndex;
-    this.listenTo(this.eventModel, 'sync', this.addMarker);
     this.listenTo(this.collection, 'add', this.addMarker);
     this.listenTo(this.collection, 'remove', this.removeMarker);
   },
 
-  addMarker: function (meeting) {
-    if (this._markers[meeting.id]) { return; }
+  addMarker: function (meeting, isEvent) {
+    if (this._markers[meeting.id] && !isEvent) { return; }
     var view = this;
     var marker = new google.maps.Marker({
       position: new google.maps.LatLng(meeting.get('latitude'), meeting.get('longitude')),
@@ -78,7 +77,7 @@ FlockTo.Views.MapShow = Backbone.View.extend({
   },
 
   indexZoom: function () {
-    return (!this.isIndex) ? 5 : 3;
+    return (!this.isIndex) ? 5 : 2;
   },
 
 
@@ -130,7 +129,7 @@ FlockTo.Views.MapShow = Backbone.View.extend({
 
     this.collection.each(this.addMarker.bind(this));
     if (!this.isIndex) {
-      this.addMarker(this.eventModel);
+      this.addMarker(this.eventModel, true);
       this.collection.each(this.addLines.bind(this));
     }
   },
@@ -142,7 +141,6 @@ FlockTo.Views.MapShow = Backbone.View.extend({
   },
 
   showMarkerInfo: function (e, marker) {
-    debugger
     var infoWindow = new google.maps.InfoWindow({
       content: marker.title
     });

@@ -51,7 +51,8 @@ FlockTo.Views.EventShow = Backbone.CompositeView.extend({
     var flock = new FlockTo.Models.Flock();
     var form = new FlockTo.Views.FlockForm({
       model: flock,
-      eventId: this.model.id
+      eventId: this.model.id,
+      maxDate: this.model.get('date')
     });
 
     this.addSubview('.flock-form', form);
@@ -86,7 +87,6 @@ FlockTo.Views.EventShow = Backbone.CompositeView.extend({
 
   locationQuery: function (event) {
     event.preventDefault();
-    debugger
     var query = $('.search-form').serializeJSON();
     query.event_id = this.model.get('id');
 
@@ -106,18 +106,18 @@ FlockTo.Views.EventShow = Backbone.CompositeView.extend({
       });
     this.$el.html(content);
     this.attachSubviews();
-    this.setDatePicker();
+    // this.setDatePicker();
     return this;
-  },
-
-  setDatePicker: function () {
-    var date = new Date(this.model.get('date'))
-
-    this.$('#datepicker').removeClass("hasDatepicker").datepicker({
-      dateFormat: "yy-mm-dd",
-      minDate: '+1d',
-      maxDate: date,
-      defaultDate: +1
-    });
   }
+  //
+  // setDatePicker: function () {
+  //   var date = new Date(this.model.get('date'))
+  //
+  //   this.$('#datepicker').removeClass("hasDatepicker").datepicker({
+  //     dateFormat: "yy-mm-dd",
+  //     minDate: '+1d',
+  //     maxDate: date,
+  //     defaultDate: +1
+  //   });
+  // }
 });

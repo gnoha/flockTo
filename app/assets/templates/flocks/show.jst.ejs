@@ -1,19 +1,27 @@
-<div id='map-container'></div>
-<div class='subflock-form-container'></div>
-
 <div class='row'>
-  <div class='col-xs-12'>
+  <div class='col-xs-6'>
     <div class='event-info'>
       <h1 class="title"><%= flock.escape('title')%></h1>
-      <%= flock.escape('location')%>
-      <%= flock.escape('date')%>s
+      <div class='row'>
+        <div class='col-xs-4'>Meeting Place:</div>
+        <div class='col-xs-8'><%= flock.escape('location')%></div>
+      </div>
+      <div class='row'>
+        <div class='col-xs-4'>Meeting Date:</div>
+        <div class='col-xs-8'><%= flock.escape('date')%></div>
+      </div>
+      <div class='row'>
+        <div class='col-xs-4'>Coordinator:</div>
+        <div class='col-xs-8'>
+          <a href='#/users/<%= coord.id%>'><%= coord.escape('username')%></a></div>
+      </div>
       <p><%= flock.escape('description')%></p>
 
-      <label class='coord-description'>Coordinator
-        <div class="coordinator"></div>
-      </label>
 
     </div>
+  </div>
+  <div class='col-xs-6'>
+    <div id='flock-map-container'></div>
   </div>
 </div>
 
@@ -39,11 +47,16 @@
 
   <div class='tab-content clearfix'>
     <div role='tabpanel' class='tab-pane active' id='flocks'>
-      <div class="subflock-form"></div>
-      <div class="sub-flocks-index"></div>
+      <div class='row'>
+        <div class="subflock-form"></div>
+        <div class="sub-flocks-index"></div>
+      </div>
     </div>
+
     <div role='tabpanel' class='tab-pane' id='attending'>
-      <div class="attendees-index"></div>
+      <div class='row'>
+        <div class="attendees-index"></div>
+      </div>
     </div>
   </div>
 </div>

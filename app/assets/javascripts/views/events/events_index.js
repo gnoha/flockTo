@@ -42,17 +42,19 @@ FlockTo.Views.EventsIndex = Backbone.CompositeView.extend({
     var content = this.template({ hasResults: hasResults });
     this.$el.html(content);
     this.attachSubviews();
-    this.setDatePicker();
+    // this.setDatePicker();
     return this;
   },
-
-  setDatePicker: function () {
-    this.$('#datepicker').removeClass("hasDatepicker").datepicker({
-      dateFormat: "yy-mm-dd",
-      minDate: '+1d',
-      showAnim: 'fadeIn'
-    });
-  },
+  //
+  // setDatePicker: function () {
+  //   this.$('#datepicker').removeClass("hasDatepicker").datepicker({
+  //     dateFormat: "yy-mm-dd",
+  //     minDate: '+1d',
+  //     showAnim: 'fadeIn',
+  //     changeMonth: true,
+  //     changeYear: true
+  //   });
+  // },
 
   submit: function (e) {
     e.preventDefault();

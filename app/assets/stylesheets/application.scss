@@ -18,6 +18,24 @@ a:hover {
   cursor: pointer;
 }
 
+//Map
+.coord-description {
+  width: 100%;
+}
+
+#map-canvas {
+  width: 100%;
+  height: 400px
+}
+
+#map-container {
+  padding-top:30px;
+  padding-bottom:30px;
+}
+
+//Main
+
+//Components: Cards and Forms
 //Form
 .modal-body .form-group {
   margin-left: 0
@@ -51,6 +69,28 @@ textarea.form-control {
   position: relative;
 }
 
+.index-item-wrapper {
+  height: 250px;
+  margin-bottom: 30px;
+}
+
+.index-item {
+  border: 1px solid #172C3D;
+  border-radius: 3px;
+  background-color: #ffffff;
+  color: #172C3D;
+  height: 100%;
+  display: block;
+}
+
+.index-item:hover{
+  cursor: pointer;
+  box-shadow: none;
+  opacity: 0.75;
+}
+
+//Events Index
+
 //User forms
 .user-form {
   margin-top: 20%;
@@ -65,14 +105,24 @@ form textarea {
   height: 100px;
 }
 
-//Map
-.coord-description {
-  width: 100%;
+//User
+.thumbnail:hover {
+  cursor: pointer;
+  opacity: 0.80;
+  box-shadow: none;
 }
 
-#map-canvas {
-  width: 100%;
-  height: 400px
+.thumbnail {
+  border: 1px solid #172C3D;
+  border-radius: 3px;
+  background-color: #ffffff;
+  color: #172C3D;
+  height: 100%;
+}
+
+.thumbnail-wrapper {
+  height: 150px;
+  margin-bottom: 30px;
 }
 
 //Single Page
@@ -96,67 +146,13 @@ nav.navbar {
   cursor: pointer;
 }
 
-//Card Card
-
-// .card:hover {
-//   cursor: pointer;
-//   box-shadow: 3px 3px 5px #888888
-// }
-//
-.thumbnail:hover {
-  cursor: pointer;
-  opacity: 0.80;
-  box-shadow: none;
-}
-
-.thumbnail {
-  border: 1px solid #172C3D;
-  border-radius: 3px;
-  background-color: #ffffff;
-
-  color: #172C3D;
-  height: 100%;
-}
-
-.row {
-  margin-right: 0px;
-  margin-left:0px;
-}
-.thumbnail-wrapper {
-  padding-right: 0;
-  padding-left: 0;
-  height: 150px;
-  background-color: black;
-}
-
-.index-item {
-  padding-right: 0;
-  padding-left: 0;
-  height: 250px;
-  background-color: black;
-}
-
-.item-card {
-  border: 1px solid #172C3D;
-  border-radius: 3px;
-  background-color: #ffffff;
-  color: #172C3D;
-  height: 100%;
-  display: block;
-}
-
-.item-card:hover{
-  cursor: pointer;
-  box-shadow: none;
-  opacity: 0.75;
-}
-
 .event-index-list, .tab-content {
   margin-bottom: 300px;
 }
 //index
 .search-main {
-  margin: 5px;
+  // margin: 5px;
+  padding-bottom: 30px;
 }
 //card item
 .card-title {
@@ -169,31 +165,11 @@ nav.navbar {
 .card-details {
   position: absolute;
   bottom: 40px;
-  left: 15px;
+  padding-left: 15px;
   color: #172C3D;
 }
 
-.disco {
-  display: block;
-  height: 75px;
-  width: 75px;
-  float: left;
-  border: 1px solid white;
-}
-
-.secrets {
-  color: grey;
-}
-
 //Index
-.main-search {
-  margin: 5px;
-}
-
-.index-search-bar {
-  padding:0;
-}
-
 .flock-show, .event-show-page {
   color: #ffffff;
 }
@@ -204,8 +180,8 @@ nav.navbar {
 
 .error {
   font-weight: 400;
+  font-size: 20px;
   color: #ffffff;
-  height: 250px;
 }
 //Event-show
 .input-text, .modal-content {

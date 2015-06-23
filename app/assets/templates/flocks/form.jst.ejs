@@ -1,6 +1,6 @@
 <% if (!edit) {%>
-<div class='index-item col-xs-12 col-sm-6 col-md-4 col-lg-3 open-form'>
-  <div class='item-card'>
+<div class='index-item-wrapper col-xs-12 col-sm-6 col-lg-4 open-form'>
+  <div class='index-item'>
     <div class="title card-title">Start a Flock</div>
   </div>
 </div>
@@ -33,9 +33,9 @@
 
           <div class='form-group'>
             <label>Date
-            <input type="text" class="flock-date form-control"
-              id="datepicker" name="flock[date]"
-              value='<%= flock.escape('date')%>'>
+            <input type="date" class="flock-date form-control"
+              name="flock[date]" value='<%= flock.escape('date')%>'
+              min='<%= minDate%>' max='<%= maxDate%>'>
             </label>
           </div>
 

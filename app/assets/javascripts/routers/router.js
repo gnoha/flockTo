@@ -92,11 +92,11 @@ FlockTo.Routers.Router = Backbone.Router.extend({
         });
         this._swapView(showView);
 
-        this.addMap({
-          collection: flock.eventFlocks(),
-          currentModel: flock,
-          eventModel: flock.eventModel()
-        });
+        // this.addMap({
+        //   collection: flock.eventFlocks(),
+        //   currentModel: flock,
+        //   eventModel: flock.eventModel()
+        // });
       }.bind(this)
     });
   },

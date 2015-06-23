@@ -21,18 +21,22 @@ FlockTo.Views.EventForm = Backbone.View.extend({
     if (this.edit) {
       id = 'editModal';
       button = 'Update Event';
-      title = 'Edit Event'
+      title = 'Edit Event';
     }
+
+    var tomorrow = new Date();
+    // tomorrow.setDate(tomorrow.getDate() + 1);
 
     var content = this.template({
       eventModel: this.model,
       edit: this.edit,
       id: id,
       button: button,
-      title: title
+      title: title,
+      minDate: tomorrow.toISOString().split("T")[0]
       });
     this.$el.html(content);
-
+    // $('.event-date').attr('min', tomorrow.toISOString().split("T")[0])
     return this;
   },
 
