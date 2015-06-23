@@ -14,7 +14,7 @@ FlockTo.Views.EventShow = Backbone.CompositeView.extend({
     this.addAttendeesIndex();
     this.addFlocksIndex();
     this.addFlockForm();
-    this.addCoordinator();
+    // this.addCoordinator();
     this.addEditForm();
   },
 
@@ -26,13 +26,13 @@ FlockTo.Views.EventShow = Backbone.CompositeView.extend({
     this.addSubview('.attendees-index', this._attendeesIndex);
   },
 
-  addCoordinator: function () {
-    var coord = this.users.getOrFetch(this.model.get('coordinator_id'));
-    var coordView = new FlockTo.Views.UsersIndexItem({
-      model: coord
-    });
-    this.addSubview('.coordinator', coordView);
-  },
+  // addCoordinator: function () {
+  //   var coord = this.users.getOrFetch(this.model.get('coordinator_id'));
+  //   var coordView = new FlockTo.Views.UsersIndexItem({
+  //     model: coord
+  //   });
+  //   this.addSubview('.coordinator', coordView);
+  // },
 
   addEditForm: function () {
     if (this.isCoord()) {
@@ -100,8 +100,10 @@ FlockTo.Views.EventShow = Backbone.CompositeView.extend({
   },
 
   render: function () {
+    var coordinator = this.model.coordinator();
     var content = this.template({
       eventModel: this.model,
+      coordinator: coordinator,
       coord: this.isCoord()
       });
     this.$el.html(content);

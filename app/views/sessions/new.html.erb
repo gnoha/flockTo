@@ -1,39 +1,57 @@
-<div class='row'>
-  <div class='col-xs-6 col-xs-offset-3'>
-    <form class= 'user-form' action="<%= session_url%>" method="POST">
-      <input type="hidden" name="authenticity_token"
-             value="form_authenticity_token">
+<div class='container-fluid'>
+  <div class='row landing'>
+    <div class='user-form-wrapper col-xs-4 col-xs-offset-1'>
+    <div class='panel panel-default'>
+      <div class='panel-body'>
+        <form class= 'user-form' action="<%= session_url%>" method="POST">
+          <input type="hidden" name="authenticity_token"
+                 value="form_authenticity_token">
 
-      <div class='form-group'>
-        <label class='col-xs-offset-1'><h1>Sign In</h1></label>
-        <ul class="errors">
-          <% if flash[:errors]               %>
-          <label>
-          <%  flash[:errors].each do |error| %>
-              <li> <%= error %></li>
-          <%  end                            %>
-          </label>
-          <% end                             %>
-        </ul>
+          <div class='form-group'>
+            <label><h1>Sign In</h1></label>
+            <ul class="errors">
+              <% if flash[:errors]               %>
+              <label>
+              <%  flash[:errors].each do |error| %>
+                  <li> <%= error %></li>
+              <%  end                            %>
+              </label>
+              <% end                             %>
+            </ul>
+          </div>
+
+          <div class='form-group'>
+            <label class="username-input">Username
+              <input type="text" class='form-control' name=user[username] placeholder="Username">
+            </label>
+          </div>
+
+          <div class='form-group'>
+            <label class="password-input">Password
+              <input type="password" class='form-control' name=user[password] placeholder="Password">
+            </label>
+          </div>
+
+          <div class='form-group'>
+            <input class='btn btn-sm btn-primary pull-right' type="submit" value="Sign In">
+          </div>
+        </form>
       </div>
 
-      <div class='form-group row'>
-        <label class="username-input col-xs-3 col-xs-offset-1 title">Username</label>
-          <input class='col-xs-6 input-lg' type="text" name=user[username] placeholder="Username">
+      <div class='panel-footer'>
+        <a><%= link_to "Haven't Signed Up? Sign Up Here", new_user_url %></a>
       </div>
+    </div>
+    </div>
 
-      <div class='form-group row'>
-        <label class="password-input col-xs-3 col-xs-offset-1 title">Password</label>
-          <input class='col-xs-6 input-lg' type="password" name=user[password] placeholder="Password">
+    <div class='jumbo-wrapper col-xs-6'>
+      <div class="jumbotron">
+        <h2>Why fly solo when you can flock?</h2>
+        <p>Join a flock and travel with your neighbors to attend an event.</p>
+        <p>BUT WHY STOP THERE?</p>
+        <p>Join other flocks along the way and arrive at your desitination
+           as an unstoppable force... a community</p>
       </div>
-
-      <div class='form-group row'>
-        <input class='col-xs-3 col-xs-offset-4 btn-md' type="submit" value="Sign In">
-      </div>
-
-      <div class='form-group row'>
-        <a class='col-xs-offset-4'><%= link_to "Sign Up Here.", new_user_url %></a>
-      </div>
-    </form>
+    </div>
   </div>
 </div>

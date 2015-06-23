@@ -81,6 +81,7 @@ FlockTo.Routers.Router = Backbone.Router.extend({
   },
 
   showFlock: function(id) {
+    this._mapview && this._mapview.remove();
     var currentUser = this.users.getOrFetch(CURRENT_USER_ID);
     var flock = this.flocks.getOrFetch(id);
     flock.fetch({

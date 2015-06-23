@@ -92,19 +92,24 @@ textarea.form-control {
 //Events Index
 
 //User forms
-.user-form {
-  margin-top: 20%;
-  border-radius: 3px;
+.landing {
+  padding-top: 10%;
 }
-
-.user-form label {
-  color: #ffffff;
+.user-form {
+  border-radius: 3px;
+  background-color: #ffffff;
+  color: #172C3D;
 }
 
 form textarea {
   height: 100px;
 }
 
+.jumbotron {
+  background: none;
+  color: #ffffff;
+  padding-top: 0;
+}
 //User
 .thumbnail:hover {
   cursor: pointer;

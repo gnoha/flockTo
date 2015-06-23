@@ -98,10 +98,11 @@ FlockTo.Views.FlockShow = Backbone.CompositeView.extend({
   },
 
   render: function() {
-    var coord = this.model.coordinator();
+    var coordinator = this.model.coordinator();
     var content = this.template({
       flock: this.model,
-      coord: coord
+      coordinator: coordinator,
+      coord: this.isCoord(),
       });
     this.$el.html(content);
     this.attachSubviews();

@@ -1,15 +1,16 @@
 <div class='row'>
-  <div class='col-xs-12'>
-    <div class='event-info'>
+  <div class='event-info'>
+    <div class='col-xs-9'>
       <h1 class="title"><%= eventModel.escape('title')%></h1>
       <%= eventModel.escape('location')%>
       <%= eventModel.escape('date')%>
       <p><%= eventModel.escape('description')%></p>
-
+    </div>
+    <div class='col-xs-3'>
       <label class='coord-description'>Coordinator
-        <div class="coordinator"></div>
+        <a href='#/users/<%= coord.id%>'><%= coordinator.escape('username')%></a>
       </label>
-
+    </div>
     </div>
   </div>
 </div>
@@ -17,6 +18,7 @@
   <form class='search-form'>
     <label>Search for flocks within
       <select name="distance">
+        <option value=50>25</option>
         <option value=50>50</option>
         <option value=100>100</option>
         <option value=200 selected>200</option>
@@ -25,7 +27,7 @@
       </select>
       miles of
       <input class='input-text' type='text' name='current_location'>
-      <button class='location-query btn btn-sm'>Search</button>
+      <button class='location-query btn btn-sm btn-primary'>Search</button>
     </label>
   </form>
 </div>
