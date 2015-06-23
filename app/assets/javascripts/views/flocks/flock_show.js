@@ -33,14 +33,6 @@ FlockTo.Views.FlockShow = Backbone.CompositeView.extend({
     this.addSubview('.join-button', this._button);
   },
 
-  // addCoordinator: function () {
-  //   var coord = this.users.getOrFetch(this.model.get('coordinator_id'));
-  //   var coordView = new FlockTo.Views.UsersIndexItem({
-  //     model: coord
-  //   });
-  //   this.addSubview('.coordinator', coordView);
-  // },
-
   addEditForm: function () {
     if (this.isCoord()) {
       var formView = new FlockTo.Views.FlockForm({

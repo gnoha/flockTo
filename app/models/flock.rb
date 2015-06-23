@@ -18,15 +18,6 @@ class Flock < ActiveRecord::Base
 
   geocoded_by :location
 
-  # reverse_geocoded_by :latitude, :longitude do |obj, results|
-  #   if geo = results.first
-  #     if results.state
-  #       obj.location = results.city + "," + results.state + "," + results.country
-  #     else
-  #       obj.location = results.city + "," + results.country
-  #     end
-  #   end
-  # end
 
   after_validation :geocode, if: :location_changed?
   # after_validation :reverse_geocode, if: :geocode
