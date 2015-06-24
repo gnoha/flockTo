@@ -50,6 +50,6 @@ class Flock < ActiveRecord::Base
   end
 
   def num_attendees
-    attendees.count
+    attendees.length
   end
 end

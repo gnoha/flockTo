@@ -11,7 +11,7 @@ FlockTo.Views.FlocksIndex = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    console.log('render')
+    // console.log('hi');
     var content = this.template();
     this.$el.html(content);
     this.attachSubviews();

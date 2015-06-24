@@ -77,7 +77,7 @@ FlockTo.Routers.Router = Backbone.Router.extend({
 
         this._swapView(showView);
       }.bind(this)
-    })
+    });
   },
 
   showFlock: function(id) {

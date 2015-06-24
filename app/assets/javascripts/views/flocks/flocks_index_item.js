@@ -8,7 +8,7 @@ FlockTo.Views.FlocksIndexItem = Backbone.View.extend({
   },
 
   initialize: function () {
-    this.listenTo(this.model, 'sync', this.render);
+    this.listenTo(this.model, 'change', this.render);
   },
 
   navToFlock: function (event) {
@@ -17,6 +17,7 @@ FlockTo.Views.FlocksIndexItem = Backbone.View.extend({
   },
 
   render: function () {
+    // console.log('index_item')
     var content = this.template({ flock: this.model });
     this.$el.html(content);
     this.$el.attr('data-id', this.model.get('id'));
