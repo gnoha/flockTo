@@ -92,12 +92,6 @@ FlockTo.Routers.Router = Backbone.Router.extend({
           currentUser: currentUser
         });
         this._swapView(showView);
-
-        // this.addMap({
-        //   collection: flock.eventFlocks(),
-        //   currentModel: flock,
-        //   eventModel: flock.eventModel()
-        // });
       }.bind(this)
     });
   },

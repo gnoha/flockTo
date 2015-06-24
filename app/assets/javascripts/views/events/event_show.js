@@ -10,11 +10,10 @@ FlockTo.Views.EventShow = Backbone.CompositeView.extend({
 
   initialize: function (options) {
     this.users = options.users;
-    this.listenTo(this.model, 'sync change', this.render);
+    this.listenTo(this.model, 'sync', this.render);
     this.addAttendeesIndex();
     this.addFlocksIndex();
     this.addFlockForm();
-    // this.addCoordinator();
     this.addEditForm();
   },
 
@@ -25,14 +24,6 @@ FlockTo.Views.EventShow = Backbone.CompositeView.extend({
     });
     this.addSubview('.attendees-index', this._attendeesIndex);
   },
-
-  // addCoordinator: function () {
-  //   var coord = this.users.getOrFetch(this.model.get('coordinator_id'));
-  //   var coordView = new FlockTo.Views.UsersIndexItem({
-  //     model: coord
-  //   });
-  //   this.addSubview('.coordinator', coordView);
-  // },
 
   addEditForm: function () {
     if (this.isCoord()) {
@@ -111,15 +102,4 @@ FlockTo.Views.EventShow = Backbone.CompositeView.extend({
     // this.setDatePicker();
     return this;
   }
-  //
-  // setDatePicker: function () {
-  //   var date = new Date(this.model.get('date'))
-  //
-  //   this.$('#datepicker').removeClass("hasDatepicker").datepicker({
-  //     dateFormat: "yy-mm-dd",
-  //     minDate: '+1d',
-  //     maxDate: date,
-  //     defaultDate: +1
-  //   });
-  // }
 });

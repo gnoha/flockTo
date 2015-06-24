@@ -9,7 +9,6 @@ FlockTo.Views.FlockShow = Backbone.CompositeView.extend({
     this.listenTo(this.model, 'sync', this.render);
     this.addAttendeesIndex();
     this.addButton();
-    // this.addCoordinator();
     this.addEditForm();
     this.addFlocksIndex();
     this.addNewForm();
@@ -86,7 +85,7 @@ FlockTo.Views.FlockShow = Backbone.CompositeView.extend({
   },
 
   isCoord: function () {
-    return CURRENT_USER_ID === this.model.get('coordinator_id')
+    return CURRENT_USER_ID === this.model.get('coordinator_id');
   },
 
   render: function() {
@@ -98,16 +97,6 @@ FlockTo.Views.FlockShow = Backbone.CompositeView.extend({
       });
     this.$el.html(content);
     this.attachSubviews();
-    // this.setDatePicker();
     return this;
   }
-  //
-  // setDatePicker: function () {
-  //   var date = new Date(this.model.get('date'))
-  //   this.$('#datepicker').removeClass("hasDatepicker").datepicker({
-  //     dateFormat: "yy-mm-dd",
-  //     minDate: '+1d',
-  //     maxDate: date
-  //   });
-  // }
 });

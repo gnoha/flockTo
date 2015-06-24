@@ -9,5 +9,5 @@ json.flocks @event.flocks do |flock|
 end
 
 json.attendees @event.attendees do |attendee|
-  json.extract! attendee, :id, :username, :bio
+  json.extract! attendee, :id, :username
 end
