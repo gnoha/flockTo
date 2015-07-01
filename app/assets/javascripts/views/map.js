@@ -14,6 +14,12 @@ FlockTo.Views.MapShow = Backbone.View.extend({
 
   addMarker: function (meeting, isEvent) {
     if (this._markers[meeting.id] && !isEvent) { return; }
+
+    var url = '#/flocks/' + meeting.id + '>' + 'Flock Details';
+
+    if (isEvent === true) {
+      url = '#/events/' + meeting.id + '>' + 'Event Details';
+    }
     var view = this;
     var marker = new google.maps.Marker({
       position: new google.maps.LatLng(meeting.get('latitude'), meeting.get('longitude')),
@@ -27,7 +33,9 @@ FlockTo.Views.MapShow = Backbone.View.extend({
         strokeOpacity: 0.5,
         strokeWeight: 1
       },
-      title: meeting.get('title')
+      title: meeting.get('title'),
+      location: meeting.get('location'),
+      url: url
     });
 
     google.maps.event.addListener(marker, 'click', function (e) {
@@ -46,7 +54,7 @@ FlockTo.Views.MapShow = Backbone.View.extend({
   drawLine: function (model) {
     var endpoints = []
     if (model.get('parent_id')) {
-      var parent = this.collection.getOrFetch(model.get('parent_id'));
+      var parent = this.collection.get(model.get('parent_id'));
       endpoints = [
         new google.maps.LatLng(model.get('latitude'), model.get('longitude')),
         new google.maps.LatLng(parent.get('latitude'), parent.get('longitude'))
@@ -77,7 +85,7 @@ FlockTo.Views.MapShow = Backbone.View.extend({
   },
 
   indexZoom: function () {
-    return (!this.isIndex) ? 5 : 2;
+    return (!this.isIndex) ? 2 : 2;
   },
 
 
@@ -141,8 +149,14 @@ FlockTo.Views.MapShow = Backbone.View.extend({
   },
 
   showMarkerInfo: function (e, marker) {
+    var contentString = '<div id="marker-content">' +
+    '<h3>' + marker.title + '</h3>' +
+    '<p>' + marker.location + '</p>' +
+    '<a href=' + marker.url + '</a>' +
+    '</div>';
+
     var infoWindow = new google.maps.InfoWindow({
-      content: marker.title
+      content: contentString
     });
 
     infoWindow.open(this._map, marker);

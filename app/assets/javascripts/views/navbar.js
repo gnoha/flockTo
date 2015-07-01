@@ -13,7 +13,7 @@ FlockTo.Views.Navbar = Backbone.View.extend({
 
   render: function () {
     var content = this.template({
-      current_user: this.model
+      currentUser: this.model
     });
     this.$el.html(content);
 
@@ -42,6 +42,10 @@ FlockTo.Views.Navbar = Backbone.View.extend({
         var view = new FlockTo.Views.EventsIndex({
           collection: response
         });
+        this.router.addMap({
+          collection: response,
+          index: true
+        })
         this.router._swapView(view);
       }.bind(this)
     });

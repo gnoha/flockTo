@@ -8,7 +8,13 @@ module Api
     end
 
     def show
-      @flock = Flock.find(params[:id])
+      @flock = Flock.includes(:coordinator, :event, :attendees,
+                              event_flocks: [:attendings]).find(params[:id])
+      @flock.event.num_attendees = @flock.event.attendees.length
+      @flock.num_attendees = @flock.attendees.length
+      @flock.event_flocks.each do |flock|
+        flock.num_attendees = flock.attendings.length
+      end
     end
 
     def create

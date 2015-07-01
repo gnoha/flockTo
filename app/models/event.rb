@@ -6,6 +6,8 @@ class Event < ActiveRecord::Base
 
   after_validation :geocode
 
+  attr_accessor :num_attendees
+
   has_many :flocks
 
   has_many(:attendees,
@@ -20,10 +22,6 @@ class Event < ActiveRecord::Base
     Event.find_by_sql(["
       SELECT *
       FROM events
-      WHERE Title LIKE ?", "%#{query}%"])
-  end
-
-  def num_attendees
-    attendees.count
+      WHERE UPPER(Title) LIKE ?", "%#{query.upcase}%"])
   end
 end

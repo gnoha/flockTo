@@ -6,7 +6,7 @@ class Flock < ActiveRecord::Base
   validate :meets_before_event, on: [:create, :update]
   validate :meets_before_parent_flock, on: [:create, :update]
 
-  attr_accessor :search_distance, :searched_location
+  attr_accessor :search_distance, :searched_location, :num_attendees
 
   has_many(:subflocks,
            class_name: 'Flock',
@@ -29,6 +29,10 @@ class Flock < ActiveRecord::Base
 
   belongs_to :event
 
+  has_many(:event_flocks,
+            through: :event,
+            source: :flocks)
+
   has_many :attendings
 
   has_many(:attendees,
@@ -47,9 +51,5 @@ class Flock < ActiveRecord::Base
         errors.add(:date, "The new flock cannot meet up with this flock")
       end
     end
-  end
-
-  def num_attendees
-    attendees.length
   end
 end

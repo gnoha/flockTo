@@ -5,14 +5,24 @@ module Api
 
     def index
       if params[:search]
-        @events = Event.search_for(params[:search][:event])
+        @events = Event.includes(:attendees).search_for(params[:search][:event])
+        # @events.each do |event|
+        #   event.num_attendees = event.attendees.length
+        # end
       else
-        @events = Event.all.order(:date)
+        @events = Event.includes(:attendees).all.order(:date)
       end
+        @events.each do |event|
+          event.num_attendees = event.attendees.length
+        end
     end
 
     def show
-      @event = Event.find(params[:id])
+      @event = Event.includes(:flocks, :coordinator, :attendees).find(params[:id])
+      @event.num_attendees = @event.attendees.length
+      @event.flocks.each do |flock|
+        flock.num_attendees = flock.attendees.length
+      end
     end
 
     def create

@@ -5,6 +5,7 @@ FlockTo.Routers.Router = Backbone.Router.extend({
     this.events = options.events;
     this.flocks = options.flocks;
     this.users = options.users;
+    this.currentUser = this.users.getOrFetch(CURRENT_USER_ID);
     if (window.CURRENT_USER_ID) {
       this.navbar();
     }
@@ -51,49 +52,43 @@ FlockTo.Routers.Router = Backbone.Router.extend({
   },
 
   navbar: function () {
-    var currentUser = this.users.getOrFetch(CURRENT_USER_ID);
     var nav = new FlockTo.Views.Navbar({
-      model: currentUser,
+      model: this.currentUser,
       router: this
     });
     $('#navbar').html(nav.render().$el);
   },
 
   showEvent: function (id) {
-    var eventModel = this.events.getOrFetch(id);
-    eventModel.fetch({
-      success: function () {
-        var showView = new FlockTo.Views.EventShow({
-          model: eventModel,
-          collection: this.events,
-          users: this.users
-        });
+    var eventModel = this.events.getOrFetch(id, function () {
+      var showView = new FlockTo.Views.EventShow({
+        model: eventModel,
+        collection: this.events,
+        users: this.users,
+        isIndex: true
+      });
 
-        this.addMap({
-          collection: eventModel.flocks(),
-          eventModel: eventModel,
-          currentModel: eventModel,
-        });
+      this.addMap({
+        collection: eventModel.flocks(),
+        eventModel: eventModel,
+        currentModel: eventModel,
+      });
 
-        this._swapView(showView);
-      }.bind(this)
-    });
+      this._swapView(showView);
+    }.bind(this));
   },
 
   showFlock: function(id) {
     this._mapview && this._mapview.remove();
-    var currentUser = this.users.getOrFetch(CURRENT_USER_ID);
-    var flock = this.flocks.getOrFetch(id);
-    flock.fetch({
-      success: function () {
-        var showView = new FlockTo.Views.FlockShow({
-          model: flock,
-          users: this.users,
-          currentUser: currentUser
-        });
-        this._swapView(showView);
-      }.bind(this)
-    });
+    // var currentUser = this.users.getOrFetch(CURRENT_USER_ID);
+    var flock = this.flocks.getOrFetch(id, function () {
+      var showView = new FlockTo.Views.FlockShow({
+        model: flock,
+        users: this.users,
+        currentUser: this.currentUser
+      });
+      this._swapView(showView);
+    }.bind(this));
   },
 
   showUser: function(id) {

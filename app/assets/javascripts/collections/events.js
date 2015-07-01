@@ -9,21 +9,26 @@ FlockTo.Collections.Events = Backbone.Collection.extend({
     return date.getTime();
   },
 
-  getOrFetch: function (id) {
+  getOrFetch: function (id, callback) {
     var collection = this;
     var model = this.get(id);
 
     if (model) {
-      model.fetch();
+      model.fetch({
+        success: function () {
+          callback();
+        }
+      });
     } else {
       model = new FlockTo.Models.Event({ id: id });
       model.fetch({
         success: function () {
           collection.add(model);
+          callback();
         }
       });
     }
 
-    return model
+    return model;
   }
 });
