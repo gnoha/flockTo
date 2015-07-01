@@ -5,8 +5,8 @@ FlockTo.Routers.Router = Backbone.Router.extend({
     this.events = options.events;
     this.flocks = options.flocks;
     this.users = options.users;
-    this.currentUser = this.users.getOrFetch(CURRENT_USER_ID);
     if (window.CURRENT_USER_ID) {
+      this.currentUser = this.users.getOrFetch(CURRENT_USER_ID);
       this.navbar();
     }
   },

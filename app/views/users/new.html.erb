@@ -36,6 +36,16 @@
               <input type="submit" class='btn btn-sm btn-primary pull-right' value="Sign Up">
             </div>
           </form>
+
+          <form class= 'guest-user-form' action="<%= users_url%>" method="POST">
+            <input type="hidden" name="authenticity_token"
+                   value="form_authenticity_token">
+            <input type="hidden" class='form-control' name=user[username] value='<%= Faker::Internet.user_name%>'>
+            <input type="hidden" class='form-control' name=user[password] value="password">
+            <div class='form-group'>
+              <input class='btn btn-sm btn-primary pull-left' type="submit" value="Guest">
+            </div>
+          </form>
         </div>
         <div class='panel-footer'>
           <a><%= link_to "Already signed Up? Sign In Here", new_session_url %></a>
@@ -46,7 +56,7 @@
     <div class='jumbo-wrapper col-xs-6'>
       <div class="jumbotron">
         <h2>Why fly solo when you can flock?</h2>
-        <p>Join a flock and travel with your neighbors to attend an event.</p>
+        <p>Join a flock. Attend an event with your flock.</p>
         <p>BUT WHY STOP THERE?</p>
         <p>Join other flocks along the way and arrive at your desitination
            as an unstoppable force...</p>

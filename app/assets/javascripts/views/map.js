@@ -85,7 +85,7 @@ FlockTo.Views.MapShow = Backbone.View.extend({
   },
 
   indexZoom: function () {
-    return (!this.isIndex) ? 2 : 2;
+    return (!this.isIndex) ? 4 : 2;
   },
 
 
@@ -135,7 +135,9 @@ FlockTo.Views.MapShow = Backbone.View.extend({
     this._map.setMapTypeId('map_style');
 
 
-    this.collection.each(this.addMarker.bind(this));
+    this.collection.each(function (model) {
+      this.addMarker(model, true);
+    }.bind(this));
     if (!this.isIndex) {
       this.addMarker(this.eventModel, true);
       this.collection.each(this.addLines.bind(this));
