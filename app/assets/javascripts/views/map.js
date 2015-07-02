@@ -79,24 +79,26 @@ FlockTo.Views.MapShow = Backbone.View.extend({
   },
 
   findProp: function (attendees) {
-    if (!this.index) {
-      var maxAttendees = this.eventModel.attendees
-      if (attendees > (maxAttendees * 0.8)) {
-        return 18
-      } else if (attendees > (maxAttendees * 0.6)) {
-        return 16
-      } else if (attendees > (maxAttendees * 0.4)) {
-        return 5
-      } else if (attendees > (maxAttendees * 0.2)) {
-        return 5
+    if (!this.isIndex) {
+      var maxAttendees = this.eventModel.attendees().length;
+      if (attendees > (maxAttendees * 0.5)) {
+        return 15;
+      } else if (attendees > (maxAttendees * 0.3)) {
+        return 10;
+      } else if (attendees > (maxAttendees * 0.1)) {
+        return 8;
+      } else if (attendees > (maxAttendees * 0.05)) {
+        return 6;
       } else {
-        return
+        return 4;
       }
+    } else {
+      return 20
     }
-    var proportion = Math.pow(1.618, attendees);
-    var newRad = proportion * this.scale;
-    // var tempScaled = proportion / 2;
-    return newRad <= 5 ? 5 : newRad;
+    // var proportion = Math.pow(1.618, attendees);
+    // var newRad = proportion * this.scale;
+    // // var tempScaled = proportion / 2;
+    // return newRad <= 5 ? 5 : newRad;
   },
 
   indexZoom: function () {
