@@ -1,4 +1,4 @@
-<div class='row'>
+<div class='row info-map'>
   <div class='col-xs-6'>
     <div class='event-info'>
       <h1 class="title"><%= flock.escape('title')%></h1>
@@ -39,7 +39,7 @@
     <li role='presentation'><a href='#/flocks/<%= flock.escape('parent_id')%>'
         role='tab'>Meet Up With...</a></li>
     <% }%>
-    <li role='presentation' class='pull-right'><a aria-controls='join-flock'
+    <li role='presentation' class='pull-right'><a  class='join-flock' aria-controls='join-flock'
         role='tab'><div class='join-button'></div></a></li>
     <% if (coord) {%>
     <li role='presentation' class='open-edit-modal'><a aria-controls='edit-flock'

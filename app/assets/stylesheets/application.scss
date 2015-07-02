@@ -178,8 +178,13 @@ nav.navbar {
 }
 
 //Index
-.flock-show, .event-show-page {
+.flock-show, .event-show-page, .user-content, .no-back {
   color: #ffffff;
+}
+
+.index-label {
+  font-size: 24px;
+  font-weight: 400;
 }
 
 .user-content {
@@ -194,4 +199,16 @@ nav.navbar {
 //Event-show
 .input-text, .modal-content {
   color: #172C3D;
+}
+
+
+//Flock-show
+.join-flock {
+  border: 1px solid white;
+  color: #172C3D;
+  background-color: #ffffff;
+}
+
+.info-map {
+  padding-bottom: 15px;
 }

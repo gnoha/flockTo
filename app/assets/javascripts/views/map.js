@@ -10,16 +10,17 @@ FlockTo.Views.MapShow = Backbone.View.extend({
     this.isIndex = options.isIndex;
     this.listenTo(this.collection, 'add', this.addMarker);
     this.listenTo(this.collection, 'remove', this.removeMarker);
+    // this.scale = 20 / Math.pow(1.618, this.eventModel.num_attendees);
   },
 
   addMarker: function (meeting, isEvent) {
     if (this._markers[meeting.id] && !isEvent) { return; }
 
     var url = '#/flocks/' + meeting.id + '>' + 'Flock Details';
-
     if (isEvent === true) {
       url = '#/events/' + meeting.id + '>' + 'Event Details';
     }
+
     var view = this;
     var marker = new google.maps.Marker({
       position: new google.maps.LatLng(meeting.get('latitude'), meeting.get('longitude')),
@@ -78,10 +79,24 @@ FlockTo.Views.MapShow = Backbone.View.extend({
   },
 
   findProp: function (attendees) {
+    if (!this.index) {
+      var maxAttendees = this.eventModel.attendees
+      if (attendees > (maxAttendees * 0.8)) {
+        return 18
+      } else if (attendees > (maxAttendees * 0.6)) {
+        return 16
+      } else if (attendees > (maxAttendees * 0.4)) {
+        return 5
+      } else if (attendees > (maxAttendees * 0.2)) {
+        return 5
+      } else {
+        return
+      }
+    }
     var proportion = Math.pow(1.618, attendees);
-    var x = proportion/20;
-    var tempScaled = proportion / 2;
-    return tempScaled >= 20 ? 20 : tempScaled;
+    var newRad = proportion * this.scale;
+    // var tempScaled = proportion / 2;
+    return newRad <= 5 ? 5 : newRad;
   },
 
   indexZoom: function () {

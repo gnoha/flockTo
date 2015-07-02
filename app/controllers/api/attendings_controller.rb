@@ -19,7 +19,11 @@ module Api
 
     def destroy
       @attending = Attending.find(params[:id])
+      flock = @attending.flock
       @attending.destroy
+      if Attending.find_by_flock_id(flock.id).nil?
+        flock.destroy
+      end
       render json: {}
     end
   end
