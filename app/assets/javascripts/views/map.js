@@ -10,7 +10,6 @@ FlockTo.Views.MapShow = Backbone.View.extend({
     this.isIndex = options.isIndex;
     this.listenTo(this.collection, 'add', this.addMarker);
     this.listenTo(this.collection, 'remove', this.removeMarker);
-    // this.scale = 20 / Math.pow(1.618, this.eventModel.num_attendees);
   },
 
   addMarker: function (meeting, isEvent) {
@@ -53,7 +52,7 @@ FlockTo.Views.MapShow = Backbone.View.extend({
   },
 
   drawLine: function (model) {
-    var endpoints = []
+    var endpoints = [];
     if (model.get('parent_id')) {
       var parent = this.collection.get(model.get('parent_id'));
       endpoints = [
@@ -80,7 +79,7 @@ FlockTo.Views.MapShow = Backbone.View.extend({
 
   findProp: function (attendees) {
     if (!this.isIndex) {
-      var maxAttendees = this.eventModel.attendees().length;
+      var maxAttendees = this.eventModel.get('num_attendees');
       if (attendees > (maxAttendees * 0.5)) {
         return 15;
       } else if (attendees > (maxAttendees * 0.3)) {
@@ -152,11 +151,13 @@ FlockTo.Views.MapShow = Backbone.View.extend({
     this._map.setMapTypeId('map_style');
 
 
-    this.collection.each(function (model) {
-      this.addMarker(model, true);
-    }.bind(this));
-    if (!this.isIndex) {
+    if (this.isIndex) {
+      this.collection.each(function (model) {
+        this.addMarker(model, true);
+      }.bind(this));
+    } else if (!this.isIndex) {
       this.addMarker(this.eventModel, true);
+      this.collection.each(this.addMarker.bind(this));
       this.collection.each(this.addLines.bind(this));
     }
   },
