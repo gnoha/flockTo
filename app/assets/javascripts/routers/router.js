@@ -2,6 +2,7 @@ FlockTo.Routers.Router = Backbone.Router.extend({
   initialize: function (options) {
     this.$rootEl = options.$el;
     this.$map = options.$map;
+    this.$auxEl = options.$auxEl;
     this.events = options.events;
     this.flocks = options.flocks;
     this.users = options.users;
@@ -46,7 +47,7 @@ FlockTo.Routers.Router = Backbone.Router.extend({
           index: true
         });
 
-        this._swapView(indexView);
+        this._swapView(indexView, this.$rootEl);
       }.bind(this)
     });
   },
@@ -74,33 +75,32 @@ FlockTo.Routers.Router = Backbone.Router.extend({
         currentModel: eventModel,
       });
 
-      this._swapView(showView);
+      this._swapView(showView, this.$rootEl);
     }.bind(this));
   },
 
   showFlock: function(id) {
     this._mapview && this._mapview.remove();
-    // var currentUser = this.users.getOrFetch(CURRENT_USER_ID);
     var flock = this.flocks.getOrFetch(id, function () {
       var showView = new FlockTo.Views.FlockShow({
         model: flock,
         users: this.users,
         currentUser: this.currentUser
       });
-      this._swapView(showView);
+      this._swapView(showView, this.$auxEl);
     }.bind(this));
   },
 
   showUser: function(id) {
     var user = this.users.getOrFetch(id);
     var showView = new FlockTo.Views.UserShow({ model: user });
-    this._swapView(showView);
+    this._swapView(showView, this.$auxEl);
   },
 
-  _swapView: function (view) {
+  _swapView: function (view, $el) {
     this._currentView && this._currentView.remove();
     this._currentView = view;
-    this.$rootEl.html(view.$el);
+    $el.html(view.$el);
     view.render();
   }
 });

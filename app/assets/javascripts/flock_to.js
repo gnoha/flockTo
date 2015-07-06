@@ -8,6 +8,7 @@ window.FlockTo = {
     var router = new FlockTo.Routers.Router({
       $el: $('#main'),
       $map: $('#map-container'),
+      $auxEl: $('#auxiliary'),
       events: new FlockTo.Collections.Events(),
       flocks: new FlockTo.Collections.Flocks(),
       users: new FlockTo.Collections.Users(),

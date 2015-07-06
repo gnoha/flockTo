@@ -1,6 +1,6 @@
 FlockTo.Views.MapShow = Backbone.View.extend({
   attributes: {
-    id: 'map-canvas'
+    id: this.id
   },
 
   initialize: function (options) {
@@ -8,6 +8,7 @@ FlockTo.Views.MapShow = Backbone.View.extend({
     this.currentModel = options.currentModel;
     this.eventModel = options.eventModel;
     this.isIndex = options.isIndex;
+    this.id = 'map-canvas';
     this.listenTo(this.collection, 'add', this.addMarker);
     this.listenTo(this.collection, 'remove', this.removeMarker);
   },

@@ -1,7 +1,7 @@
 FlockTo.Views.FlocksIndexItem = Backbone.View.extend({
   template: JST['flocks/index_item'],
 
-  className: 'flocks-index-item index-item-wrapper col-xs-12 col-sm-6 col-lg-4',
+  className: 'flocks-index-item index-item-wrapper col-xs-12',
 
   events: {
     'click' : 'navToFlock'

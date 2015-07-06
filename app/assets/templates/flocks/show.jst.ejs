@@ -1,64 +1,68 @@
 <div class='row info-map'>
   <div class='col-xs-6'>
-    <div class='event-info'>
-      <h1 class="title"><%= flock.escape('title')%></h1>
-      <div class='row'>
-        <div class='col-xs-4'>Meeting Place:</div>
-        <div class='col-xs-8'><%= flock.escape('location')%></div>
-      </div>
-      <div class='row'>
-        <div class='col-xs-4'>Meeting Date:</div>
-        <div class='col-xs-8'><%= flock.escape('date')%></div>
-      </div>
-      <div class='row'>
-        <div class='col-xs-4'>Coordinator:</div>
-        <div class='col-xs-8'>
-          <a href='#/users/<%= coordinator.id%>'><%= coordinator.escape('username')%></a>
+    <div role='tabpanel'>
+      <ul class='nav nav-tabs' role='tablist'>
+        <li role='presentation' class='active'><a href="#info"
+            aria-controls='flocks' role='tab' data-toggle='tab'>Flock Details</a></li>
+        <li role='presentation'><a href="#flocks"
+            aria-controls='flocks' role='tab' data-toggle='tab'>Flocks</a></li>
+        <li role='presentation'><a href='#attending' aria-controls='attending'
+            role='tab' data-toggle='tab'>Attending</a></li>
+        <li role='presentation'><a href='#/events/<%= flock.escape('event_id')%>'
+            role='tab'>Event Page</a></li>
+        <% if (flock.escape('parent_id')) {%>
+        <li role='presentation'><a href='#/flocks/<%= flock.escape('parent_id')%>'
+            role='tab'>Meet Up With...</a></li>
+        <% }%>
+        <% if (coord) {%>
+        <li role='presentation' class='open-edit-modal'><a aria-controls='edit-flock'
+            role='tab'><div class='edit-form-container'></div></a></li>
+        <%}%>
+      </ul>
+
+      <div class='tab-content clearfix'>
+        <div role='tabpanel' class='tab-pane active' id='info'>
+          <div class='row'>
+            <div class='col-xs-6'>
+              <div class='event-info'>
+                <h1 class="title"><%= flock.escape('title')%></h1>
+                <div class='row'>
+                  <div class='col-xs-4'>Meeting Place:</div>
+                  <div class='col-xs-8'><%= flock.escape('location')%></div>
+                </div>
+                <div class='row'>
+                  <div class='col-xs-4'>Meeting Date:</div>
+                  <div class='col-xs-8'><%= flock.escape('date')%></div>
+                </div>
+                <div class='row'>
+                  <div class='col-xs-4'>Coordinator:</div>
+                  <div class='col-xs-8'>
+                    <a href='#/users/<%= coordinator.id%>'><%= coordinator.escape('username')%></a>
+                  </div>
+                </div>
+                <br>
+                <p><%= flock.escape('description')%></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div role='tabpanel' class='tab-pane' id='flocks'>
+          <div class='row'>
+            <div class="subflock-form"></div>
+            <div class="sub-flocks-index"></div>
+          </div>
+        </div>
+
+        <div role='tabpanel' class='tab-pane' id='attending'>
+          <div class='row'>
+            <div class="attendees-index"></div>
+          </div>
         </div>
       </div>
-      <br>
-      <p><%= flock.escape('description')%></p>
-
-
     </div>
   </div>
   <div class='col-xs-6'>
     <div id='flock-map-container'></div>
-  </div>
-</div>
-
-<div role='tabpanel'>
-  <ul class='nav nav-tabs' role='tablist'>
-    <li role='presentation' class='active'><a href="#flocks"
-        aria-controls='flocks' role='tab' data-toggle='tab'>Flocks</a></li>
-    <li role='presentation'><a href='#attending' aria-controls='attending'
-        role='tab' data-toggle='tab'>Attending</a></li>
-    <li role='presentation'><a href='#/events/<%= flock.escape('event_id')%>'
-        role='tab'>Event Page</a></li>
-    <% if (flock.escape('parent_id')) {%>
-    <li role='presentation'><a href='#/flocks/<%= flock.escape('parent_id')%>'
-        role='tab'>Meet Up With...</a></li>
-    <% }%>
-    <li role='presentation' class='pull-right'><a  class='join-flock' aria-controls='join-flock'
-        role='tab'><div class='join-button'></div></a></li>
-    <% if (coord) {%>
-    <li role='presentation' class='open-edit-modal'><a aria-controls='edit-flock'
-        role='tab'><div class='edit-form-container'></div></a></li>
-    <%}%>
-  </ul>
-
-  <div class='tab-content clearfix'>
-    <div role='tabpanel' class='tab-pane active' id='flocks'>
-      <div class='row'>
-        <div class="subflock-form"></div>
-        <div class="sub-flocks-index"></div>
-      </div>
-    </div>
-
-    <div role='tabpanel' class='tab-pane' id='attending'>
-      <div class='row'>
-        <div class="attendees-index"></div>
-      </div>
-    </div>
   </div>
 </div>
