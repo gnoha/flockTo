@@ -40,12 +40,13 @@ FlockTo.Views.Navbar = Backbone.View.extend({
       reset: true,
       success: function (response) {
         var view = new FlockTo.Views.EventsIndex({
-          collection: response
+          collection: response,
+          router: this.router
         });
         this.router.addMap({
           collection: response,
           index: true
-        })
+        });
         this.router._swapView(view);
       }.bind(this)
     });

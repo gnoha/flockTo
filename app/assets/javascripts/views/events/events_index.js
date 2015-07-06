@@ -9,7 +9,7 @@ FlockTo.Views.EventsIndex = Backbone.CompositeView.extend({
   },
 
   initialize: function (options) {
-    this.router = options.router
+    this.router = options.router;
     this.listenTo(this.collection, 'sync reset', this.render);
     this.listenTo(this.collection, 'add', this.addEventCard);
     this.collection.each(this.addEventCard.bind(this));
@@ -45,16 +45,6 @@ FlockTo.Views.EventsIndex = Backbone.CompositeView.extend({
     // this.setDatePicker();
     return this;
   },
-  //
-  // setDatePicker: function () {
-  //   this.$('#datepicker').removeClass("hasDatepicker").datepicker({
-  //     dateFormat: "yy-mm-dd",
-  //     minDate: '+1d',
-  //     showAnim: 'fadeIn',
-  //     changeMonth: true,
-  //     changeYear: true
-  //   });
-  // },
 
   submit: function (e) {
     e.preventDefault();
@@ -69,6 +59,10 @@ FlockTo.Views.EventsIndex = Backbone.CompositeView.extend({
           router: this.router
         });
         this.router._swapView(view);
+        this.router.addMap({
+          collection: response,
+          index: true
+        });
       }.bind(this)
     });
   }

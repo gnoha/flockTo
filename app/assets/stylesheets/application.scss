@@ -25,7 +25,7 @@ a:hover {
 
 #map-canvas {
   width: 100%;
-  height: 400px
+  height: 800px;
 }
 
 #map-container {
@@ -37,7 +37,9 @@ a:hover {
   color: #172C3D;
 }
 //Main
-
+#main {
+  margin-top: 30px
+}
 //Components: Cards and Forms
 //Form
 .modal-body .form-group {
@@ -46,6 +48,37 @@ a:hover {
 
 .form-group label {
   width: 100%
+}
+
+.form-button:hover {
+  cursor: pointer;
+  box-shadow: none;
+  background-color: #ffffff;
+  color: #172C3D;
+  opacity: 0.75;
+}
+
+.form-button {
+  border: 1px solid #172C3D;
+  border-radius: 3px;
+  background-color: #172C3D;
+  color: #ffffff;
+  height: 100%;
+}
+
+.form-button-title {
+  display: block;
+  position: absolute;
+  padding-left: 15px;
+  padding-right:15px;
+  bottom: 20px;
+  font-size: 24px
+
+}
+
+.form-button-wrapper {
+  height: 75px;
+  margin-bottom: 5px;
 }
 
 #editModal.fade.in { padding-right: 0px !important; }
@@ -73,8 +106,8 @@ textarea.form-control {
 }
 
 .index-item-wrapper {
-  height: 250px;
-  margin-bottom: 30px;
+  height: 150px;
+  margin-bottom: 5px;
 }
 
 .index-item {
@@ -141,13 +174,26 @@ form textarea {
 // navbar
 nav.navbar {
   margin-bottom: 5px;
+  background-color: #5E7986;
+  color: #ffffff;
+  border-radius: 0px;
+}
+
+a.dropdown-toggle {
+  color: #ffffff;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+  text-decoration: none;
+  background-color: transparent;
+  color: #172C3D;;
 }
 
 .navbar-brand {
   position: absolute;
   left: 45%;
-  font-size: 24px;
-  color: rgb(25, 51, 65)
+  font-size: 18px;
+  color: #ffffff;
 }
 
 .glyphicon-search {
@@ -155,12 +201,14 @@ nav.navbar {
 }
 
 .event-index-list, .tab-content {
-  margin-bottom: 300px;
+  margin-bottom: 0px;
+  height: 720px;
+  overflow: scroll;
 }
 //index
 .search-main {
   // margin: 5px;
-  padding-bottom: 30px;
+  padding-bottom: 5px;
 }
 //card item
 .card-title {
