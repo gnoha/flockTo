@@ -47,7 +47,7 @@ FlockTo.Views.Navbar = Backbone.View.extend({
           collection: response,
           index: true
         });
-        this.router._swapView(view);
+        this.router._swapView(view, this.router.$rootEl);
       }.bind(this)
     });
   }

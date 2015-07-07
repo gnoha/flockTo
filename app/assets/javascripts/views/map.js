@@ -1,16 +1,16 @@
 FlockTo.Views.MapShow = Backbone.View.extend({
-  attributes: {
-    id: this.id
-  },
 
   initialize: function (options) {
     this._markers = {};
     this.currentModel = options.currentModel;
     this.eventModel = options.eventModel;
     this.isIndex = options.isIndex;
-    this.id = 'map-canvas';
     this.listenTo(this.collection, 'add', this.addMarker);
     this.listenTo(this.collection, 'remove', this.removeMarker);
+  },
+
+  attributes: {
+    id: 'map-canvas'
   },
 
   addMarker: function (meeting, isEvent) {
@@ -43,7 +43,11 @@ FlockTo.Views.MapShow = Backbone.View.extend({
       view.showMarkerInfo(e, marker);
     });
 
-   this._markers[meeting.id] = marker;
+    if (isEvent) {
+      this._markers['event'] = marker;
+    } else {
+      this._markers[meeting.id] = marker;
+    }
   },
 
   addLines: function () {

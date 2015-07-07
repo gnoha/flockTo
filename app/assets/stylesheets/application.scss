@@ -36,6 +36,10 @@ body {
   letter-spacing: 1px;
 }
 
+.content {
+  margin-top: 60px;
+}
+
 a:hover {
   cursor: pointer;
 }
@@ -59,7 +63,7 @@ a:hover {
   color: #172C3D;
 }
 
-#flock-map-canvas {
+#flock-map-container > .flock-map-canvas {
   height: 450px;
 }
 //Main
@@ -243,6 +247,27 @@ a.dropdown-toggle {
 
 .tab-content {
   height: 720px;
+}
+
+.show-content {
+    background-color: #E5E3DF;
+    height: 410px;
+    color: #172C3D;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+  color: #555555;
+  background-color: #E5E3DF;
+  border: 1px solid #ddd;
+  border-bottom-color: #172C3D;
+  cursor: default;
+}
+
+.event-info {
+  margin-left: 15px;
+  margin-right:15px;
 }
 //index
 .search-main {

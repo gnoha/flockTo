@@ -57,7 +57,6 @@ FlockTo.Views.FlockShow = Backbone.CompositeView.extend({
       collection: this.model.eventFlocks(),
       currentModel: this.model,
       eventModel: this.model.eventModel(),
-      id: 'flock-map-canvas'
     });
 
     map.$el.addClass('flock-map-canvas')
