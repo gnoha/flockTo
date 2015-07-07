@@ -82,7 +82,6 @@ FlockTo.Views.FlockForm = Backbone.View.extend({
       }.bind(this),
 
       error: function (model, response) {
-        debugger
         $('ul.error-list').children().remove();
         response.responseJSON.forEach(function (response){
           var $error = $('<li>').html(response);

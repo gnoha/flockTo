@@ -24,4 +24,8 @@ class Attending < ActiveRecord::Base
       errors.add(:flock_id, 'User is already going to this event!')
     end
   end
+
+  def switch_flock
+    
+  end
 end

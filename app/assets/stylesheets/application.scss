@@ -72,6 +72,14 @@ a:hover {
 }
 //Components: Cards and Forms
 //Form
+.search-form {
+  margin-top: 5px;
+}
+
+.search-form .input-group {
+  margin-top: 5px;
+}
+
 .modal-body .form-group {
   margin-left: 0
 }
@@ -108,8 +116,8 @@ a:hover {
 
 .form-button-wrapper {
   height: 75px;
+  margin-top: 5px;
   margin-bottom: 5px;
-  padding-right: 5px;
 }
 
 #editModal.fade.in { padding-right: 0px !important; }
@@ -139,7 +147,6 @@ textarea.form-control {
 .index-item-wrapper {
   height: 150px;
   margin-bottom: 5px;
-  padding-right: 5px;
 }
 
 .index-item {
@@ -232,6 +239,15 @@ a.dropdown-toggle {
   cursor: pointer;
 }
 
+button.navbar-toggle {
+  border: 1px solid white;
+}
+
+button.navbar-toggle > .icon-bar {
+  background-color: white;
+}
+
+//
 .event-index-list{
   margin-bottom: 0px;
   height: 720px;
@@ -243,6 +259,8 @@ a.dropdown-toggle {
   overflow-y: scroll;
   overflow-x: hidden;
   height: 700px;
+  padding-top: 10px;
+  padding-bottom: 10px
 }
 
 .tab-content {
@@ -253,16 +271,37 @@ a.dropdown-toggle {
     background-color: #E5E3DF;
     height: 410px;
     color: #172C3D;
-    overflow: scroll;
-    overflow-x: hidden;
+}
+
+.flock-tab-scrollable {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 410px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
   color: #555555;
   background-color: #E5E3DF;
   border: 1px solid #ddd;
-  border-bottom-color: #172C3D;
   cursor: default;
+}
+
+.nav-tabs > li > a {
+  margin-right: 2px;
+  line-height: 1.42857143;
+  border: 1px solid transparent;
+  border-radius: 4px 4px 0 0;
+  background-color: #BDB7AC;
+  border-bottom-color: #ddd;
+  color: #555555;
+}
+
+.nav-tabs > li > a:hover{
+  text-decoration: none;
+  background-color: #E5E3DF;
+  color: #172C3D;
 }
 
 .event-info {
@@ -323,4 +362,22 @@ a.dropdown-toggle {
 
 .info-map {
   padding-bottom: 15px;
+}
+
+//Join-Button
+button.attending {
+  display: block;
+  margin: 60px auto;
+  color: #172C3D;
+  font-weight: bold;
+  border-radius: 3px;
+  border: none;
+}
+
+button.attending.joined {
+  background-color: #E5E3DF;
+}
+
+button.attending.not-joined {
+  background-color: #B0C88F;
 }

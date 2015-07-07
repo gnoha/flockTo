@@ -95,6 +95,7 @@ FlockTo.Views.FlockShow = Backbone.CompositeView.extend({
       flock: this.model,
       coordinator: coordinator,
       coord: this.isCoord(),
+      eventModel: this.model.eventModel()
       });
     this.$el.html(content);
     this.attachSubviews();

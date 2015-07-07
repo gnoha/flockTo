@@ -3,6 +3,7 @@ module Api
     def create
       @attending = current_user.attendings.new(
         flock_id: params[:attending][:flock_id])
+      
       if @attending.save
         render json: @attending
       else

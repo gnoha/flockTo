@@ -4,8 +4,10 @@
       aria-controls='flocks' role='tab' data-toggle='tab'>Event Details</a></li>
     <li role='presentation'><a href='#flocks'
       aria-controls='flocks' role='tab' data-toggle='tab'>Flocks</a></li>
+    <% if (false) {%>
     <li role='presentation'><a href='#attending' aria-controls='attending'
       role='tab' data-toggle='tab'>Attending</a></li>
+    <% }%>
     <% if (coord) {%>
       <li role='presentation' class='open-edit-modal'><a class='edit-event-form'
         role='tab'><div class='edit-form-container'></div></a></li>
@@ -52,7 +54,7 @@
                 <option value=500>500</option>
                 <option value=1000>1000</option>
               </select>
-              miles of
+              miles of <br>
               <div class='input-group'>
                 <input class='form-control' type='text' name='current_location' placeholder='San Francisco, CA'>
                 <span class="input-group-btn">
