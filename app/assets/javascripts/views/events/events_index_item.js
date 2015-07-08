@@ -21,7 +21,11 @@ FlockTo.Views.EventsIndexItem = Backbone.View.extend({
     var content = this.template({ eventModel: this.model });
     this.$el.attr('data-id', this.model.get('id'));
     this.$el.html(content);
-    // this.$el.css({'background-color': this.getColor()});
+    if (this.model.get('img_url')){
+      this.$el.children('.index-item').css({
+        'background-image': 'url(' + this.model.get('img_url') + ')',
+        'background-size': 'cover'});
+      }
     return this;
   },
 

@@ -6,7 +6,8 @@ FlockTo.Views.EventForm = Backbone.View.extend({
   events: {
     'click .submit': 'submit',
     'click .open-modal': 'open',
-    'click .open-edit-modal': 'openEditModal'
+    'click .open-edit-modal': 'openEditModal',
+    'click .upload-photo': 'upload'
   },
 
   initialize: function (options) {
@@ -17,11 +18,13 @@ FlockTo.Views.EventForm = Backbone.View.extend({
   render: function () {
     var id = 'myModal';
     var button = 'Create Event';
-    var title = 'Start an Event'
+    var title = 'Start an Event';
+    var photoButton = 'Upload Photo';
     if (this.edit) {
       id = 'editModal';
       button = 'Update Event';
       title = 'Edit Event';
+      photoButton = 'Change Photo';
     }
 
     var tomorrow = new Date();
@@ -33,7 +36,8 @@ FlockTo.Views.EventForm = Backbone.View.extend({
       id: id,
       button: button,
       title: title,
-      minDate: tomorrow.toISOString().split("T")[0]
+      minDate: tomorrow.toISOString().split("T")[0],
+      photoButton: photoButton
       });
     this.$el.html(content);
     // $('.event-date').attr('min', tomorrow.toISOString().split("T")[0])
@@ -74,4 +78,12 @@ FlockTo.Views.EventForm = Backbone.View.extend({
       }
     });
   },
+
+  upload: function (e) {
+    e.preventDefault();
+    cloudinary.openUploadWidget(CLOUDINARY_OPTIONS, function (error, result) {
+      var data=result[0];
+      this.model.set({img_url: data.url});
+    }.bind(this));
+  }
 });

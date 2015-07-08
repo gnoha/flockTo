@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150612165300) do
+ActiveRecord::Schema.define(version: 20150708083949) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(version: 20150612165300) do
     t.float    "latitude",       null: false
     t.float    "longitude",      null: false
     t.string   "location",       null: false
+    t.string   "url"
+    t.string   "img_url"
   end
 
   create_table "flocks", force: :cascade do |t|
@@ -47,6 +49,7 @@ ActiveRecord::Schema.define(version: 20150612165300) do
     t.integer "coordinator_id", null: false
     t.float   "latitude",       null: false
     t.float   "longitude",      null: false
+    t.string  "img_url"
   end
 
   add_index "flocks", ["date"], name: "index_flocks_on_date", using: :btree
@@ -59,6 +62,7 @@ ActiveRecord::Schema.define(version: 20150612165300) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.text     "bio"
+    t.string   "img_url"
   end
 
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree

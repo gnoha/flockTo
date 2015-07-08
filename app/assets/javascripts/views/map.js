@@ -5,8 +5,12 @@ FlockTo.Views.MapShow = Backbone.View.extend({
     this.currentModel = options.currentModel;
     this.eventModel = options.eventModel;
     this.isIndex = options.isIndex;
-    this.listenTo(this.collection, 'add', this.addMarker);
-    // this.listenTo(this.collection, 'remove', this.removeMarker);
+    this.listenTo(this.collection, 'add', function(model) {
+      this.addMarker(model, true);
+    }.bind(this));
+    if (this.isIndex) {
+      this.listenTo(this.collection, 'remove', this.removeMarker);
+    }
   },
 
   attributes: {
@@ -19,7 +23,7 @@ FlockTo.Views.MapShow = Backbone.View.extend({
     var url = '#/flocks/' + meeting.id + '>' + 'Flock Details';
     if (isEvent === true) {
       url = '#/events/' + meeting.id + '>' + 'Event Details';
-      if (meeting.id === this.currentModel.id) {
+      if (this.currentModel && (meeting.id === this.currentModel.id)) {
         color = '#FF6860';
       }
     } else if (meeting.id === this.currentModel.id && !this.currentModel.isEvent()) {
