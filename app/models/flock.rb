@@ -52,4 +52,18 @@ class Flock < ActiveRecord::Base
       end
     end
   end
+
+  def path
+    return [self] unless self.parent_id
+    parent = parent_flock
+    nodes = parent_flock.path
+    nodes << self
+    nodes
+  end
+
+  def count_attendees
+    sum = subflocks.inject(0) {|sum, flock| sum += flock.attendings.length}
+    sum += self.attendees.length
+    sum
+  end
 end

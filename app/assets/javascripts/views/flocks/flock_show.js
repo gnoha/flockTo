@@ -53,8 +53,10 @@ FlockTo.Views.FlockShow = Backbone.CompositeView.extend({
   },
 
   addMap: function () {
+    this.collection = this.model.pathFlocks();
+    this.collection.add(this.model.subFlocks().models);
     var map = new FlockTo.Views.MapShow({
-      collection: this.model.eventFlocks(),
+      collection: this.collection,
       currentModel: this.model,
       eventModel: this.model.eventModel(),
     });

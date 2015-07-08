@@ -6,7 +6,7 @@ FlockTo.Views.MapShow = Backbone.View.extend({
     this.eventModel = options.eventModel;
     this.isIndex = options.isIndex;
     this.listenTo(this.collection, 'add', this.addMarker);
-    this.listenTo(this.collection, 'remove', this.removeMarker);
+    // this.listenTo(this.collection, 'remove', this.removeMarker);
   },
 
   attributes: {
@@ -15,11 +15,15 @@ FlockTo.Views.MapShow = Backbone.View.extend({
 
   addMarker: function (meeting, isEvent) {
     if (this._markers[meeting.id] && !isEvent) { return; }
-
+    var color = '#0C555D';
     var url = '#/flocks/' + meeting.id + '>' + 'Flock Details';
     if (isEvent === true) {
       url = '#/events/' + meeting.id + '>' + 'Event Details';
+    } else if (meeting.id === this.currentModel.id) {
+      color = '#FF6860';
     }
+
+
 
     var view = this;
     var marker = new google.maps.Marker({
@@ -28,9 +32,9 @@ FlockTo.Views.MapShow = Backbone.View.extend({
       icon: {
         path: google.maps.SymbolPath.CIRCLE,
         scale: this.findProp(meeting.get('num_attendees')),
-        fillColor: '#ff0000',
-        fillOpacity: 0.5,
-        strokeColor: '#ff0000',
+        fillColor: color,
+        fillOpacity: 0.75,
+        strokeColor: color,
         strokeOpacity: 0.5,
         strokeWeight: 1
       },
@@ -74,8 +78,8 @@ FlockTo.Views.MapShow = Backbone.View.extend({
     var line = new google.maps.Polyline({
       path: endpoints,
       geodesic: false,
-      strokeColor: '#ff0000',
-      strokeOpacity: 0.3,
+      strokeColor: '#0C555D',
+      strokeOpacity: 0.5,
       strokeWeight: 0.1
     });
 
@@ -206,7 +210,7 @@ FlockTo.Views.MapShow = Backbone.View.extend({
                       "visibility": "simplified"
                   },
                   {
-                      "hue": "#0066ff"
+                      "hue": "#E5E3DF"
                   },
                   {
                       "saturation": 74
@@ -296,13 +300,13 @@ FlockTo.Views.MapShow = Backbone.View.extend({
                       "visibility": "simplified"
                   },
                   {
-                      "color": "#5f94ff"
+                      "color": "#A3D3D2"
                   },
                   {
-                      "lightness": 26
+                      "lightness": 15
                   },
                   {
-                      "gamma": 5.86
+                      "gamma": 1
                   }
               ]
           }

@@ -24,7 +24,7 @@
 	background: rgba(255, 255, 255, 0.35);
 }
 body {
-  background: image-url('map.png') no-repeat center fixed;
+  background: image-url('bg.jpg') no-repeat center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -74,6 +74,8 @@ a:hover {
 //Form
 .search-form {
   margin-top: 5px;
+  padding-right: 15px;
+  padding-left:15px;
 }
 
 .search-form .input-group {
@@ -258,13 +260,15 @@ button.navbar-toggle > .icon-bar {
 .tab-scrollable {
   overflow-y: scroll;
   overflow-x: hidden;
-  height: 700px;
+  height: 667px;
   padding-top: 10px;
   padding-bottom: 10px
 }
 
 .tab-content {
-  height: 720px;
+  height: 756px;
+  background-color: #E5E3DF;
+  color: #172C3D;
 }
 
 .show-content {

@@ -69,7 +69,7 @@ FlockTo.Views.EventShow = Backbone.CompositeView.extend({
   filteredView: function () {
     this.removeSubview('.flocks-index', this._flocksIndex);
     this.addFlocksIndex();
-    this.render();
+    // this.render();
   },
 
   isCoord: function () {
@@ -91,6 +91,8 @@ FlockTo.Views.EventShow = Backbone.CompositeView.extend({
   },
 
   render: function () {
+    console.log('render');
+
     var coordinator = this.model.coordinator();
     var content = this.template({
       eventModel: this.model,
@@ -99,7 +101,6 @@ FlockTo.Views.EventShow = Backbone.CompositeView.extend({
       });
     this.$el.html(content);
     this.attachSubviews();
-    // this.setDatePicker();
     return this;
   }
 });

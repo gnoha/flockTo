@@ -58,7 +58,8 @@ FlockTo.Views.EventsIndex = Backbone.CompositeView.extend({
           collection: response,
           router: this.router
         });
-        this.router._swapView(view);
+        this.router._swapView(view, this.router.$rootEl);
+
         this.router.addMap({
           collection: response,
           index: true

@@ -1,86 +1,92 @@
-<div role='tabpanel'>
-  <ul class='nav nav-tabs' role='tablist'>
-    <li role='presentation' class='active'><a href='#info'
-      aria-controls='flocks' role='tab' data-toggle='tab'>Event Details</a></li>
-    <li role='presentation'><a href='#flocks'
-      aria-controls='flocks' role='tab' data-toggle='tab'>Flocks</a></li>
-    <% if (false) {%>
-    <li role='presentation'><a href='#attending' aria-controls='attending'
-      role='tab' data-toggle='tab'>Attending</a></li>
-    <% }%>
-    <% if (coord) {%>
-      <li role='presentation' class='open-edit-modal'><a class='edit-event-form'
-        role='tab'><div class='edit-form-container'></div></a></li>
-    <% }%><br>
-  </ul>
+<div class='row'>
+  <div class='col-xs-12'>
+    <div role='tabpanel'>
+      <ul class='nav nav-tabs' role='tablist'>
+        <li role='presentation' class='active'><a href='#info'
+          aria-controls='flocks' role='tab' data-toggle='tab'>Event Details</a></li>
+        <li role='presentation'><a href='#flocks'
+          aria-controls='flocks' role='tab' data-toggle='tab'>Flocks</a></li>
+        <% if (false) {%>
+        <li role='presentation'><a href='#attending' aria-controls='attending'
+          role='tab' data-toggle='tab'>Attending</a></li>
+        <% }%>
+        <% if (coord) {%>
+          <li role='presentation' class='open-edit-modal'><a class='edit-event-form'
+            role='tab'><div class='edit-form-container'></div></a></li>
+        <% }%><br>
+      </ul>
 
-  <div class='tab-content clearfix'>
-    <div role='tabpanel' class='tab-pane active' id='info'>
-      <div class='row'>
-        <div class='col-xs-12'>
-          <div class='event-info'>
-            <h1 class="title"><%= eventModel.escape('title')%></h1>
-            <div class='row'>
-              <div class='col-xs-2'>Event Location:</div>
-              <div class='col-xs-8'><%= eventModel.escape('location')%></div>
-            </div>
-            <div class='row'>
-              <div class='col-xs-2'>Event Date:</div>
-              <div class='col-xs-8'><%= eventModel.escape('date')%></div>
-            </div>
-            <div class='row'>
-              <div class='col-xs-2'>Coordinator:</div>
-              <div class='col-xs-8'>
-                <a href='#/users/<%= coordinator.id%>'><%= coordinator.escape('username')%></a>
+      <div class='tab-content clearfix'>
+        <div role='tabpanel' class='tab-pane active' id='info'>
+          <div class='row'>
+            <div class='col-xs-12'>
+              <div class='event-info'>
+                <h1 class="title"><%= eventModel.escape('title')%></h1>
+                <div class='row'>
+                  <div class='col-xs-2'>Event Location:</div>
+                  <div class='col-xs-8'><%= eventModel.escape('location')%></div>
+                </div>
+                <div class='row'>
+                  <div class='col-xs-2'>Event Date:</div>
+                  <div class='col-xs-8'><%= eventModel.escape('date')%></div>
+                </div>
+                <div class='row'>
+                  <div class='col-xs-2'>Coordinator:</div>
+                  <div class='col-xs-8'>
+                    <a href='#/users/<%= coordinator.id%>'><%= coordinator.escape('username')%></a>
+                  </div>
+                </div>
+                <br>
+                <p><%= eventModel.escape('description')%></p>
               </div>
             </div>
-            <br>
-            <p><%= eventModel.escape('description')%></p>
           </div>
         </div>
-      </div>
-    </div>
 
-    <div role='tabpanel' class='tab-pane' id='flocks'>
-      <div class='row'>
-        <div class="col-xs-12 index-search-bar">
-          <form class='search-form'>
-            <label>Search for flocks within
-              <select name="distance">
-                <option value=25>25</option>
-                <option value=50 selected>50</option>
-                <option value=100>100</option>
-                <option value=200>200</option>
-                <option value=500>500</option>
-                <option value=1000>1000</option>
-              </select>
-              miles of <br>
-              <div class='input-group'>
-                <input class='form-control' type='text' name='current_location' placeholder='San Francisco, CA'>
-                <span class="input-group-btn">
-                  <button class='location-query btn submit btn-primary' type='submit'>Search</button>
-                </span>
+        <div role='tabpanel' class='tab-pane' id='flocks'>
+          <div class='row'>
+            <div class="col-xs-12 index-search-bar">
+              <form class='search-form'>
+                <label>Search for flocks within
+                  <select name="distance">
+                    <option value=25>25</option>
+                    <option value=50 selected>50</option>
+                    <option value=100>100</option>
+                    <option value=200>200</option>
+                    <option value=500>500</option>
+                    <option value=1000>1000</option>
+                  </select>
+                  miles of <br>
+                  <div class='input-group'>
+                    <input class='form-control' type='text' name='current_location' placeholder='San Francisco, CA'>
+                    <span class="input-group-btn">
+                      <button class='location-query btn submit btn-primary' type='submit'>Search</button>
+                    </span>
+                  </div>
+                </label>
+              </form>
+            </div>
+          </div>
+          
+          <div class='tab-scrollable'>
+            <div class='row'>
+              <div class='col-xs-12'>
+                <div class="flock-form"></div>
+                <div class="flocks-index"></div>
               </div>
-            </label>
-          </form>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div class='tab-scrollable'>
-        <div class='row'>
-          <div class="flock-form"></div>
-          <div class="flocks-index"></div>
+        <div role='tabpanel' class='tab-pane' id='attending'>
+          <div class='tab-scrollable'>
+            <div class='row'>
+              <div class="attendees-index"</div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
 
-    <div role='tabpanel' class='tab-pane' id='attending'>
-      <div class='tab-scrollable'>
-        <div class='row'>
-          <div class="attendees-index"</div>
-        </div>
       </div>
     </div>
-
   </div>
 </div>

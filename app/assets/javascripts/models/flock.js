@@ -3,7 +3,7 @@ FlockTo.Models.Flock = Backbone.Model.extend({
 
   subFlocks: function () {
     if (!this._subFlocks) {
-      this._subFlocks = new FlockTo.Collections.Flocks([], { flock: this });
+      this._subFlocks = new FlockTo.Collections.Flocks();
     }
 
     return this._subFlocks;
@@ -33,12 +33,12 @@ FlockTo.Models.Flock = Backbone.Model.extend({
     return this._event;
   },
 
-  eventFlocks: function () {
-    if (!this._eventFlocks) {
-      this._eventFlocks = new FlockTo.Collections.Flocks();
+  pathFlocks: function () {
+    if (!this._pathFlocks) {
+      this._pathFlocks = new FlockTo.Collections.Flocks();
     }
 
-    return this._eventFlocks;
+    return this._pathFlocks;
   },
 
   parse: function (response) {
@@ -57,9 +57,9 @@ FlockTo.Models.Flock = Backbone.Model.extend({
       delete response.event_model;
     }
 
-    if (response.all_event_flocks) {
-      this.eventFlocks().set(response.all_event_flocks);
-      delete response.all_event_flocks;
+    if (response.path) {
+      this.pathFlocks().set(response.path);
+      delete response.path;
     }
 
     if (response.coordinator) {
