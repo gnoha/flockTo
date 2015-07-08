@@ -3,7 +3,8 @@ FlockTo.Views.Navbar = Backbone.View.extend({
 
   events: {
     'submit form.event-search': 'submit',
-    'click .sign-out': 'signout'
+    'click .sign-out': 'signout',
+    'click .open-nav-search': 'openModal'
   },
 
   initialize: function (options) {
@@ -18,6 +19,10 @@ FlockTo.Views.Navbar = Backbone.View.extend({
     this.$el.html(content);
 
     return this;
+  },
+
+  openModal: function (e) {
+    $('#nav-search').modal();
   },
 
   signout: function (e) {
@@ -39,6 +44,7 @@ FlockTo.Views.Navbar = Backbone.View.extend({
       data: input,
       reset: true,
       success: function (response) {
+        $('#nav-search').modal('toggle');
         var view = new FlockTo.Views.EventsIndex({
           collection: response,
           router: this.router

@@ -10,13 +10,7 @@
       <a class="navbar-brand" href="">f l o c k T o</a>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <form class="navbar-form navbar-left event-search" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" name='search[event]'
-            placeholder="Enter Event Name">
-        </div>
-        <span class="glyphicon glyphicon-search submit" aria-hidden="true"></span>
-      </form>
+        <span class="glyphicon glyphicon-search open-nav-search" aria-hidden="true"></span>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= currentUser.escape('username')%><span class="caret"></span></a>
@@ -30,3 +24,22 @@
     </div>
   </div>
 </nav>
+
+<div id='nav-search' class='modal fade' tabindex="-1" role='dialog'
+  aria-labelledby='myModalLabel' aria-hidden='true'>
+  <div class='modal-dialog modal-lg'>
+    <div class='modal-content'>
+      <div class='modal-body'>
+        <form class="event-search" role="search">
+          <div class="input-group">
+            <input type="text" class="form-control" name='search[event]'
+              placeholder="Enter Event Name">
+            <span class="input-group-btn">
+              <button class='btn submit btn-primary' type='submit'>Find Event</button>
+            </span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
