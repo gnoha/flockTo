@@ -19,11 +19,12 @@ FlockTo.Views.MapShow = Backbone.View.extend({
     var url = '#/flocks/' + meeting.id + '>' + 'Flock Details';
     if (isEvent === true) {
       url = '#/events/' + meeting.id + '>' + 'Event Details';
-    } else if (meeting.id === this.currentModel.id) {
+      if (meeting.id === this.currentModel.id) {
+        color = '#FF6860';
+      }
+    } else if (meeting.id === this.currentModel.id && !this.currentModel.isEvent()) {
       color = '#FF6860';
     }
-
-
 
     var view = this;
     var marker = new google.maps.Marker({

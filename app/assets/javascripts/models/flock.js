@@ -1,6 +1,10 @@
 FlockTo.Models.Flock = Backbone.Model.extend({
   urlRoot: '/api/flocks',
 
+  isEvent: function () {
+    return false;
+  },
+
   subFlocks: function () {
     if (!this._subFlocks) {
       this._subFlocks = new FlockTo.Collections.Flocks();

@@ -92,6 +92,7 @@ FlockTo.Routers.Router = Backbone.Router.extend({
   },
 
   showUser: function(id) {
+    this._mapview && this._mapview.remove();
     var user = this.users.getOrFetch(id);
     var showView = new FlockTo.Views.UserShow({ model: user });
     this._swapView(showView, this.$auxEl);

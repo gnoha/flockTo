@@ -1,6 +1,10 @@
 FlockTo.Models.Event = Backbone.Model.extend({
   urlRoot: '/api/events',
 
+  isEvent: function () {
+    return true;
+  },
+
   flocks: function () {
     if (!this._flocks) {
       this._flocks = new FlockTo.Collections.Flocks([], { eventModel: this });
@@ -23,10 +27,6 @@ FlockTo.Models.Event = Backbone.Model.extend({
 
     return this._coordinator;
   },
-
-  // num_attendees: function () {
-  //
-  // }
 
   parse: function (response) {
     if (response.flocks) {

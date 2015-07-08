@@ -56,20 +56,9 @@ FlockTo.Views.EventShow = Backbone.CompositeView.extend({
     this.addSubview('.flocks-index', this._flocksIndex);
   },
 
-  addMap: function () {
-    var map = new FlockTo.Views.MapShow({
-      collection: this.model.flocks(),
-      currentModel: this.model,
-      eventModel: this.model
-    });
-    this.addSubview('#map-container', map);
-    map.initMap();
-  },
-
   filteredView: function () {
     this.removeSubview('.flocks-index', this._flocksIndex);
     this.addFlocksIndex();
-    // this.render();
   },
 
   isCoord: function () {
@@ -91,8 +80,6 @@ FlockTo.Views.EventShow = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    console.log('render');
-
     var coordinator = this.model.coordinator();
     var content = this.template({
       eventModel: this.model,

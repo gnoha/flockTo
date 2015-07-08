@@ -31,6 +31,10 @@ body {
   background-size: cover;
 }
 
+body, html {
+  height: 100%
+}
+
 * {
   font-family: raleway;
   letter-spacing: 1px;
@@ -44,6 +48,12 @@ a:hover {
   cursor: pointer;
 }
 
+#wrap {
+  min-height: 100%;
+  height: auto;
+  margin: 0 auto -60px;
+  padding: 0 0 60px;
+}
 //Map
 .coord-description {
   width: 100%;
@@ -251,6 +261,11 @@ button.navbar-toggle > .icon-bar {
 
 .open-nav-search {
   padding: 15px
+}
+
+#footer {
+  height: 60px;
+  background-color: #5E7986;
 }
 //
 .event-index-list{
