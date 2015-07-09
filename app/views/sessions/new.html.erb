@@ -36,16 +36,6 @@
             <input class='btn btn-sm btn-primary pull-right' type="submit" value="Sign In">
           </div>
         </form>
-
-        <form class= 'guest-user-form' action="<%= users_url%>" method="POST">
-          <input type="hidden" name="authenticity_token"
-                 value="form_authenticity_token">
-          <input type="hidden" class='form-control' name=user[username] value='<%= Faker::Internet.user_name%>'>
-          <input type="hidden" class='form-control' name=user[password] value="password">
-          <div class='form-group'>
-            <input class='btn btn-sm btn-primary pull-left' type="submit" value="Guest">
-          </div>
-        </form>
       </div>
 
       <div class='panel-footer'>
@@ -58,9 +48,20 @@
       <div class="jumbotron">
         <h2>Why fly solo when you can flock?</h2>
         <p>Join a flock. Attend an event with your flock.</p>
-        <p>BUT WHY STOP THERE?</p>
+        <br>
+        <h3>BUT WHY STOP THERE?</h3>
+        <br>
         <p>Join other flocks along the way and arrive at your desitination
            as an unstoppable force...</p>
+           <form class= 'guest-user-form' action="<%= users_url%>" method="POST">
+             <input type="hidden" name="authenticity_token"
+                    value="form_authenticity_token">
+             <input type="hidden" class='form-control' name=user[username] value='<%= Faker::Internet.user_name%>'>
+             <input type="hidden" class='form-control' name=user[password] value="password">
+             <div class='form-group'>
+               <input class='btn btn-lg btn-primary tour-button' type="submit" value="Take a Tour">
+             </div>
+           </form>
       </div>
     </div>
   </div>
