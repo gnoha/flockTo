@@ -272,6 +272,7 @@ okfestimg = [
 #F22 F23 F24 F25 F26 F27
 i = 1
 ["Paris, France", "Berlin, Germany", "Milan, Italy", "Prague, Czech Republic", "Amsterdam, Netherlands", "Vienna, Austria"].each do |city|
+  sleep(4)
   FactoryGirl.create(
     :flock,
     location: city,
@@ -288,6 +289,7 @@ end
 #F28 F29 F30 F31
 j = 22
 ["Madrid, Spain", "Copenhagen, Denmark", "Rome, Italy", "Budapest, Hungary"].each do |city|
+  sleep(4)
   FactoryGirl.create(
     :flock,
     location: city,
@@ -400,6 +402,7 @@ coachimg =[
 ]
 i = 6
 ["Los Angeles, CA", "San Diego, CA", "San Francisco, CA", "New York City, NY", "Miami, FL", "Austin, TX"].each do |city|
+  sleep(4)
   cityname = city.split(", ")[0]
   FactoryGirl.create(
     :flock,
@@ -452,6 +455,7 @@ iman = [
 #F57 - 59
 i = 25
 ["London, England", "Sydney, Australia", "Boulder, CO"].each do |city|
+  sleep(4)
   FactoryGirl.create(
     :flock,
     location: "London, England",
@@ -463,10 +467,10 @@ i = 25
     img_url: iman.sample
   )
 end
-sleep(4)
 
 #F60 - 62
 ["Paris, France", "Berlin, Germany", "Amsterdam, Netherlands"].each do |city|
+  sleep(4)
   FactoryGirl.create(
     :flock,
     location: city,
@@ -516,6 +520,7 @@ FactoryGirl.create(
 
 i = 10
 ["Paris, France", "Berlin, Germany", "Milan, Italy", "Prague, Czech Republic", "Amsterdam, Netherlands", "Vienna, Austria"].each do |city|
+  sleep(4)
   FactoryGirl.create(
     :flock,
     location: city,
