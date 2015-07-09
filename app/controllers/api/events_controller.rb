@@ -6,11 +6,8 @@ module Api
     def index
       if params[:search]
         @events = Event.includes(:attendees).search_for(params[:search][:event])
-        # @events.each do |event|
-        #   event.num_attendees = event.attendees.length
-        # end
       else
-        @events = Event.includes(:attendees).all.order(:date)
+        @events = Event.includes(:attendees).where("date > ?", Time.now).order(:date)
       end
         @events.each do |event|
           event.num_attendees = event.attendees.length

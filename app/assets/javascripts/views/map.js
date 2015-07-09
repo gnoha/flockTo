@@ -23,7 +23,7 @@ FlockTo.Views.MapShow = Backbone.View.extend({
     var url = '#/flocks/' + meeting.id + '>' + 'Flock Details';
     if (isEvent === true) {
       url = '#/events/' + meeting.id + '>' + 'Event Details';
-      if (this.currentModel && (meeting.id === this.currentModel.id)) {
+      if (this.currentModel && this.currentModel.isEvent() && (meeting.id === this.currentModel.id)) {
         color = '#FF6860';
       }
     } else if (meeting.id === this.currentModel.id && !this.currentModel.isEvent()) {
@@ -85,7 +85,7 @@ FlockTo.Views.MapShow = Backbone.View.extend({
       geodesic: false,
       strokeColor: '#0C555D',
       strokeOpacity: 0.5,
-      strokeWeight: 0.1
+      strokeWeight: 0.5
     });
 
     line.setMap(this._map);

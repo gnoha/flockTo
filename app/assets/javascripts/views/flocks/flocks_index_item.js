@@ -20,6 +20,11 @@ FlockTo.Views.FlocksIndexItem = Backbone.View.extend({
     var content = this.template({ flock: this.model });
     this.$el.html(content);
     this.$el.attr('data-id', this.model.get('id'));
+    if (this.model.get('img_url')){
+      this.$el.children('.index-item').css({
+        'background-image': 'url(' + this.model.get('img_url') + ')',
+        'background-size': 'cover'});
+      }
     return this;
   }
 });
