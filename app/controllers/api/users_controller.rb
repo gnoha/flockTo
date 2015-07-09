@@ -3,6 +3,7 @@ module Api
     before_action :require_current_user
     def show
       @user = User.find(params[:id])
+      @user.events
     end
 
     def update

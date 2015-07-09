@@ -5,7 +5,23 @@
   <p class='bio'><%= user.escape('bio')%></p>
 </div>
 
-<div role='tabpanel'>
+<div class='row'>
+  <div class='col-xs-4'>
+    <h3 class='user-show'>Where I'm Going</h3>
+    <div class='row going-index event-index-list'></div>
+  </div>
+  <div class='col-xs-4'>
+    <h3 class='user-show'>Where I've Been</h3>
+    <div class='been-index row event-index-list'></div>
+  </div>
+  <div class='col-xs-4'>
+    <h3 class='user-show'>Coordinated Flocks</h3>
+    <div class='coordinated-flocks-index row event-index-list'></div>
+  </div>
+</div>
+
+
+<!-- <div role='tabpanel'>
   <ul class='nav nav-tabs' role='tablist'>
     <li role='presentation' class='active'><a href='#attended'
       aria-controls='attended' role='tab' data-toggle='tab'>Attended Events</a></li>
@@ -35,4 +51,4 @@
       <div class='old-coordinated-flocks'></div>
     </div>
   </div>
-</div>
+</div> -->

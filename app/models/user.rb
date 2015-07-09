@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token
 
   attr_reader :password
-
+  attr_accessor :been, :going
   geocoded_by :location
 
   has_many(:coordinated_events,
@@ -23,9 +23,16 @@ class User < ActiveRecord::Base
   has_many(:attended_flocks,
            through: :attendings,
            source: :flock)
+
   has_many(:attended_events,
            through: :attended_flocks,
            source: :event)
+
+
+  def events
+    @been = attended_events.select{|event| event.date < Time.now}
+    @going = attended_events.select{|event| event.date >= Time.now}
+  end
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)

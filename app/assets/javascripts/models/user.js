@@ -1,12 +1,20 @@
 FlockTo.Models.User = Backbone.Model.extend({
   urlRoot: '/api/users',
 
-  attendedEvents: function (){
-    if (!this._attendedEvents) {
-      this._attendedEvents = new FlockTo.Collections.Events([], { eventModel: this });
+  been: function (){
+    if (!this._been) {
+      this._been = new FlockTo.Collections.Events([], { eventModel: this });
     }
 
-    return this._attendedEvents;
+    return this._been;
+  },
+
+  going: function (){
+    if (!this._going) {
+      this._going = new FlockTo.Collections.Events([], { eventModel: this });
+    }
+
+    return this._going;
   },
 
   coordinatedFlocks: function () {
@@ -17,29 +25,34 @@ FlockTo.Models.User = Backbone.Model.extend({
     return this._coordinatedFlocks
   },
 
-  coordinatedEvents: function (user) {
-    if (!this._coordinatedEvents) {
-      this._coordinatedEvents = new FlockTo.Collections.Events();
-    }
-
-    this.attendedEvents().each(function (eventModel) {
-      if (eventModel.get('coordinator_id') === this.id) {
-        this._coordinatedEvents.add(eventModel);
-      }
-    }.bind(this));
-
-    return this._coordinatedEvents;
-  },
+  // coordinatedEvents: function (user) {
+  //   if (!this._coordinatedEvents) {
+  //     this._coordinatedEvents = new FlockTo.Collections.Events();
+  //   }
+  //
+  //   this.attendedEvents().each(function (eventModel) {
+  //     if (eventModel.get('coordinator_id') === this.id) {
+  //       this._coordinatedEvents.add(eventModel);
+  //     }
+  //   }.bind(this));
+  //
+  //   return this._coordinatedEvents;
+  // },
 
   parse: function (response) {
-    if (response.attended_events) {
-      this.attendedEvents().set(response.attended_events);
-      delete response.attended_events;
+    if (response.been) {
+      this.been().set(response.been);
+      delete response.been;
+    }
+
+    if (response.going) {
+      this.going().set(response.going);
+      delete response.going;
     }
 
     if (response.coordinated_flocks) {
       this.coordinatedFlocks().set(response.coordinated_flocks);
-      delete response.coordinated_flocks
+      delete response.coordinated_flocks;
     }
 
     return response;

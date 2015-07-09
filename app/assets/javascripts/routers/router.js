@@ -7,8 +7,9 @@ FlockTo.Routers.Router = Backbone.Router.extend({
     this.flocks = options.flocks;
     this.users = options.users;
     if (window.CURRENT_USER_ID) {
-      this.currentUser = this.users.getOrFetch(CURRENT_USER_ID);
-      this.navbar();
+      this.currentUser = this.users.getOrFetch(CURRENT_USER_ID, function () {
+        this.navbar();
+      }.bind(this));
     }
   },
 
@@ -95,9 +96,14 @@ FlockTo.Routers.Router = Backbone.Router.extend({
 
   showUser: function(id) {
     this._mapview && this._mapview.remove();
-    var user = this.users.getOrFetch(id);
-    var showView = new FlockTo.Views.UserShow({ model: user });
-    this._swapView(showView, this.$auxEl);
+    var user = this.users.getOrFetch(id, function () {
+      var showView = new FlockTo.Views.UserShow({
+        model: user,
+        going: user.going(),
+        been: user.been()
+      });
+      this._swapView(showView, this.$auxEl);
+    }.bind(this));
   },
 
   _swapView: function (view, $el) {
