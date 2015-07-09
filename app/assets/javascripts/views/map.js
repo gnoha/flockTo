@@ -106,12 +106,8 @@ FlockTo.Views.MapShow = Backbone.View.extend({
         return 4;
       }
     } else {
-      return 20
+      return 20;
     }
-    // var proportion = Math.pow(1.618, attendees);
-    // var newRad = proportion * this.scale;
-    // // var tempScaled = proportion / 2;
-    // return newRad <= 5 ? 5 : newRad;
   },
 
   indexZoom: function () {

@@ -88,6 +88,8 @@ FlockTo.Routers.Router = Backbone.Router.extend({
         currentUser: this.currentUser
       });
       this._swapView(showView, this.$auxEl);
+
+      showView.map.initMap();
     }.bind(this));
   },
 

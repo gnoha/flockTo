@@ -55,15 +55,15 @@ FlockTo.Views.FlockShow = Backbone.CompositeView.extend({
   addMap: function () {
     this.collection = this.model.pathFlocks();
     this.collection.add(this.model.subFlocks().models);
-    var map = new FlockTo.Views.MapShow({
+    this.map = new FlockTo.Views.MapShow({
       collection: this.collection,
       currentModel: this.model,
       eventModel: this.model.eventModel(),
     });
 
-    map.$el.addClass('flock-map-canvas')
-    this.addSubview('#flock-map-container', map);
-    map.initMap();
+    this.map.$el.addClass('flock-map-canvas');
+    this.addSubview('#flock-map-container', this.map);
+    // this.map.initMap();
   },
 
   addNewForm: function () {

@@ -17,7 +17,6 @@ FlockTo.Views.FlocksIndexItem = Backbone.View.extend({
   },
 
   render: function () {
-    // console.log('index_item')
     var content = this.template({ flock: this.model });
     this.$el.html(content);
     this.$el.attr('data-id', this.model.get('id'));
