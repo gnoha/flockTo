@@ -421,7 +421,7 @@ end
 FactoryGirl.create(
   :flock,
   location: "San Francisco, CA",
-  date: Date.new(2016, 4, 16),
+  date: Date.new(2016, 4, 14),
   title: "#San Francisco to Coachella!!",
   description: "CoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachella",
   coordinator_id: i,
@@ -524,7 +524,7 @@ i = 10
   FactoryGirl.create(
     :flock,
     location: city,
-    date: Date.new(2015, 9, 18),
+    date: Date.new(2015, 6, 28),
     title: "#{city} to Wimbledon",
     description: "1 Novak Djokovic\n2 Roger Federer\n3 Andy Murray\n4 Stan Wawrinka\n5 Kei Nishikori\n6 Tomas Berdych\n7 Milos Raonic\n9 Marin Cilic\n10 Rafael Nadal",
     coordinator_id: i,
