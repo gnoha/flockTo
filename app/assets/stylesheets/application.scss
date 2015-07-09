@@ -40,6 +40,15 @@ body, html {
   letter-spacing: 1px;
 }
 
+.jumbotron p {
+  text-align: center
+}
+
+input.tour-button {
+  display: block;
+  margin: auto;
+}
+
 p {
   font-family: 'Droid Sans', sans-serif;
 }
