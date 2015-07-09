@@ -421,7 +421,7 @@ end
 FactoryGirl.create(
   :flock,
   location: "San Francisco, CA",
-  date: Date.new(2016, 4, 14),
+  date: Date.new(2016, 4, 13),
   title: "#San Francisco to Coachella!!",
   description: "CoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachella",
   coordinator_id: i,
