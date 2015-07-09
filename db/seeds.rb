@@ -112,7 +112,7 @@ FactoryGirl.create(
   parent_id: 1,
   img_url: bmanimages.sample
 )
-
+sleep(4)
 #F8
 FactoryGirl.create(
   :flock,
@@ -164,7 +164,7 @@ FactoryGirl.create(
   parent_id: 3,
   img_url: bmanimages.sample
 )
-sleep(15)
+sleep(4)
 
 #F12
 FactoryGirl.create(
@@ -208,7 +208,7 @@ i = 14
   )
   i += 1
 end
-
+sleep(4)
 #F17
 FactoryGirl.create(
   :flock,
@@ -248,7 +248,7 @@ FactoryGirl.create(
   event_id: 1,
   img_url: bmanimages.sample
 )
-sleep(15)
+sleep(1)
 #**************************************OKTOBERFEST*********************************
 FactoryGirl.create(
   :event,
@@ -302,7 +302,7 @@ j = 22
   j += 1
   i += 1
 end
-sleep(15)
+sleep(4)
 
 #F32
 FactoryGirl.create(
@@ -330,7 +330,7 @@ FactoryGirl.create(
   img_url: okfestimg.sample
 )
 #**********************************OLYMPICS*******************************
-sleep(15)
+sleep(4)
 FactoryGirl.create(
   :event,
   location: "Rio de Janeiro, Brazil",
@@ -342,7 +342,7 @@ FactoryGirl.create(
   img_url: "http://www.logobird.com/wp-content/uploads/2011/01/rio-2016-olympics-logo.jpg",
   img_url: okfestimg.sample
 )
-sleep(15)
+sleep(4)
 
 
 olympics =[
@@ -361,6 +361,7 @@ i = 4
  "Paris, France", "Beijing, China", "Tokyo, Japan", "New York City, USA",
  "Cairo, Egypt", "Amsterdam, Netherlands", "Brisbane, Australia", "Tehran, Iran"].each do |city|
   c, country = city.split(", ")
+  sleep(1)
   FactoryGirl.create(
     :flock,
     location: city,
@@ -373,7 +374,7 @@ i = 4
   )
   i += 1
 end
-sleep(15)
+sleep(4)
 
 #**********************************Coachella*******************************
 FactoryGirl.create(
@@ -403,7 +404,7 @@ i = 6
   FactoryGirl.create(
     :flock,
     location: city,
-    date: Date.new(2016, 4, 16),
+    date: Date.new(2016, 4, 14),
     title: "#{cityname} to Coachella!!",
     description: "Whooooo! Maybe we'll see Justin Beiber.. bro",
     coordinator_id: i,
@@ -427,7 +428,7 @@ FactoryGirl.create(
 )
 
 #**********************************IRONMAN*******************************
-sleep(15)
+sleep(4)
 
 FactoryGirl.create(
   :event,
@@ -462,6 +463,7 @@ i = 25
     img_url: iman.sample
   )
 end
+sleep(4)
 
 #F60 - 62
 ["Paris, France", "Berlin, Germany", "Amsterdam, Netherlands"].each do |city|
@@ -494,7 +496,7 @@ FactoryGirl.create(
 
 
 #**********************************WIMBLEDON*******************************
-sleep(15)
+sleep(4)
 wimbimg = [
   "http://frontrow24.com/wp-content/uploads/2015/06/Wimbledon-20151.jpg",
   "http://static01.nyt.com/images/2014/07/05/sports/jp-wimbledon/jp-wimbledon-articleLarge.jpg",
