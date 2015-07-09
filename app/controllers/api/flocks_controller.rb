@@ -63,7 +63,7 @@ module Api
 
     def flock_params
       params.require(:flock).permit(:title, :description, :location, :date,
-                                    :event_id, :parent_id, :coordinator_id)
+                                    :event_id, :parent_id, :coordinator_id, :img_url)
     end
   end
 end

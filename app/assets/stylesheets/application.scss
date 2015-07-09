@@ -178,7 +178,7 @@ textarea.form-control {
   border: 1px solid #172C3D;
   border-radius: 3px;
   background-color: #ffffff;
-  color: #172C3D;
+  color: #ffffff;
   height: 100%;
   display: block;
 }
@@ -189,6 +189,11 @@ textarea.form-control {
   opacity: 0.75;
 }
 
+.index-item .bg {
+  height: 100%;
+  background: rgba(0, 0, 0, 0.52);
+  display: block;
+}
 //Events Index
 
 //User forms
@@ -360,7 +365,8 @@ button.navbar-toggle > .icon-bar {
   position: absolute;
   bottom: 40px;
   padding-left: 15px;
-  color: #172C3D;
+  color: #ffffff;
+;
 }
 
 //Index
