@@ -84,8 +84,8 @@ FlockTo.Views.MapShow = Backbone.View.extend({
       path: endpoints,
       geodesic: false,
       strokeColor: '#0C555D',
-      strokeOpacity: 0.5,
-      strokeWeight: 0.5
+      strokeOpacity: 0.3,
+      strokeWeight: 0.25
     });
 
     line.setMap(this._map);

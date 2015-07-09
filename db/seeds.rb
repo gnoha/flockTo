@@ -342,7 +342,6 @@ FactoryGirl.create(
   coordinator_id: 5,
   url: "http://www.olympic.org/",
   img_url: "http://www.logobird.com/wp-content/uploads/2011/01/rio-2016-olympics-logo.jpg",
-  img_url: okfestimg.sample
 )
 sleep(4)
 
