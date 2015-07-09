@@ -40,14 +40,14 @@ class Flock < ActiveRecord::Base
            source: :user)
 
   def meets_before_event
-    if (self.date.nil?) || self.date > self.event.date
+    if (self.date.nil?) || self.date >= self.event.date
       errors.add(:date, "Flock cannot meet after event")
     end
   end
 
   def meets_before_parent_flock
     if (self.parent_id)
-      if (self.date.nil?) || self.date > self.parent_flock.date
+      if (self.date.nil?) || self.date >= self.parent_flock.date
         errors.add(:date, "The new flock cannot meet up with this flock")
       end
     end

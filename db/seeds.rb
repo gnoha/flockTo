@@ -15,6 +15,32 @@ end
 #     date: Faker::Date.between(Date.new(2015, 11, 05), Date.new(2015, 11, 21)),
 #     )
 # end
+FactoryGirl.create(
+  :event,
+  location: "Black Rock Desert, Nevada",
+  date: Date.new(2015, 08, 30),
+  title: "Burning Man 2015",
+  description: 'Burning Man is a network of people inspired by the values reflected in the Ten Principles and united in the pursuit of a more creative and connected existence in the world. Throughout the year we work to build Black Rock City, home of the largest annual Burning Man gathering, and nurture the distinctive culture emerging from that experience. The hub of this global network is the 501(c)(3) non-profit Burning Man Project, headquartered in San Francisco, California. \n The mission of the Burning Man organization is to facilitate and extend the culture that has issued from the Burning Man event into the larger world. \n The Burning Man organization will bring experiences to people in grand, awe-inspiring and joyful ways that lift the human spirit, address social problems and inspire a sense of culture, community and personal engagement.'
+  coordinator_id: 1
+)
+
+FactoryGirl.create(
+  :event,
+  location: "Munich, Germany",
+  date: Date.new(2015, 09, 19),
+  title: "Oktoberfest",
+  description: "Oktoberfest is the world's largest funfair held annually in Munich, Bavaria, Germany. It is a 16-day folk festival running from late September to the first weekend in October with more than 6 million people from around the world attending the event every year. Locally, it is often simply called Wiesn, after the colloquial name of the fairgrounds (Theresienwiese) themselves. The Oktoberfest is an important part of Bavarian culture, having been held since 1810. Other cities across the world also hold Oktoberfest celebrations, modeled after the original Munich event.",
+  coordinator_id: 2
+)
+
+FactoryGirl.create(
+  :event,
+  location: "Austin, TX",
+  date: Date.new(2015, 11, 11),
+  title: "Winter Migration 2015",
+  description: "Let's escape the cold and settle in one of the southern-most states in the United States. The water won't be frozen and the sun will be out!",
+  coordinator_id: 1
+)
 
 FactoryGirl.create(
   :event,

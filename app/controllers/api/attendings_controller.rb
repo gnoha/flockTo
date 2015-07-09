@@ -3,7 +3,7 @@ module Api
     def create
       @attending = current_user.attendings.new(
         flock_id: params[:attending][:flock_id])
-      
+
       if @attending.save
         render json: @attending
       else
@@ -22,7 +22,7 @@ module Api
       @attending = Attending.find(params[:id])
       flock = @attending.flock
       @attending.destroy
-      if Attending.find_by_flock_id(flock.id).nil?
+      if Attending.find_by_flock_id(flock.id).nil? && flock.subflocks.nil?
         flock.destroy
       end
       render json: {}

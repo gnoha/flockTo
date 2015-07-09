@@ -14,7 +14,7 @@ end
 
 json.subflocks @flock.subflocks do |subflock|
   json.extract! subflock, :id, :title, :location, :date,
-                :latitude, :longitude, :parent_id, :event_id
+                :latitude, :longitude, :parent_id, :event_id, :img_url
 end
 
 json.attendees @flock.attendees do |attendee|

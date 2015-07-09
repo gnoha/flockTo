@@ -8,11 +8,12 @@ FlockTo.Views.FlockForm = Backbone.View.extend({
   events: {
     'click .submit': 'submit',
     'click .open-form': 'openModal',
-    'click .open-edit-modal': 'openEditModal'
+    'click .open-edit-modal': 'openEditModal',
+    'click .upload-photo': 'upload'
   },
 
   initialize: function (options) {
-    this.edit = options.edit
+    this.edit = options.edit;
     this.eventId = options.eventId;
     this.parentId = options.parentId;
     this.maxDate = options.maxDate;
@@ -31,10 +32,12 @@ FlockTo.Views.FlockForm = Backbone.View.extend({
     var id = 'myModal';
     var button = 'Create Flock';
     var title = 'Start a Flock';
+    var photoButton = 'Upload Photo';
     if (this.edit) {
       id = 'editModal';
       button = 'Update Flock';
       title = 'Edit Flock';
+      photoButton = 'Change Photo';
     }
 
     var today = new Date();
@@ -45,7 +48,8 @@ FlockTo.Views.FlockForm = Backbone.View.extend({
       button: button,
       title: title,
       minDate: today.toISOString().split("T")[0],
-      maxDate: this.maxDate
+      maxDate: this.maxDate,
+      photoButton: photoButton
     });
     this.$el.html(content);
 
@@ -91,5 +95,13 @@ FlockTo.Views.FlockForm = Backbone.View.extend({
     });
 
     return this;
+  },
+
+  upload: function (e) {
+    e.preventDefault();
+    cloudinary.openUploadWidget(CLOUDINARY_OPTIONS, function (error, result) {
+      var data=result[0];
+      this.model.set({img_url: data.url});
+    }.bind(this));
   }
 });
