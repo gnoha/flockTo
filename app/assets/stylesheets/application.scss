@@ -413,15 +413,21 @@ button.navbar-toggle > .icon-bar {
   color: #172C3D;
 }
 
-.event-info {
+.event-info, .flock-info {
   margin-left: 15px;
   margin-right:15px;
 }
 
 .event-info p {
   overflow: scroll;
-  height: 515px;
+  height: 250px;
   overflow-x: hidden;
+}
+
+.flock-info p {
+  overflow: scroll;
+  height: px;
+  overflow-x: hidden; 
 }
 //index
 .search-main {

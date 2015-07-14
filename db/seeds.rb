@@ -1,4 +1,12 @@
 # Users
+FactoryGirl.create(
+  :user, 
+  username: 'Guest',
+  password: 'hireme',
+  bio: 'I enjoy long walks on the beach and moving in slow-motion.'
+)
+
+
 50.times do
   begin
     FactoryGirl.create(:user)
@@ -457,7 +465,7 @@ i = 25
   sleep(4)
   FactoryGirl.create(
     :flock,
-    location: "London, England",
+    location: city,
     date: Date.new(2015, 10, 2),
     title: "I am a mountain.",
     description: "Nobody's ever gone the distance with Creed, and if I can go that distance, you see, and that bell rings and I'm still standin', I'm gonna know for the first time in my life, see, that I weren't just another bum from the neighborhood.",
@@ -465,6 +473,7 @@ i = 25
     event_id: 5,
     img_url: iman.sample
   )
+  i += 1
 end
 
 #F60 - 62
