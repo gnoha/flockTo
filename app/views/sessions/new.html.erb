@@ -1,48 +1,120 @@
+<div class='sign-in-modal'>Sign In</div>
+
 <div class='container-fluid'>
   <div class='row landing'>
-    <div class='user-form-wrapper col-xs-4 col-xs-offset-1'>
-    <div class='panel panel-default'>
-      <div class='panel-body'>
-        <form class= 'user-form' action="<%= session_url%>" method="POST">
-          <input type="hidden" name="authenticity_token"
-                 value="form_authenticity_token">
-
-          <div class='form-group'>
-            <label><h1>Sign In</h1></label>
-            <ul class="errors">
-              <% if flash[:errors]               %>
-              <label>
-              <%  flash[:errors].each do |error| %>
-                  <li> <%= error %></li>
-              <%  end                            %>
-              </label>
-              <% end                             %>
-            </ul>
+    <div id='sign-in-form' class='modal fade' tabindex="-1" role='dialog'
+      aria-labelledby='myModalLabel' aria-hidden='true'>
+      <div class="modal-dialog">
+        <div class='modal-content col-xs-8 col-xs-offset-2'>
+          <div class="modal-header">
+            <label>Sign In</label>
+            <button type="button" class="close" data-dismiss="modal"
+              aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
 
-          <div class='form-group'>
-            <label class="username-input">Username
-              <input type="text" class='form-control' name=user[username] placeholder="Username">
-            </label>
-          </div>
+          <div class='modal-body'>
+            <form class= 'user-form' action="<%= session_url%>" method="POST">
+              <input type="hidden" name="authenticity_token"
+                     value="form_authenticity_token">
 
-          <div class='form-group'>
-            <label class="password-input">Password
-              <input type="password" class='form-control' name=user[password] placeholder="Password">
-            </label>
-          </div>
+              <div class='form-group'>
+                <ul class="errors">
+                  <% if flash[:errors]               %>
+                  <label>
+                  <%  flash[:errors].each do |error| %>
+                      <li> <%= error %></li>
+                  <%  end                            %>
+                  </label>
+                  <% end                             %>
+                </ul>
+              </div>
 
-          <div class='form-group'>
-            <input class='btn btn-sm btn-primary pull-right' type="submit" value="Sign In">
-          </div>
-        </form>
-      </div>
+              <div class='form-group'>
+                <label class="username-input">Username
+                  <input type="text" class='form-control' name=user[username] placeholder="Username">
+                </label>
+              </div>
 
-      <div class='panel-footer'>
-        <a><%= link_to "Want to join? Click Here!", new_user_url %></a>
+              <div class='form-group'>
+                <label class="password-input">Password
+                  <input type="password" class='form-control' name=user[password] placeholder="Password">
+                </label>
+              </div>
+
+              <div class='form-group'>
+                <input id='enter' class='btn btn-sm btn-primary pull-right' type="submit" value="Sign In">
+              </div>
+            </form>
+          </div>
+          
+          <div class='modal-footer'>
+            <a><%= link_to "Want to join? Click Here!", new_user_url %></a>
+          </div>
+        </div>
       </div>
     </div>
+   
+    <div class='splash-wrapper'>
+      <div class="col-xs-10 col-xs-offset-1">
+        <div class="row">
+          <div class="col-xs-12">
+            <h2>Why fly solo when you can flock?</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-11 col-xs-offset-1">
+            <p>Join a flock. Attend an event with your flock.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-10 col-xs-offset-2">
+            <h3>BUT WHY STOP THERE?</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-9 col-xs-offset-3">
+            <p>Join other flocks along the way and arrive at your 
+              destination as an unstoppable force...</p>
+          </div>
+        </div>
+        <div class="button-row row">
+          <div class="col-xs-4 col-xs-offset-4">
+            <button id='tour-button' class='btn btn-primary btn-lrg'>Take the Tour</button>
+          </div>
+        </div>
+      </div>
     </div>
-    <%= render "layouts/splash"%>
   </div>
 </div>
+
+<script>
+  $('.sign-in-modal').on('click', function () {
+    $('#sign-in-form').modal();
+  })
+
+  $('button#tour-button').click(function(){
+    $('.sign-in-modal').trigger('click');
+    setTimeout(function () {
+      $("input[name='user[username]']").val("");
+      $("input[name='user[password]']").val("");
+        autoTyper('Guest', $("input[name='user[username]']"), function(){
+          autoTyper('hireme', $("input[name='user[password]']"), function(){
+              $('#enter').click();
+          });
+        });
+      }, 500);
+    });
+
+    var autoTyper = function(word, $el, callback){
+      var typer = setInterval(function(){
+        $el.val($el.val() + word.slice(0,1));
+        word = word.substr(1);
+        if(word.length === 0){
+          clearInterval(typer);
+          callback();
+        }
+      }, 100);
+    }
+</script>

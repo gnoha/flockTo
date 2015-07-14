@@ -1,6 +1,12 @@
 FlockTo.Models.User = Backbone.Model.extend({
   urlRoot: '/api/users',
 
+  guestTour: {
+    'indexTour': false,
+    'eventShow': false,
+    'flockShow': false
+  },
+
   been: function (){
     if (!this._been) {
       this._been = new FlockTo.Collections.Events([], { eventModel: this });
@@ -22,7 +28,15 @@ FlockTo.Models.User = Backbone.Model.extend({
       this._coordinatedFlocks = new FlockTo.Collections.Flocks();
     }
 
-    return this._coordinatedFlocks
+    return this._coordinatedFlocks;
+  },
+
+  isGuest: function () {
+    if (this.get('username') === 'Guest') {
+      return true;
+    } else {
+      return false;
+    }
   },
 
   // coordinatedEvents: function (user) {

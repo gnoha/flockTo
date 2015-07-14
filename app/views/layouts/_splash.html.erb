@@ -12,20 +12,15 @@
         <p>Join other flocks along the way and arrive at your desitination as an unstoppable force...</p>
       </div>
     </div>
-       <form class= 'guest-user-form' action="<%= users_url%>" method="POST">
+<!--        <form class= 'guest-user-form' action="<%= session_url%>" method="POST">
          <input type="hidden" name="authenticity_token"
                 value="form_authenticity_token">
-         <input type="hidden" class='form-control' name=user[username] value='<%= Faker::Internet.user_name%>'>
-         <input type="hidden" class='form-control' name=user[password] value="password">
-         <div class='form-group'>
-           <input class='btn btn-lg btn-primary tour-button' type="submit" value="Take the Tour">
-         </div>
-       </form>
+         <input type="hidden" class='form-control' name=user[username] value='Guest'>
+         <input type="hidden" class='form-control' name=user[password] value="hireme">
+         <div class='form-group'> -->
+           <button class='btn btn-lg btn-primary tour-button'>"Take the Tour"</button>
+<!--          </div>
+       </form> -->
   </div>
 </div>
 
-<script type="text/javascript">
-  $(".tour-button").on('click', function () {
-    FlockTo.guest = true;
-  })
-</script>

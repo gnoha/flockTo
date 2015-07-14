@@ -12,7 +12,7 @@ window.FlockTo = {
       $button: $('#help-button'),
       events: new FlockTo.Collections.Events(),
       flocks: new FlockTo.Collections.Flocks(),
-      users: new FlockTo.Collections.Users(),
+      users: new FlockTo.Collections.Users()
     });
 
     Backbone.history.start();

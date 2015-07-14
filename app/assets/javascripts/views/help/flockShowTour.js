@@ -97,10 +97,8 @@ FlockTo.Views.FlockShowTour = Backbone.View.extend({
         buttons: [
           {
             text: 'Exit',
-            classes: 'shepherd-button-secondary',
-            action: function() {
-              return FlockTo.tour.hide();
-            }
+            classes: 'shepherd-button',
+            action: FlockTo.tour.complete
           }
         ]
       });

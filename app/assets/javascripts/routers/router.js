@@ -12,14 +12,6 @@ FlockTo.Routers.Router = Backbone.Router.extend({
         this.navbar();
       }.bind(this));
     }
-    if (FlockTo.tour) {
-      FlockTo.tour = new Shepherd.Tour({
-        defaults: {
-          classes: 'shepherd-theme-arrows',
-          scrollTo: true
-        }
-      });
-    }
   },
 
   routes: {
@@ -69,8 +61,9 @@ FlockTo.Routers.Router = Backbone.Router.extend({
 
         this._swapView(indexView, this.$rootEl);
 
-        if (this.tour) {
-          this.tour.indexTour();
+        if (this.currentUser.isGuest() && !this.currentUser.guestTour.indexTour) {
+          this.currentUser.guestTour.indexTour = true;
+          $('.help').trigger('click');
         }
       }.bind(this)
     });
@@ -103,6 +96,11 @@ FlockTo.Routers.Router = Backbone.Router.extend({
       this.addHelpButton(tourButton);
 
       this._swapView(showView, this.$rootEl);
+
+     if (this.currentUser.isGuest() && !this.currentUser.guestTour.eventShow) {
+      this.currentUser.guestTour.eventShow = true;
+      $('.help').trigger('click');
+     }
     }.bind(this));
   },
 
@@ -120,6 +118,11 @@ FlockTo.Routers.Router = Backbone.Router.extend({
       this.addHelpButton(tourButton);
 
       showView.map.initMap();
+
+     if (this.currentUser.isGuest() && !this.currentUser.guestTour.flockShow) {
+      this.currentUser.guestTour.flockShow = true;
+      $('.help').trigger('click');
+     }
     }.bind(this));
   },
 
