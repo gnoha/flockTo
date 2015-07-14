@@ -1,14 +1,15 @@
+<div class='circle help-button fixed'></div>
 <div class='row info-map'>
-  <div class='col-xs-6'>
+  <div class='col-xs-12 col-sm-6'>
     <div id='flock-map-container'></div>
   </div>
 
-  <div class='col-xs-6'>
+  <div class='col-xs-12 col-sm-6'>
     <div role='tabpanel'>
       <ul class='nav nav-tabs' role='tablist'>
         <li role='presentation' class='active'><a href="#info" class='flock'
             aria-controls='flocks' role='tab' data-toggle='tab'>Flock Details</a></li>
-        <li role='presentation'><a href="#flocks" class='flock'
+        <li role='presentation'><a id="sub-flocks" href="#flocks" class='flock'
             aria-controls='flocks' role='tab' data-toggle='tab'>Sub-Flocks</a></li>
         <% if (false) {%>
         <li role='presentation'><a href='#attending' aria-controls='attending' class='flock'

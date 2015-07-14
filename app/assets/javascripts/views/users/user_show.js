@@ -7,6 +7,9 @@ FlockTo.Views.UserShow = Backbone.CompositeView.extend({
     this.listenTo(this.model.been(), 'add sync', this.addBeen);
     this.listenTo(this.model.going(), 'add sync', this.addGoing);
 
+
+    this.model.been().each(this.addBeen.bind(this));
+    this.model.going().each(this.addGoing.bind(this));
     this.model.coordinatedFlocks().each(this.addFlockCards.bind(this));
   },
 
@@ -14,7 +17,6 @@ FlockTo.Views.UserShow = Backbone.CompositeView.extend({
     var content = this.template({ user: this.model });
     this.$el.html(content);
     this.attachSubviews();
-
     return this;
   },
 

@@ -1,0 +1,31 @@
+<div class='jumbo-wrapper col-xs-6'>
+  <div class="jumbotron">
+    <h2>Why fly solo when you can flock?</h2>
+    <div class='row'>
+      <div class='col-xs-11 col-xs-offset-1'>
+        <p>Join a flock. Attend an event with your flock.</p>
+      </div>
+    </div>
+    <h3>BUT WHY STOP THERE?</h3>
+    <div class='row'>
+      <div class='col-xs-11 col-xs-offset-1'>
+        <p>Join other flocks along the way and arrive at your desitination as an unstoppable force...</p>
+      </div>
+    </div>
+       <form class= 'guest-user-form' action="<%= users_url%>" method="POST">
+         <input type="hidden" name="authenticity_token"
+                value="form_authenticity_token">
+         <input type="hidden" class='form-control' name=user[username] value='<%= Faker::Internet.user_name%>'>
+         <input type="hidden" class='form-control' name=user[password] value="password">
+         <div class='form-group'>
+           <input class='btn btn-lg btn-primary tour-button' type="submit" value="Take the Tour">
+         </div>
+       </form>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(".tour-button").on('click', function () {
+    FlockTo.guest = true;
+  })
+</script>

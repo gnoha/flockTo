@@ -13,7 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.serializejson
-//= require jquery-ui/datepicker
+//= require tether.min
+//= require shepherd.min
 //= require bootstrap
 //= require underscore
 //= require backbone
@@ -25,3 +26,4 @@
 //= require_tree ./views
 //= require_tree ./routers
 //= require_tree .
+

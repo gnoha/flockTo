@@ -1,0 +1,56 @@
+{
+  "name": "tether-shepherd",
+  "version": "1.1.3",
+  "description": "Guide your users through a tour of your app.",
+  "authors": [
+    "Adam Schwartz <adam.flynn.schwartz@gmail.com>",
+    "Zack Bloom <zackbloom@gmail.com>"
+  ],
+  "maintainers": [
+    {
+      "name": "hs",
+      "email": "devteam@hubspot.com"
+    }
+  ],
+  "scripts": {
+    "build": "gulp build"
+  },
+  "license": "MIT",
+  "main": "dist/js/shepherd.js",
+  "spm": {
+    "main": "shepherd.js"
+  },
+  "devDependencies": {
+    "del": "^1.2.0",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^2.3.1",
+    "gulp-babel": "^5.1.0",
+    "gulp-bump": "^0.3.1",
+    "gulp-coffee": "^2.3.1",
+    "gulp-header": "^1.2.2",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.0.1",
+    "gulp-uglify": "^1.2.0",
+    "gulp-wrap-umd": "^0.2.1"
+  },
+  "dependencies": {
+    "tether": "^1.0.1"
+  },
+  "gitHead": "2f8b34ecf6ab6ee4fdbad7feb7cac2b486c8f16e",
+  "_id": "tether-shepherd@1.1.3",
+  "_shasum": "7e55f9df5aadcf4f0acef9f324460cef5e867aae",
+  "_from": "tether-shepherd@*",
+  "_npmVersion": "2.11.1",
+  "_nodeVersion": "2.0.2",
+  "_npmUser": {
+    "name": "hs",
+    "email": "dev@hubspot.com"
+  },
+  "dist": {
+    "shasum": "7e55f9df5aadcf4f0acef9f324460cef5e867aae",
+    "tarball": "http://registry.npmjs.org/tether-shepherd/-/tether-shepherd-1.1.3.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/tether-shepherd/-/tether-shepherd-1.1.3.tgz",
+  "readme": "ERROR: No README data found!"
+}

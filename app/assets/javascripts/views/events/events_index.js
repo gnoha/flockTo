@@ -30,6 +30,10 @@ FlockTo.Views.EventsIndex = Backbone.CompositeView.extend({
     this.addSubview('.event-index-list', newForm, true);
   },
 
+  addHelpButton: function () {
+    this.addSubview('.help-button', tourButton);
+  },
+
   hasNone: function () {
     return this.collection.length === 0;
   },

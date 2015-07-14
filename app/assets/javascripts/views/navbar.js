@@ -8,8 +8,8 @@ FlockTo.Views.Navbar = Backbone.View.extend({
   },
 
   initialize: function (options) {
-    this.router = options.router,
-    this.listenTo(this.model, 'sync', this.render)
+    this.router = options.router;
+    this.listenTo(this.model, 'sync', this.render);
   },
 
   render: function () {

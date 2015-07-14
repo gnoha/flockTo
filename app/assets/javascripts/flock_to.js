@@ -9,6 +9,7 @@ window.FlockTo = {
       $el: $('#main'),
       $map: $('#map-container'),
       $auxEl: $('#auxiliary'),
+      $button: $('#help-button'),
       events: new FlockTo.Collections.Events(),
       flocks: new FlockTo.Collections.Flocks(),
       users: new FlockTo.Collections.Users(),

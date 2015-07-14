@@ -3,6 +3,7 @@ FlockTo.Routers.Router = Backbone.Router.extend({
     this.$rootEl = options.$el;
     this.$map = options.$map;
     this.$auxEl = options.$auxEl;
+    this.$button = options.$button;
     this.events = options.events;
     this.flocks = options.flocks;
     this.users = options.users;
@@ -10,6 +11,14 @@ FlockTo.Routers.Router = Backbone.Router.extend({
       this.currentUser = this.users.getOrFetch(CURRENT_USER_ID, function () {
         this.navbar();
       }.bind(this));
+    }
+    if (FlockTo.tour) {
+      FlockTo.tour = new Shepherd.Tour({
+        defaults: {
+          classes: 'shepherd-theme-arrows',
+          scrollTo: true
+        }
+      });
     }
   },
 
@@ -34,6 +43,13 @@ FlockTo.Routers.Router = Backbone.Router.extend({
     map.initMap();
   },
 
+  addHelpButton: function (view) {
+    this._button && this._button.remove();
+    this._button = view;
+    this.$button.html(view.$el);
+    view.render();
+  },
+
 
   index: function () {
     this.events.fetch({
@@ -48,7 +64,14 @@ FlockTo.Routers.Router = Backbone.Router.extend({
           index: true
         });
 
+        var tourButton = new FlockTo.Views.EventIndexTour();
+        this.addHelpButton(tourButton);
+
         this._swapView(indexView, this.$rootEl);
+
+        if (this.tour) {
+          this.tour.indexTour();
+        }
       }.bind(this)
     });
   },
@@ -76,6 +99,9 @@ FlockTo.Routers.Router = Backbone.Router.extend({
         currentModel: eventModel,
       });
 
+      var tourButton = new FlockTo.Views.EventShowTour();
+      this.addHelpButton(tourButton);
+
       this._swapView(showView, this.$rootEl);
     }.bind(this));
   },
@@ -90,6 +116,9 @@ FlockTo.Routers.Router = Backbone.Router.extend({
       });
       this._swapView(showView, this.$auxEl);
 
+      var tourButton = new FlockTo.Views.FlockShowTour();
+      this.addHelpButton(tourButton);
+
       showView.map.initMap();
     }.bind(this));
   },
@@ -102,6 +131,9 @@ FlockTo.Routers.Router = Backbone.Router.extend({
         going: user.going(),
         been: user.been()
       });
+  
+      this._button && this._button.remove();
+
       this._swapView(showView, this.$auxEl);
     }.bind(this));
   },
