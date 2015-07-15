@@ -5,6 +5,9 @@ FlockTo.Views.FlockShowTour = Backbone.View.extend({
     'click .help' : 'startTour'
   },
 
+  className: 'help-button',
+
+
   initialize: function () {
     this.addTour();
   },

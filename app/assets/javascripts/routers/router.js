@@ -112,6 +112,7 @@ FlockTo.Routers.Router = Backbone.Router.extend({
         users: this.users,
         currentUser: this.currentUser
       });
+      
       this._swapView(showView, this.$auxEl);
 
       var tourButton = new FlockTo.Views.FlockShowTour();
