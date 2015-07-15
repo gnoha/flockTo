@@ -56,6 +56,7 @@ FlockTo.Routers.Router = Backbone.Router.extend({
           index: true
         });
 
+        FlockTo.tour && FlockTo.tour.hide();
         var tourButton = new FlockTo.Views.EventIndexTour();
         this.addHelpButton(tourButton);
 
@@ -92,6 +93,7 @@ FlockTo.Routers.Router = Backbone.Router.extend({
         currentModel: eventModel,
       });
 
+      FlockTo.tour && FlockTo.tour.hide();
       var tourButton = new FlockTo.Views.EventShowTour();
       this.addHelpButton(tourButton);
 
@@ -99,6 +101,7 @@ FlockTo.Routers.Router = Backbone.Router.extend({
 
      if (this.currentUser.isGuest() && !this.currentUser.guestTour.eventShow) {
       this.currentUser.guestTour.eventShow = true;
+      FlockTo.tour.hide();
       $('.help').trigger('click');
      }
     }.bind(this));
@@ -115,6 +118,7 @@ FlockTo.Routers.Router = Backbone.Router.extend({
       
       this._swapView(showView, this.$auxEl);
 
+      FlockTo.tour && FlockTo.tour.hide();
       var tourButton = new FlockTo.Views.FlockShowTour();
       this.addHelpButton(tourButton);
 

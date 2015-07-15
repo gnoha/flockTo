@@ -30,7 +30,7 @@ FlockTo.Views.EventShowTour = Backbone.View.extend({
             text: 'Exit',
             classes: 'shepherd-button-secondary',
             action: function() {
-              return FlockTo.tour.hide();
+              return FlockTo.tour.complete();
             }
           },
           
@@ -56,7 +56,7 @@ FlockTo.Views.EventShowTour = Backbone.View.extend({
             text: 'Exit',
             classes: 'shepherd-button-secondary',
             action: function() {
-              return FlockTo.tour.hide();
+              return FlockTo.tour.complete();
             }
           },
           
