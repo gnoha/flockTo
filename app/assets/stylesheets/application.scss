@@ -128,6 +128,11 @@ a:hover {
 .help-button:hover {
   cursor: pointer;
 }
+
+.shepherd-content p {
+  font-size: 15px;
+  letter-spacing: 0;
+}
 //Sign-in/up
 #sign-up-button, #enter {
   width: 100%;
@@ -281,9 +286,16 @@ form textarea {
 }
 
 .splash-wrapper #tour-button {
-  margin: 60px;
-  border-radius: 3px;
+  text-align: center;
+  margin: 60px auto;
+  display: block;
+  padding: 16px;
+  font-size: 18px;
 }
+.splash-wrapper {
+  font-size: 16px
+}
+
 //User
 .thumbnail:hover {
   cursor: pointer;

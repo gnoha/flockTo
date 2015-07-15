@@ -53,6 +53,10 @@ FlockTo.Views.Navbar = Backbone.View.extend({
           collection: response,
           index: true
         });
+
+        var tourButton = new FlockTo.Views.EventIndexTour();
+        this.router.addHelpButton(tourButton);
+        
         this.router._swapView(view, this.router.$rootEl);
       }.bind(this)
     });
