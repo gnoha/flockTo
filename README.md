@@ -1,8 +1,8 @@
 # flockTo
 
-[Heroku link][heroku]
+[Live link][flockTo]
 
-[heroku]: http://flockto.herokuapp.com
+[flockTo]: http://flockto.co
 
 ## Minimum Viable Product
 flockTo is inspired by Meetup.com built with Rails and Backbone.
