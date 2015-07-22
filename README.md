@@ -9,31 +9,31 @@ flockTo is inspired by Meetup.com built with Rails and Backbone.
 Users will be able to:
 <!-- This is a Markdown checklist. Use it to keep track of your progress! -->
 
-- [ ] Create accounts
-- [ ] Create sessions (log in)
-- [ ] Create groups
-- [ ] Create subgroups (to join up main group)
-- [ ] Create events
-- [ ] View groups
-- [ ] Request to join groups
-- [ ] Search for groups by title
-- [ ] Search for groups by location
+- [x] Create accounts
+- [x] Create sessions (log in)
+- [x] Create groups
+- [x] Create subgroups (to join up main group)
+- [x] Create events
+- [x] View groups
+- [x] Request to join groups
+- [x] Search for events by title
+- [x] Search for groups by location
 - [ ] Search for groups by date
 
 ## Design Docs
-* [View Wireframes][views]
 * [DB schema][schema]
+* [Screen shots][views]
 
 [views]: ./docs/views.md
 [schema]: ./docs/schema.md
 
 ## Implementation Timeline
 
-### Phase 1: User Authentication, Basic Groups and Events (~1 day)
+### Phase 1: User Authentication, Basic Events and Groups(~1 day)
 I will implement user authentication in Rails based on the practices learned at
-App Academy. By the end of this phase, users will be able to create groups using
+App Academy. By the end of this phase, users will be able to sign up and log in using
 a simple text form in a Rails view. By the end of this phase, a user will be
-able to create a group and then create an event.
+able to create an event and a group going to that event
 
 [Details][phase-one]
 
@@ -41,7 +41,7 @@ able to create a group and then create an event.
 I will add API routes to serve group and event data as JSON, then add Backbone
 models and collections that fetch data from those routes. By the end of this
 phase, users will be able to create groups and view both groups and events, all
-inside a single Backbone app.
+inside a single Backbone app. 
 
 [Details][phase-two]
 
@@ -61,18 +61,19 @@ out in the development and testing process.
 ### Phase 5: User Implementation (~1 - 2 days)
 I will be implementing the proper associations for the client side. This will
 allow the users so to be able to create events or update groups only if they are
-administrators. Also, this is where users will be able to join an event or
-request to join a group.
+administrators. Also, this is where users will be able attend an event by 
+joining a group
 
 [Details][phase-five]
 
 ### Phase 6: Searching for Groups and Events (~2 days)
 I'll need to add search routes to both the Groups and Events controllers. On the
-client side, the view will contain both Group Index Items and Event Index Items.
+client side, the view will contain both Group Index Items and Event Index Items. 
 
 [Details][phase-six]
 
 ### Bonus Features (TBD)
+- [ ] User profiles, with messaging and friending
 - [ ] Counter for members of groups and attendees for events
 - [ ] Comments for groups and events
 - [ ] Pagination/infinite scroll
