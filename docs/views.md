@@ -1,4 +1,4 @@
-# View Wireframes
+# View Screenshots
 
 ## New Session
 ![new-session]
@@ -7,12 +7,12 @@
 ![index]
 
 ## Group Show
-![group-show]
+![flock-show]
 
 ## Event Show
 ![event-show]
 
-[new-session]: ./wireframes/new_session.png
-[index]: ./wireframes/index.png
-[group-show]: ./wireframes/group_show.png
-[event-show]: ./wireframes/event_show.png
+[new-session]: ./screenshots/intro_page.png
+[index]: ./screenshots/events_index.png
+[flock-show]: ./screenshots/flock_show.png
+[event-show]: ./screenshots/event_show.png
