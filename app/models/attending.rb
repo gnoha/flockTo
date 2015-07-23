@@ -21,11 +21,12 @@ class Attending < ActiveRecord::Base
   def unique_event_id
     current_events = self.user.attended_events.pluck(:id)
     if current_events.include?(self.flock.event_id)
-      errors.add(:flock_id, 'User is already going to this event!')
-    end
-  end
+      old_flock = user.attended_flocks.where(event_id: flock.event_id).first
+      attending = Attending.find_by_pair(self.user.id, old_flock.id)
+      attending.delete
 
-  def switch_flock
-    
+      self.user.attendings.new(flock_id: self.flock)
+      # errors.add(:flock_id, 'User is already going to this event!')
+    end
   end
 end
