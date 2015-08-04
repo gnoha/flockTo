@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
 
   geocoded_by :location
 
+  has_many :sessions
+
   has_many(:coordinated_events,
            class_name: 'Event',
            foreign_key: :coordinator_id
@@ -52,15 +54,23 @@ class User < ActiveRecord::Base
     BCrypt::Password.new(self.password_digest).is_password?(password)
   end
 
-  def reset_token!
-    self.session_token = SecureRandom.urlsafe_base64
-    self.save!
-    self.session_token
+  def add_token!
+    session = self.session_token.new 
+    session.save!
+    session.session_token
   end
 
   private
 
   def ensure_session_token
-    self.session_token ||= SecureRandom.urlsafe_base64
+    sessions = self.sessions
+    if sessions.length == 0
+      new_session = self.sessions.new
+      new_session.save
+      
+    end
+
+    # self.sessions.length > 0 || self.sessions.new
+    # self.sessions.length > 0 ||= SecureRandom.urlsafe_base64
   end
 end
