@@ -257,290 +257,290 @@ FactoryGirl.create(
   img_url: bmanimages.sample
 )
 sleep(1)
-# #**************************************OKTOBERFEST*********************************
-# FactoryGirl.create(
-#   :event,
-#   location: "Munich, Germany",
-#   date: Date.new(2015, 9, 19),
-#   title: "Oktoberfest",
-#   description: "Oktoberfest is the world's largest funfair held annually in Munich, Bavaria, Germany. It is a 16-day folk festival running from late September to the first weekend in October with more than 6 million people from around the world attending the event every year. Locally, it is often simply called Wiesn, after the colloquial name of the fairgrounds (Theresienwiese) themselves. The Oktoberfest is an important part of Bavarian culture, having been held since 1810. Other cities across the world also hold Oktoberfest celebrations, modeled after the original Munich event.",
-#   coordinator_id: 2,
-#   url: "http://www.oktoberfest.de/en/",
-#   img_url: "http://craftbeeracademy.com/wp-content/uploads/2013/10/oktoberfest-waitress.jpg"
-# )
+#**************************************OKTOBERFEST*********************************
+FactoryGirl.create(
+  :event,
+  location: "Munich, Germany",
+  date: Date.new(2015, 9, 19),
+  title: "Oktoberfest",
+  description: "Oktoberfest is the world's largest funfair held annually in Munich, Bavaria, Germany. It is a 16-day folk festival running from late September to the first weekend in October with more than 6 million people from around the world attending the event every year. Locally, it is often simply called Wiesn, after the colloquial name of the fairgrounds (Theresienwiese) themselves. The Oktoberfest is an important part of Bavarian culture, having been held since 1810. Other cities across the world also hold Oktoberfest celebrations, modeled after the original Munich event.",
+  coordinator_id: 2,
+  url: "http://www.oktoberfest.de/en/",
+  img_url: "http://craftbeeracademy.com/wp-content/uploads/2013/10/oktoberfest-waitress.jpg"
+)
 
-# okfestimg = [
-#   "http://inapcache.boston.com/universal/site_graphics/blogs/bigpicture/oktoberfest2012/bp1.jpg",
-#   "http://i.telegraph.co.uk/multimedia/archive/00998/oktoberfest_998554c.jpg",
-#   "http://wac.450f.edgecastcdn.net/80450F/ultimateclassicrock.com/files/2012/09/Oktoberfest.jpg",
-#   "http://experiencehermann.com/wp-content/uploads/2012/10/hermann-missouri-oktoberfest-beer-raised.jpg",
-#   "http://img.timeinc.net/time/photoessays/2010/oktoberfest_2010/oktoberfest_01.jpg",
-#   "http://www.rtttravel.com/images/tourpics/rttbus/oktoberfest-express.jpg"
-# ]
-# #F22 F23 F24 F25 F26 F27
-# i = 1
-# ["Paris, France", "Berlin, Germany", "Milan, Italy", "Prague, Czech Republic", "Amsterdam, Netherlands", "Vienna, Austria"].each do |city|
-#   sleep(4)
-#   FactoryGirl.create(
-#     :flock,
-#     location: city,
-#     date: Date.new(2015, 9, 18),
-#     title: "#{city} to Oktoberfest!",
-#     description: "Hallo #{city}, let's flock to Oktoberfest! aufmandeln (v.) to aggrandise oneself, especially when you do not find any free seats in the beer tents.",
-#     coordinator_id: i,
-#     event_id: 2,
-#     img_url: okfestimg.sample
-#   )
-#   i += 1
-# end
+okfestimg = [
+  "http://inapcache.boston.com/universal/site_graphics/blogs/bigpicture/oktoberfest2012/bp1.jpg",
+  "http://i.telegraph.co.uk/multimedia/archive/00998/oktoberfest_998554c.jpg",
+  "http://wac.450f.edgecastcdn.net/80450F/ultimateclassicrock.com/files/2012/09/Oktoberfest.jpg",
+  "http://experiencehermann.com/wp-content/uploads/2012/10/hermann-missouri-oktoberfest-beer-raised.jpg",
+  "http://img.timeinc.net/time/photoessays/2010/oktoberfest_2010/oktoberfest_01.jpg",
+  "http://www.rtttravel.com/images/tourpics/rttbus/oktoberfest-express.jpg"
+]
+#F22 F23 F24 F25 F26 F27
+i = 1
+["Paris, France", "Berlin, Germany", "Milan, Italy", "Prague, Czech Republic", "Amsterdam, Netherlands", "Vienna, Austria"].each do |city|
+  sleep(4)
+  FactoryGirl.create(
+    :flock,
+    location: city,
+    date: Date.new(2015, 9, 18),
+    title: "#{city} to Oktoberfest!",
+    description: "Hallo #{city}, let's flock to Oktoberfest! aufmandeln (v.) to aggrandise oneself, especially when you do not find any free seats in the beer tents.",
+    coordinator_id: i,
+    event_id: 2,
+    img_url: okfestimg.sample
+  )
+  i += 1
+end
 
-# #F28 F29 F30 F31
-# j = 22
-# ["Madrid, Spain", "Copenhagen, Denmark", "Rome, Italy", "Budapest, Hungary"].each do |city|
-#   sleep(4)
-#   FactoryGirl.create(
-#     :flock,
-#     location: city,
-#     date: Date.new(2015, 9, 17),
-#     title: "#{city} to Oktoberfest!",
-#     description: "Hallo #{city}, let's flock to Oktoberfest! Pfannakuacha (n.) pancake, sweet prepared and filled with marmalade and sometimes with sugar strewn on top.",
-#     coordinator_id: i,
-#     event_id: 2,
-#     parent_id: j,
-#     img_url: okfestimg.sample
-#   )
-#   j += 1
-#   i += 1
-# end
-# sleep(4)
+#F28 F29 F30 F31
+j = 22
+["Madrid, Spain", "Copenhagen, Denmark", "Rome, Italy", "Budapest, Hungary"].each do |city|
+  sleep(4)
+  FactoryGirl.create(
+    :flock,
+    location: city,
+    date: Date.new(2015, 9, 17),
+    title: "#{city} to Oktoberfest!",
+    description: "Hallo #{city}, let's flock to Oktoberfest! Pfannakuacha (n.) pancake, sweet prepared and filled with marmalade and sometimes with sugar strewn on top.",
+    coordinator_id: i,
+    event_id: 2,
+    parent_id: j,
+    img_url: okfestimg.sample
+  )
+  j += 1
+  i += 1
+end
+sleep(4)
 
-# #F32
-# FactoryGirl.create(
-#   :flock,
-#   location: "London, England",
-#   date: Date.new(2015, 9, 18),
-#   title: "Brits to Oktoberfest!",
-#   description: "Hallo Londoners, let's flock to Oktoberfest! Schlachtschüssl (n.) hefty meal, mainly consisting of sausages and other meat.",
-#   coordinator_id: i,
-#   event_id: 2,
-#   parent_id: 22,
-#   img_url: okfestimg.sample
-# )
-# i += 1
+#F32
+FactoryGirl.create(
+  :flock,
+  location: "London, England",
+  date: Date.new(2015, 9, 18),
+  title: "Brits to Oktoberfest!",
+  description: "Hallo Londoners, let's flock to Oktoberfest! Schlachtschüssl (n.) hefty meal, mainly consisting of sausages and other meat.",
+  coordinator_id: i,
+  event_id: 2,
+  parent_id: 22,
+  img_url: okfestimg.sample
+)
+i += 1
 
-# #F33
-# FactoryGirl.create(
-#   :flock,
-#   location: "New York, NY",
-#   date: Date.new(2015, 9, 18),
-#   title: "New York to Oktoberfest!",
-#   description: "Hallo New Yorkers, let's flock to Oktoberfest! Pfannakuacha (n.) pancake, sweet prepared and filled with marmalade and sometimes with sugar strewn on top.",
-#   coordinator_id: i,
-#   event_id: 2,
-#   img_url: okfestimg.sample
-# )
-# #**********************************OLYMPICS*******************************
-# sleep(4)
-# FactoryGirl.create(
-#   :event,
-#   location: "Rio de Janeiro, Brazil",
-#   date: Date.new(2016, 8, 5),
-#   title: "Summer Olympics 2016",
-#   description: "The 2016 Summer Olympics, officially known as the Games of the XXXI Olympiad, are the thirty-first Summer Olympic Games, the world's largest international multi-sport event that is held every four years. The 2016 Summer Olympics are commonly known as Rio 2016, as this competition will be held in Rio de Janeiro, Brazil.",
-#   coordinator_id: 5,
-#   url: "http://www.olympic.org/",
-#   img_url: "http://www.logobird.com/wp-content/uploads/2011/01/rio-2016-olympics-logo.jpg",
-# )
-# sleep(4)
-
-
-# olympics =[
-#   "http://www.personal.psu.edu/voh5026/Summer_Olympics.jpg",
-#   "http://image-cdn.zap2it.com/images/2012-london-summer-olympics-water-polo.jpg",
-#   "http://www.greenafricadirectory.org/wp-content/uploads/2013/08/Sustainability-at-2016-Summer-Olympics-in-rio_UNEP.jpeg",
-#   "http://cdn.c.photoshelter.com/img-get/I00008eMtoGpE24U/s/860/860/20071114-aqua-h2o-0083.jpg",
-#   "http://cdn-wac.emirates247.com/polopoly_fs/1.545629.1397535701!/image/2363656052.JPG",
-#   "http://i.telegraph.co.uk/multimedia/archive/02173/lochte_get_2173805b.jpg",
-#   "http://ydtalk.com/jdispatch/wp-content/uploads/2012/08/leg.jpg",
-#   "https://www.google.com/search?q=olympics+images&espv=2&biw=1727&bih=962&source=lnms&tbm=isch&sa=X&ei=FcieVdKkOc_eoASuzpWQBg&ved=0CAYQ_AUoAQ#tbs=isz:m&tbm=isch&q=summer+olympics+soccer&imgrc=guox17bA8hT26M%3A"
-# ]
-# i = 4
-# ["Los Angeles, USA", "Mexico City, Mexico", "London, England", "Berlin, Germany",
-#  "St Petersburg, Russia", "Seoul, South Korea", "Cape Town, South Africa", "Rome, Italy",
-#  "Paris, France", "Beijing, China", "Tokyo, Japan", "New York City, USA",
-#  "Cairo, Egypt", "Amsterdam, Netherlands", "Brisbane, Australia", "Tehran, Iran"].each do |city|
-#   c, country = city.split(", ")
-#   sleep(1)
-#   FactoryGirl.create(
-#     :flock,
-#     location: city,
-#     date: Date.new(2016, 8, 5),
-#     title: "#{country}!!",
-#     description: "Fellow countrymen! Let's go support our athletes! Go #{country}!!!!!!",
-#     coordinator_id: i,
-#     event_id: 3,
-#     img_url: olympics.sample
-#   )
-#   i += 1
-# end
-# sleep(4)
-
-# #**********************************Coachella*******************************
-# FactoryGirl.create(
-#   :event,
-#   location: "Indio, CA",
-#   date: Date.new(2016, 4, 15),
-#   title: "Coachella",
-#   description: "The Coachella Valley Music and Arts Festival (commonly referred to as Coachella or the Coachella Festival) is an annual music and arts festival held at the Empire Polo Club in Indio, California, located in the Inland Empire's Coachella Valley in the Colorado Desert. It was founded by Paul Tollett in 1999 and is organized by Goldenvoice, a subsidiary of AEG Live. The event features many genres of music, including rock, indie, hip hop, and electronic dance music, as well as art installations and sculptures. Across the grounds, several stages continuously host live music. The main stages are: Coachella Stage, Outdoor Theatre, Gobi Tent, Mojave Tent, and the Sahara Tent; a smaller Oasis Dome was used in 2006 and 2011, while a new Yuma stage was introduced in 2013.",
-#   coordinator_id: 4,
-#   url: "www.coachella.com",
-#   img_url: "https://www.lawgives.com/proxy/s3/s3.amazonaws.com/production.lawgives.com/ep/55/1f/551f0c9e777777655d240100.jpeg"
-# )
-
-# #F50 - F55
-# coachimg =[
-#   "http://pentucketnews.com/wp-content/uploads/2015/01/coachella.jpg",
-#   "http://i.guim.co.uk/static/w-700/h--/q-95/sys-images/Guardian/Pix/pictures/2015/4/11/1428729816348/266441d9-ce7b-4298-be8d-ccd60e019fe5-1020x612.jpeg",
-#   "http://www.hercampus.com/sites/default/files/2015/02/12/smhcoachella33737411_r620x349.jpg",
-#   "http://i2.cdn.turner.com/money/dam/assets/150417150649-coachella-festival-780x439.jpg",
-#   "http://runthetrap.com/wp-content/uploads/2015/04/Coachella-2013-Live-Stream-Channel-1.jpg",
-#   "http://cdn.psfk.com/wp-content/uploads/2009/04/coachella_portishead_11_.jpg",
-#   "https://musicfestivalsoftheworld.files.wordpress.com/2013/04/coachella-weekend-2.jpg"
-# ]
-# i = 6
-# ["Los Angeles, CA", "San Diego, CA", "San Francisco, CA", "New York City, NY", "Miami, FL", "Austin, TX"].each do |city|
-#   sleep(4)
-#   cityname = city.split(", ")[0]
-#   FactoryGirl.create(
-#     :flock,
-#     location: city,
-#     date: Date.new(2016, 4, 14),
-#     title: "#{cityname} to Coachella!!",
-#     description: "Whooooo! Maybe we'll see Justin Beiber.. bro",
-#     coordinator_id: i,
-#     event_id: 4,
-#     img_url: coachimg.sample
-#   )
-#   i += 1
-# end
-
-# #F56
-# FactoryGirl.create(
-#   :flock,
-#   location: "San Francisco, CA",
-#   date: Date.new(2016, 4, 13),
-#   title: "#San Francisco to Coachella!!",
-#   description: "CoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachella",
-#   coordinator_id: i,
-#   event_id: 4,
-#   parent_id: 50,
-#   img_url: coachimg.sample
-# )
-
-# #**********************************IRONMAN*******************************
-# sleep(4)
-
-# FactoryGirl.create(
-#   :event,
-#   location: "Kailua-Kona, HI",
-#   date: Date.new(2015, 10, 10),
-#   title: "IRONMAN World Championships",
-#   description: "The inaugural \"Hawaiian IRON MAN Triathlon\" was conceptualized in 1977 as a way to challenge athletes who had seen success at endurance swim, running and biathlon events. Honolulu-based Navy couple Judy and John Collins proposed combining the three toughest endurance races in Hawai’i—the 2.4-mile Waikiki Roughwater Swim, 112 miles of the Around-O’ahu Bike Race and the 26.2-mile Honolulu Marathon—into one event.",
-#   coordinator_id: 6,
-#   url: "http://www.ironman.com/triathlon/events/americas/ironman/world-championship.aspx#axzz3fMrdJZxx",
-#   img_url: "http://cdn.triathlon.competitor.com/files/2012/10/Kona12-0130.jpg"
-# )
-
-# iman = [
-#   "http://static01.nyt.com/images/2011/10/09/books/review/SUBJENNINGS/SUBJENNINGS-articleLarge.jpg",
-#   "http://www.aloha-hawaii.com/wp-content/uploads/2009/11/ironman.jpg",
-#   "http://cdn.triathlon.competitor.com/files/2010/09/126-600x399.jpg",
-#   "http://wellandgood.com/wp-content/uploads/2012/07/triathlon.jpg",
-#   "http://www.spain.info/export/sites/spaininfo/comun/galeria_imagenes/deportes/d_IronmanLanzarote_agegroupbikeCLS_rok.jpg_369272544.jpg",
-#   "http://static.guim.co.uk/Guardian/lifeandstyle/gallery/2008/oct/13/fitness/swimmers1-1977.jpg"
-# ]
-# #F57 - 59
-# i = 25
-# ["London, England", "Sydney, Australia", "Boulder, CO"].each do |city|
-#   sleep(4)
-#   FactoryGirl.create(
-#     :flock,
-#     location: city,
-#     date: Date.new(2015, 10, 2),
-#     title: "I am a mountain.",
-#     description: "Nobody's ever gone the distance with Creed, and if I can go that distance, you see, and that bell rings and I'm still standin', I'm gonna know for the first time in my life, see, that I weren't just another bum from the neighborhood.",
-#     coordinator_id: i,
-#     event_id: 5,
-#     img_url: iman.sample
-#   )
-#   i += 1
-# end
-
-# #F60 - 62
-# ["Paris, France", "Berlin, Germany", "Amsterdam, Netherlands"].each do |city|
-#   sleep(4)
-#   FactoryGirl.create(
-#     :flock,
-#     location: city,
-#     date: Date.new(2015, 10, 1),
-#     title: "I am a tall tree",
-#     description: "Nobody's ever gone the distance with Creed, and if I can go that distance, you see, and that bell rings and I'm still standin', I'm gonna know for the first time in my life, see, that I weren't just another bum from the neighborhood.",
-#     coordinator_id: i,
-#     event_id: 5,
-#     parent_id: 57,
-#     img_url: iman.sample
-#   )
-#   i += 1
-# end
-
-# #F63
-# FactoryGirl.create(
-#   :flock,
-#   location: "Melbourne, Australia",
-#   date: Date.new(2015, 10, 1),
-#   title: "I am a river",
-#   description: "You're gonna eat lightnin' and you're gonna crap thunder!",
-#   coordinator_id: i,
-#   event_id: 5,
-#   parent_id: 58,
-#   img_url: iman.sample
-# )
+#F33
+FactoryGirl.create(
+  :flock,
+  location: "New York, NY",
+  date: Date.new(2015, 9, 18),
+  title: "New York to Oktoberfest!",
+  description: "Hallo New Yorkers, let's flock to Oktoberfest! Pfannakuacha (n.) pancake, sweet prepared and filled with marmalade and sometimes with sugar strewn on top.",
+  coordinator_id: i,
+  event_id: 2,
+  img_url: okfestimg.sample
+)
+#**********************************OLYMPICS*******************************
+sleep(4)
+FactoryGirl.create(
+  :event,
+  location: "Rio de Janeiro, Brazil",
+  date: Date.new(2016, 8, 5),
+  title: "Summer Olympics 2016",
+  description: "The 2016 Summer Olympics, officially known as the Games of the XXXI Olympiad, are the thirty-first Summer Olympic Games, the world's largest international multi-sport event that is held every four years. The 2016 Summer Olympics are commonly known as Rio 2016, as this competition will be held in Rio de Janeiro, Brazil.",
+  coordinator_id: 5,
+  url: "http://www.olympic.org/",
+  img_url: "http://www.logobird.com/wp-content/uploads/2011/01/rio-2016-olympics-logo.jpg",
+)
+sleep(4)
 
 
-# #**********************************WIMBLEDON*******************************
-# sleep(4)
-# wimbimg = [
-#   "http://frontrow24.com/wp-content/uploads/2015/06/Wimbledon-20151.jpg",
-#   "http://static01.nyt.com/images/2014/07/05/sports/jp-wimbledon/jp-wimbledon-articleLarge.jpg",
-#   "http://d.ibtimes.co.uk/en/full/1385333/wimbledon-grass.jpg?w=700",
-#   "http://static2.stuff.co.nz/1245883500/462/2534462.jpg",
-# ]
-# FactoryGirl.create(
-#   :event,
-#   location: "London, England",
-#   date: Date.new(2015, 6, 29),
-#   title: "Wimbledon",
-#   description: "The Championships, Wimbledon or simply Wimbledon, is the oldest tennis tournament in the world, and is widely considered the most prestigious. It has been held at the All England Club in Wimbledon, London since 1877. It is one of the four Grand Slam tennis tournaments, the others being the Australian Open, the French Open and the US Open. Since the Australian Open shifted to hardcourt in 1988, Wimbledon is the only major still played on grass.",
-#   coordinator_id: 3,
-#   url: "http://www.wimbledon.com/index.html",
-#   img_url: "http://frontrow24.com/wp-content/uploads/2015/06/Wimbledon-20151.jpg"
-# )
+olympics =[
+  "http://www.personal.psu.edu/voh5026/Summer_Olympics.jpg",
+  "http://image-cdn.zap2it.com/images/2012-london-summer-olympics-water-polo.jpg",
+  "http://www.greenafricadirectory.org/wp-content/uploads/2013/08/Sustainability-at-2016-Summer-Olympics-in-rio_UNEP.jpeg",
+  "http://cdn.c.photoshelter.com/img-get/I00008eMtoGpE24U/s/860/860/20071114-aqua-h2o-0083.jpg",
+  "http://cdn-wac.emirates247.com/polopoly_fs/1.545629.1397535701!/image/2363656052.JPG",
+  "http://i.telegraph.co.uk/multimedia/archive/02173/lochte_get_2173805b.jpg",
+  "http://ydtalk.com/jdispatch/wp-content/uploads/2012/08/leg.jpg",
+  "https://www.google.com/search?q=olympics+images&espv=2&biw=1727&bih=962&source=lnms&tbm=isch&sa=X&ei=FcieVdKkOc_eoASuzpWQBg&ved=0CAYQ_AUoAQ#tbs=isz:m&tbm=isch&q=summer+olympics+soccer&imgrc=guox17bA8hT26M%3A"
+]
+i = 4
+["Los Angeles, USA", "Mexico City, Mexico", "London, England", "Berlin, Germany",
+ "St Petersburg, Russia", "Seoul, South Korea", "Cape Town, South Africa", "Rome, Italy",
+ "Paris, France", "Beijing, China", "Tokyo, Japan", "New York City, USA",
+ "Cairo, Egypt", "Amsterdam, Netherlands", "Brisbane, Australia", "Tehran, Iran"].each do |city|
+  c, country = city.split(", ")
+  sleep(1)
+  FactoryGirl.create(
+    :flock,
+    location: city,
+    date: Date.new(2016, 8, 5),
+    title: "#{country}!!",
+    description: "Fellow countrymen! Let's go support our athletes! Go #{country}!!!!!!",
+    coordinator_id: i,
+    event_id: 3,
+    img_url: olympics.sample
+  )
+  i += 1
+end
+sleep(4)
 
-# i = 10
-# ["Paris, France", "Berlin, Germany", "Milan, Italy", "Prague, Czech Republic", "Amsterdam, Netherlands", "Vienna, Austria"].each do |city|
-#   sleep(4)
-#   FactoryGirl.create(
-#     :flock,
-#     location: city,
-#     date: Date.new(2015, 6, 28),
-#     title: "#{city} to Wimbledon",
-#     description: "1 Novak Djokovic\n2 Roger Federer\n3 Andy Murray\n4 Stan Wawrinka\n5 Kei Nishikori\n6 Tomas Berdych\n7 Milos Raonic\n9 Marin Cilic\n10 Rafael Nadal",
-#     coordinator_id: i,
-#     event_id: 6,
-#     img_url: wimbimg.sample
-#   )
-#   i += 1
-# end
+#**********************************Coachella*******************************
+FactoryGirl.create(
+  :event,
+  location: "Indio, CA",
+  date: Date.new(2016, 4, 15),
+  title: "Coachella",
+  description: "The Coachella Valley Music and Arts Festival (commonly referred to as Coachella or the Coachella Festival) is an annual music and arts festival held at the Empire Polo Club in Indio, California, located in the Inland Empire's Coachella Valley in the Colorado Desert. It was founded by Paul Tollett in 1999 and is organized by Goldenvoice, a subsidiary of AEG Live. The event features many genres of music, including rock, indie, hip hop, and electronic dance music, as well as art installations and sculptures. Across the grounds, several stages continuously host live music. The main stages are: Coachella Stage, Outdoor Theatre, Gobi Tent, Mojave Tent, and the Sahara Tent; a smaller Oasis Dome was used in 2006 and 2011, while a new Yuma stage was introduced in 2013.",
+  coordinator_id: 4,
+  url: "www.coachella.com",
+  img_url: "https://www.lawgives.com/proxy/s3/s3.amazonaws.com/production.lawgives.com/ep/55/1f/551f0c9e777777655d240100.jpeg"
+)
+
+#F50 - F55
+coachimg =[
+  "http://pentucketnews.com/wp-content/uploads/2015/01/coachella.jpg",
+  "http://i.guim.co.uk/static/w-700/h--/q-95/sys-images/Guardian/Pix/pictures/2015/4/11/1428729816348/266441d9-ce7b-4298-be8d-ccd60e019fe5-1020x612.jpeg",
+  "http://www.hercampus.com/sites/default/files/2015/02/12/smhcoachella33737411_r620x349.jpg",
+  "http://i2.cdn.turner.com/money/dam/assets/150417150649-coachella-festival-780x439.jpg",
+  "http://runthetrap.com/wp-content/uploads/2015/04/Coachella-2013-Live-Stream-Channel-1.jpg",
+  "http://cdn.psfk.com/wp-content/uploads/2009/04/coachella_portishead_11_.jpg",
+  "https://musicfestivalsoftheworld.files.wordpress.com/2013/04/coachella-weekend-2.jpg"
+]
+i = 6
+["Los Angeles, CA", "San Diego, CA", "San Francisco, CA", "New York City, NY", "Miami, FL", "Austin, TX"].each do |city|
+  sleep(4)
+  cityname = city.split(", ")[0]
+  FactoryGirl.create(
+    :flock,
+    location: city,
+    date: Date.new(2016, 4, 14),
+    title: "#{cityname} to Coachella!!",
+    description: "Whooooo! Maybe we'll see Justin Beiber.. bro",
+    coordinator_id: i,
+    event_id: 4,
+    img_url: coachimg.sample
+  )
+  i += 1
+end
+
+#F56
+FactoryGirl.create(
+  :flock,
+  location: "San Francisco, CA",
+  date: Date.new(2016, 4, 13),
+  title: "#San Francisco to Coachella!!",
+  description: "CoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachellaCoachella",
+  coordinator_id: i,
+  event_id: 4,
+  parent_id: 50,
+  img_url: coachimg.sample
+)
+
+#**********************************IRONMAN*******************************
+sleep(4)
+
+FactoryGirl.create(
+  :event,
+  location: "Kailua-Kona, HI",
+  date: Date.new(2015, 10, 10),
+  title: "IRONMAN World Championships",
+  description: "The inaugural \"Hawaiian IRON MAN Triathlon\" was conceptualized in 1977 as a way to challenge athletes who had seen success at endurance swim, running and biathlon events. Honolulu-based Navy couple Judy and John Collins proposed combining the three toughest endurance races in Hawai’i—the 2.4-mile Waikiki Roughwater Swim, 112 miles of the Around-O’ahu Bike Race and the 26.2-mile Honolulu Marathon—into one event.",
+  coordinator_id: 6,
+  url: "http://www.ironman.com/triathlon/events/americas/ironman/world-championship.aspx#axzz3fMrdJZxx",
+  img_url: "http://cdn.triathlon.competitor.com/files/2012/10/Kona12-0130.jpg"
+)
+
+iman = [
+  "http://static01.nyt.com/images/2011/10/09/books/review/SUBJENNINGS/SUBJENNINGS-articleLarge.jpg",
+  "http://www.aloha-hawaii.com/wp-content/uploads/2009/11/ironman.jpg",
+  "http://cdn.triathlon.competitor.com/files/2010/09/126-600x399.jpg",
+  "http://wellandgood.com/wp-content/uploads/2012/07/triathlon.jpg",
+  "http://www.spain.info/export/sites/spaininfo/comun/galeria_imagenes/deportes/d_IronmanLanzarote_agegroupbikeCLS_rok.jpg_369272544.jpg",
+  "http://static.guim.co.uk/Guardian/lifeandstyle/gallery/2008/oct/13/fitness/swimmers1-1977.jpg"
+]
+#F57 - 59
+i = 25
+["London, England", "Sydney, Australia", "Boulder, CO"].each do |city|
+  sleep(4)
+  FactoryGirl.create(
+    :flock,
+    location: city,
+    date: Date.new(2015, 10, 2),
+    title: "I am a mountain.",
+    description: "Nobody's ever gone the distance with Creed, and if I can go that distance, you see, and that bell rings and I'm still standin', I'm gonna know for the first time in my life, see, that I weren't just another bum from the neighborhood.",
+    coordinator_id: i,
+    event_id: 5,
+    img_url: iman.sample
+  )
+  i += 1
+end
+
+#F60 - 62
+["Paris, France", "Berlin, Germany", "Amsterdam, Netherlands"].each do |city|
+  sleep(4)
+  FactoryGirl.create(
+    :flock,
+    location: city,
+    date: Date.new(2015, 10, 1),
+    title: "I am a tall tree",
+    description: "Nobody's ever gone the distance with Creed, and if I can go that distance, you see, and that bell rings and I'm still standin', I'm gonna know for the first time in my life, see, that I weren't just another bum from the neighborhood.",
+    coordinator_id: i,
+    event_id: 5,
+    parent_id: 57,
+    img_url: iman.sample
+  )
+  i += 1
+end
+
+#F63
+FactoryGirl.create(
+  :flock,
+  location: "Melbourne, Australia",
+  date: Date.new(2015, 10, 1),
+  title: "I am a river",
+  description: "You're gonna eat lightnin' and you're gonna crap thunder!",
+  coordinator_id: i,
+  event_id: 5,
+  parent_id: 58,
+  img_url: iman.sample
+)
+
+
+#**********************************WIMBLEDON*******************************
+sleep(4)
+wimbimg = [
+  "http://frontrow24.com/wp-content/uploads/2015/06/Wimbledon-20151.jpg",
+  "http://static01.nyt.com/images/2014/07/05/sports/jp-wimbledon/jp-wimbledon-articleLarge.jpg",
+  "http://d.ibtimes.co.uk/en/full/1385333/wimbledon-grass.jpg?w=700",
+  "http://static2.stuff.co.nz/1245883500/462/2534462.jpg",
+]
+FactoryGirl.create(
+  :event,
+  location: "London, England",
+  date: Date.new(2015, 6, 29),
+  title: "Wimbledon",
+  description: "The Championships, Wimbledon or simply Wimbledon, is the oldest tennis tournament in the world, and is widely considered the most prestigious. It has been held at the All England Club in Wimbledon, London since 1877. It is one of the four Grand Slam tennis tournaments, the others being the Australian Open, the French Open and the US Open. Since the Australian Open shifted to hardcourt in 1988, Wimbledon is the only major still played on grass.",
+  coordinator_id: 3,
+  url: "http://www.wimbledon.com/index.html",
+  img_url: "http://frontrow24.com/wp-content/uploads/2015/06/Wimbledon-20151.jpg"
+)
+
+i = 10
+["Paris, France", "Berlin, Germany", "Milan, Italy", "Prague, Czech Republic", "Amsterdam, Netherlands", "Vienna, Austria"].each do |city|
+  sleep(4)
+  FactoryGirl.create(
+    :flock,
+    location: city,
+    date: Date.new(2015, 6, 28),
+    title: "#{city} to Wimbledon",
+    description: "1 Novak Djokovic\n2 Roger Federer\n3 Andy Murray\n4 Stan Wawrinka\n5 Kei Nishikori\n6 Tomas Berdych\n7 Milos Raonic\n9 Marin Cilic\n10 Rafael Nadal",
+    coordinator_id: i,
+    event_id: 6,
+    img_url: wimbimg.sample
+  )
+  i += 1
+end
 
 # Attendings
 user_ids = User.pluck(:id)
@@ -555,52 +555,52 @@ user_ids = User.pluck(:id)
   end
 end
 
-# 40.times do
-#   begin
-#     u = user_ids.sample
-#     f = rand(22..33)
-#     FactoryGirl.create(:attending, user_id: u, flock_id: f)
-#   rescue
-#     retry
-#   end
-# end
+40.times do
+  begin
+    u = user_ids.sample
+    f = rand(22..33)
+    FactoryGirl.create(:attending, user_id: u, flock_id: f)
+  rescue
+    retry
+  end
+end
 
-# 40.times do
-#   begin
-#     u = user_ids.sample
-#     f = rand(34..49)
-#     FactoryGirl.create(:attending, user_id: u, flock_id: f)
-#   rescue
-#     retry
-#   end
-# end
+40.times do
+  begin
+    u = user_ids.sample
+    f = rand(34..49)
+    FactoryGirl.create(:attending, user_id: u, flock_id: f)
+  rescue
+    retry
+  end
+end
 
-# 25.times do
-#   begin
-#     u = user_ids.sample
-#     f = rand(50..56)
-#     FactoryGirl.create(:attending, user_id: u, flock_id: f)
-#   rescue
-#     retry
-#   end
-# end
+25.times do
+  begin
+    u = user_ids.sample
+    f = rand(50..56)
+    FactoryGirl.create(:attending, user_id: u, flock_id: f)
+  rescue
+    retry
+  end
+end
 
-# 25.times do
-#   begin
-#     u = user_ids.sample
-#     f = rand(57..63)
-#     FactoryGirl.create(:attending, user_id: u, flock_id: f)
-#   rescue
-#     retry
-#   end
-# end
+25.times do
+  begin
+    u = user_ids.sample
+    f = rand(57..63)
+    FactoryGirl.create(:attending, user_id: u, flock_id: f)
+  rescue
+    retry
+  end
+end
 
-# 25.times do
-#   begin
-#     u = user_ids.sample
-#     f = rand(64..69)
-#     FactoryGirl.create(:attending, user_id: u, flock_id: f)
-#   rescue
-#     retry
-#   end
-# end
+25.times do
+  begin
+    u = user_ids.sample
+    f = rand(64..69)
+    FactoryGirl.create(:attending, user_id: u, flock_id: f)
+  rescue
+    retry
+  end
+end

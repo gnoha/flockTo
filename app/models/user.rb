@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   validates :username, presence: true, uniqueness: true
   validates :password_digest, presence: true
   validates :password, length: { minimum: 6, allow_nil: true}
-  after_initialize :ensure_session_token
+  # after_initialize :ensure_session_token
 
   attr_reader :password
   
@@ -55,22 +55,28 @@ class User < ActiveRecord::Base
   end
 
   def add_token!
-    session = self.session_token.new 
-    session.save!
+    begin
+      session = Session.new(user_id: self.id) 
+      session.save
+    rescue
+      retry
+    end
+
     session.session_token
+  end
+
+  def remove_token(session_token)
+    session = Session.find_by(session_token: session_token)
+    session.destroy
   end
 
   private
 
-  def ensure_session_token
-    sessions = self.sessions
-    if sessions.length == 0
-      new_session = self.sessions.new
-      new_session.save
-      
-    end
+  # def ensure_session_token
+  #   sessions = self.sessions
 
-    # self.sessions.length > 0 || self.sessions.new
-    # self.sessions.length > 0 ||= SecureRandom.urlsafe_base64
-  end
+  #   if sessions.length == 0
+  #     add_token!
+  #   end
+  # end
 end
