@@ -22,7 +22,10 @@ Custom search required making AJAX request instead of using Backbone's #fetch().
 For location searching, Geocoder was used to measure distances from a given location.
 
 ### Parsing Data on Client-Side
-Overrides Backbone's default Model#parse() in order to establish a model's attributes and to be able to process more data. This allows for eager loading on the server-side which significantly decreases the number of queries made. 
+Overrides Backbone's default Model#parse() in order to establish a model's attributes and to be able to process more data. This allows for eager loading on the server-side which significantly decreases the number of queries made.
+
+### Subviews in BackboneJS
+BackboneJS does not remove views automatically when switching views, so all views are removed recursively to remove all subviews in order to not leave any "Zombie Views". 
 
 
 ## Minimum Viable Product
