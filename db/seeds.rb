@@ -687,6 +687,7 @@ FactoryGirl.create(
   url: "http://www.sundance.org/festivals/sundance-film-festival",
   img_url: sdimg.sample)
 
+# F89-94
 ["San Francisco, California", "Los Angeles, California", "Portland, Oregon", "New York, New York", "Austin, Texas", "Boulder, Colorado"].each do |city|
   sleep(4)
   i = 12
@@ -759,6 +760,36 @@ end
   begin
     u = user_ids.sample
     f = rand(64..69)
+    FactoryGirl.create(:attending, user_id: u, flock_id: f)
+  rescue
+    retry
+  end
+end
+
+25.times do
+  begin
+    u = user_ids.sample
+    f = rand(70..77)
+    FactoryGirl.create(:attending, user_id: u, flock_id: f)
+  rescue
+    retry
+  end
+end
+
+30.times do
+  begin
+    u = user_ids.sample
+    f = rand(78..88)
+    FactoryGirl.create(:attending, user_id: u, flock_id: f)
+  rescue
+    retry
+  end
+end
+
+25.times do
+  begin
+    u = user_ids.sample
+    f = rand(89..94)
     FactoryGirl.create(:attending, user_id: u, flock_id: f)
   rescue
     retry
