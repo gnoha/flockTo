@@ -583,7 +583,7 @@ end
 # F77
 FactoryGirl.create(
   :flock,
-  location: city,
+  location: "London, England",
   date: Date.new(2016, 2, 1),
   title: "Football in the colonies",
   description: "A little British flavor in American Football",
