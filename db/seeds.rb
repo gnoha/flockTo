@@ -393,7 +393,7 @@ FactoryGirl.create(
   title: "Coachella",
   description: "The Coachella Valley Music and Arts Festival (commonly referred to as Coachella or the Coachella Festival) is an annual music and arts festival held at the Empire Polo Club in Indio, California, located in the Inland Empire's Coachella Valley in the Colorado Desert. It was founded by Paul Tollett in 1999 and is organized by Goldenvoice, a subsidiary of AEG Live. The event features many genres of music, including rock, indie, hip hop, and electronic dance music, as well as art installations and sculptures. Across the grounds, several stages continuously host live music. The main stages are: Coachella Stage, Outdoor Theatre, Gobi Tent, Mojave Tent, and the Sahara Tent; a smaller Oasis Dome was used in 2006 and 2011, while a new Yuma stage was introduced in 2013.",
   coordinator_id: 4,
-  url: "www.coachella.com",
+  url: "http://www.coachella.com",
   img_url: "https://www.lawgives.com/proxy/s3/s3.amazonaws.com/production.lawgives.com/ep/55/1f/551f0c9e777777655d240100.jpeg"
 )
 
@@ -526,6 +526,7 @@ FactoryGirl.create(
   img_url: "http://frontrow24.com/wp-content/uploads/2015/06/Wimbledon-20151.jpg"
 )
 
+#F64-F69
 i = 10
 ["Paris, France", "Berlin, Germany", "Milan, Italy", "Prague, Czech Republic", "Amsterdam, Netherlands", "Vienna, Austria"].each do |city|
   sleep(4)
@@ -542,6 +543,165 @@ i = 10
   i += 1
 end
 
+#**************************************SUPERBOWL*********************************
+# February 7
+# Santa Clara, California
+bowlimg = [
+  "http://s3-origin-images.politico.com/2013/06/01/130601_super_bowl_nfl_football_2013_reu_605.jpg",
+  "http://kabirnews.com/wp-content/uploads/2015/08/NFL-and-Twitter-Team-Up-To-Bring-Highlights-To-Feeds.jpg",
+  "https://usatftw.files.wordpress.com/2015/10/usp_nfl__carolina_panthers_at_tampa_bay_buccaneers_76486324.jpg?w=1000&h=647",
+  "http://www.rantsports.com/fantasy/files/2014/10/Rob-Gronkowski.jpg",
+  "http://images.maxpreps.com/site_images/editorial/article/a/a/c/aac2d926-1ba2-4706-a5b4-744d8e536c2c/9da100f7-046c-e211-a211-002655e6c126_original.jpg",
+  "http://static4.businessinsider.com/image/4d713ed5ccd1d5576e660000/nfl-has-a-plan-to-make-up-for-three-weeks-of-missed-games.jpg"
+]
+FactoryGirl.create(
+  :event,
+  location: "Santa Clara, California",
+  date: Date.new(2016, 2, 7),
+  title: "Super Bowl 50",
+  description: "Super Bowl 50 is set to take place at Levi's Stadium in Santa Clara, California, home of the San Francisco 49ers on Sunday, February 7th, 2016. For the first time in Super Bowl history, the game will be branded with the Arabic numeral 50 instead of the Roman Numeral 'L'.",
+  coordinator_id: 15,
+  url: "http://www.nfl.com/superbowl/50",
+  img_url: "http://static.nfl.com/static/content/public/image/contact-us/contact-us-cp.jpg"
+)
+# F70-F76
+i = 0
+["New York, New York", "Los Angeles, California", "Boston, Massachusetts", "Seattle Washington", "Green Bay, Wisconsin", "Pheonix, Arizona", "Cincinnati, Ohio"].each do |city|
+  FactoryGirl.create(
+    :flock,
+    location: city,
+    date: Date.new(2016, 2, 6),
+    title: "#{city} goes to the Super Bowl",
+    description: "Super Bowwwllllll!! Whooo!!!!!!! Nachos.",
+    coordinator_id: i,
+    event_id: 7,
+    img_url: bowlimg.sample)
+  
+    i += 1
+end
+
+# F77
+FactoryGirl.create(
+  :flock,
+  location: city,
+  date: Date.new(2016, 2, 1),
+  title: "Football in the colonies",
+  description: "A little British flavor in American Football",
+  coordinator_id: i,
+  event_id: 7,
+  parent_id: 70,
+  img_url: bowlimg.sample)
+
+#**************************************CHAMPIONSLEAGUE*********************************
+# June 6
+# UEFA Champions League Final
+# Berlin, Germany
+climg = [
+  "http://i.dailymail.co.uk/i/pix/2015/03/01/2639EA9700000578-0-image-a-12_1425245316684.jpg",
+  "http://www3.pictures.zimbio.com/gi/FC+Barcelona+v+Cordoba+CF+Copa+del+Rey+8h0kPcZGmSJl.jpg",
+  "http://www.yomister.com/image/large/iPZ8kLwDTalalGcsi4lxlONAkPRD7P3rlOtDju9tTuVDjYhh/pictures/SAS/premier-league.jpg",
+  "http://i.telegraph.co.uk/multimedia/archive/02313/arsenal_2313855b.jpg",
+  "http://e1.365dm.com/13/12/768x432/185933155-1-_3054495.jpg?20131219184222",
+  "http://www.footmercato.net/images/a/zlatan-et-le-psg-se-sont-balades-face-au-benfica_115835.jpg",
+  "https://s-media-cache-ak0.pinimg.com/originals/43/f5/38/43f538a3237e586b53f23ef58cc32b38.jpg"
+]
+
+FactoryGirl.create(
+  :event,
+  location: "Berlin, Germany",
+  date: Date.new(2016, 6, 6),
+  title: "UEFA Champions League Final",
+  description: "The UEFA Champions League, known simply as the Champions League, is an annual continental club football competition organised by the Union of European Football Associations (UEFA) and contested by top-division European clubs. It is one of the most prestigious tournaments in the world and the most prestigious club competition in European football, played by the national league champion (and, for some nations, one or more runners-up) of each UEFA national association.",
+  coordinator_id: 22,
+  url: "http://www.uefa.com/uefachampionsleague/",
+  img_url: "http://www.arsenal.com/assets/_files/scaled/696x392/oct_13/gun__1381310671_uefa_champions_league.jpg"
+)
+
+i = 1
+
+# F78-F83
+["Paris, France", "Munich, Germany", "Milan, Italy", "Prague, Czech Republic", "Amsterdam, Netherlands", "Vienna, Austria"].each do |city|
+  sleep(4)
+  FactoryGirl.create(
+    :flock,
+    location: city,
+    date: Date.new(2016, 6, 4),
+    title: "#{city} to Oktoberfest!",
+    description: "Did you see that ludicrous display last night?",
+    coordinator_id: i,
+    event_id: 8,
+    img_url: climg.sample
+  )
+  i += 1
+end
+
+# F84-F87
+j = 78
+["Madrid, Spain", "Copenhagen, Denmark", "London, England", "Budapest, Hungary"].each do |city|
+  sleep(4)
+  FactoryGirl.create(
+    :flock,
+    location: city,
+    date: Date.new(2015, 6, 3),
+    title: "#{city} to Champions League!",
+    description: "What was Wenger thinking, sending Walcott on that early?",
+    coordinator_id: i,
+    event_id: 2,
+    parent_id: j,
+    img_url: climg.sample
+  )
+  j += 1
+  i += 1
+end
+sleep(4)
+
+# F88
+FactoryGirl.create(
+  :flock,
+  location: "Rome, Italy",
+  date: Date.new(2015, 6, 2),
+  title: "Roma to Champions League Final!",
+  description: "'Fing about Arsenal is, they always try an' walk it in.",
+  coordinator_id: i,
+  event_id: 8,
+  parent_id: 87,
+  img_url: climg.sample
+)
+i += 1
+#**************************************Sundance Film Festival*********************************
+# Jan21-31
+# Park City, Utah
+sdimg = [
+  "http://www.sundance.org/comfy/cms/files/files/000/007/351/original/SFFabout.jpg",
+  "http://www.enjoyparkcity.com/images/sundance-film-festival-sign-park-city-618_618.jpg",
+  "http://wagner.edu/hawktalk/files/2015/02/Sundance-Film-Festival.jpg"
+]
+
+FactoryGirl.create(
+  :event,
+  location: "Park City, Utah",
+  date: Date.new(2016, 1, 21),
+  title: "Sundance Film Festival",
+  description: "The Sundance Film Festival brings the most original storytellers together with the most adventurous audiences for its annual program of dramatic and documentary films, shorts, New Frontier films, installations, performances, panel discussions, and dynamic music events. Since 1985, hundreds of films launched at the Festival have gained critical recognition, received commercial distribution, and reached worldwide audiences eager for fresh perspectives and new voices. Year after year, the Festival pursues new ways to introduce more people to the most original and authentic storytelling.",
+  coordinator_id: 30,
+  url: "http://www.sundance.org/festivals/sundance-film-festival",
+  img_url: sdimg.sample)
+
+["San Francisco, California", "Los Angeles, California", "Portland, Oregon", "New York, New York", "Austin, Texas", "Boulder, Colorado"].each do |city|
+  sleep(4)
+  i = 12
+  FactoryGirl.create(
+    :flock,
+    location: city,
+    date: Date.new(2015, 1, 20),
+    title: "#{city} to Sundance!",
+    description: "Indie films for dayssss",
+    coordinator_id: i,
+    event_id: 9,
+    img_url: sdimg.sample
+  )
+  i += 1
+end
 # Attendings
 user_ids = User.pluck(:id)
 
