@@ -11,7 +11,7 @@ module Api
       end
         @events.each do |event|
           event.num_attendees = event.attendees.length
-        end
+      end
     end
 
     def show

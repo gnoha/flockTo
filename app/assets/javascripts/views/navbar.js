@@ -3,6 +3,7 @@ FlockTo.Views.Navbar = Backbone.View.extend({
 
   events: {
     'submit form.event-search': 'submit',
+    'keyup .event-search': 'query',
     'click .sign-out': 'signout',
     'click .open-nav-search': 'openModal'
   },
@@ -10,13 +11,21 @@ FlockTo.Views.Navbar = Backbone.View.extend({
   initialize: function (options) {
     this.router = options.router;
     this.listenTo(this.model, 'sync', this.render);
+    this.queryString = "";
+    // this.addSearchBar();
   },
+
+  // addSearchBar: function () {
+  //   var searchBar = new FlockTo.Views.SearchBar();
+  //   this.addSubview('.search-bar', searchBar)
+  // },
 
   render: function () {
     var content = this.template({
       currentUser: this.model
     });
     this.$el.html(content);
+    // this.attachSubviews();
 
     return this;
   },
@@ -54,11 +63,27 @@ FlockTo.Views.Navbar = Backbone.View.extend({
           index: true
         });
 
-        var tourButton = new FlockTo.Views.EventIndexTour();
-        this.router.addHelpButton(tourButton);
+        // var tourButton = new FlockTo.Views.EventIndexTour();
+        // this.router.addHelpButton(tourButton);
         
         this.router._swapView(view, this.router.$rootEl);
       }.bind(this)
     });
+  }, 
+
+  query: function(e) {
+    var keyCode = e.keyCode;
+    var querystring = e.target.value 
+    var searchedEvents = new FlockTo.Collections.Events();
+
+    searchedEvents.fetch({
+      data: {search: {event: querystring} },
+      reset: true,
+      success: function (response) {
+        response.models.forEach(function(event) {
+          
+        })
+      }
+    })
   }
 });

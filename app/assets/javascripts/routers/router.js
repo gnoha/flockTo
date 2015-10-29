@@ -56,9 +56,9 @@ FlockTo.Routers.Router = Backbone.Router.extend({
           index: true
         });
 
-        FlockTo.tour && FlockTo.tour.hide();
-        var tourButton = new FlockTo.Views.EventIndexTour();
-        this.addHelpButton(tourButton);
+        // FlockTo.tour && FlockTo.tour.hide();
+        // var tourButton = new FlockTo.Views.EventIndexTour();
+        // this.addHelpButton(tourButton);
 
         this._swapView(indexView, this.$rootEl);
 
@@ -93,9 +93,9 @@ FlockTo.Routers.Router = Backbone.Router.extend({
         currentModel: eventModel,
       });
 
-      FlockTo.tour && FlockTo.tour.hide();
-      var tourButton = new FlockTo.Views.EventShowTour();
-      this.addHelpButton(tourButton);
+      // FlockTo.tour && FlockTo.tour.hide();
+      // var tourButton = new FlockTo.Views.EventShowTour();
+      // this.addHelpButton(tourButton);
 
       this._swapView(showView, this.$rootEl);
 
@@ -118,9 +118,9 @@ FlockTo.Routers.Router = Backbone.Router.extend({
       
       this._swapView(showView, this.$auxEl);
 
-      FlockTo.tour && FlockTo.tour.hide();
-      var tourButton = new FlockTo.Views.FlockShowTour();
-      this.addHelpButton(tourButton);
+      // FlockTo.tour && FlockTo.tour.hide();
+      // var tourButton = new FlockTo.Views.FlockShowTour();
+      // this.addHelpButton(tourButton);
 
       showView.map.initMap();
 
