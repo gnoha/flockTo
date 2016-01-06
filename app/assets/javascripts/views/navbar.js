@@ -77,11 +77,11 @@ FlockTo.Views.Navbar = Backbone.View.extend({
     var searchedEvents = new FlockTo.Collections.Events();
 
     searchedEvents.fetch({
-      data: {search: {event: querystring} },
+      data: {query: querystring},
       reset: true,
       success: function (response) {
         response.models.forEach(function(event) {
-          
+        
         })
       }
     })

@@ -4,6 +4,11 @@ window.FlockTo = {
   Views: {},
   Routers: {},
   CURRENT_USER_ID: window.CURRENT_USER_ID,
+  Tour: {
+    eventIndex: true,
+    eventShow: true,
+    flockShow: true
+  },
   initialize: function() {
     var router = new FlockTo.Routers.Router({
       $el: $('#main'),

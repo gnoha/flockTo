@@ -1,6 +1,4 @@
-# flockTo
-
-[Live link][flockTo]
+# flockTo | [Live link][flockTo]
 
 [flockTo]: http://flockto.co
 

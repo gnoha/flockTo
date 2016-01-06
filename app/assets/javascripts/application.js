@@ -13,8 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.serializejson
-//= require tether.min
-//= require shepherd.min
+//= require bootstrap-tour.min
 //= require bootstrap
 //= require underscore
 //= require backbone
