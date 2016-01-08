@@ -27,12 +27,61 @@ FlockTo.EventIndexTour = new Tour({
 FlockTo.EventShowTour = new Tour ({
   steps: [
     {
-      
-    }, 
-    
+      element: ".nav-tabs",
+      placement: "right",
+      title: "Event Details",
+      content: "The 'Event Details' tab shows you everything you need to know about the event.",
+      onNext: function(tour) {
+        $('#flock-tab').click();
+      } 
+    },
+    {
+      element: ".nav-tabs",
+      placement: "right",
+      title: "Flocks",
+      content: "A flock is a group that you can join that is attending the event.<br><br>The 'Flocks' tab is where you can view all flocks that are attending the event. Use the search tool to find the flock nearest you.",
+      onPrev: function(tour) {
+        $('#detail-tab').click();
+      }
+    },
+    {
+      element: "#map-container",
+      placement: "left",
+      content: "Check out the map to see where the event is and all of the flocks converging to it.<br><br>The red circle is the event and the blue circles and the blue dots are the flocks converging at the event. The paths of the flocks are indicated by the lines connecting the circles."
+    } 
   ]
 });
 
 FlockTo.FlockShowTour = new Tour ({
-  
+  steps: [
+    {
+      element: ".nav-tabs",
+      placement: "left",
+      title: "Flock Details",
+      content: "The 'Flock Details' tab provides all of the information you would need about a flock",
+      onNext: function(tour) {
+        $('#sub-flocks').click();
+      }
+    },
+    {
+      element: ".nav-tabs",
+      placement: "left",
+      title: "Sub-Flocks",
+      content: "The 'Sub-Flocks' tab shows you all of the flocks that will be meeting up with the flock you are currently looking at.",
+      onPrev: function(tour) {
+        $('#flock-details').click();
+      }
+    },
+    {
+      element: "#flock-map-container",
+      placement: "right",
+      content: "The map shows the current flock (red) and its path to the event. It also shows the sub-flocks that converge at the current flock."
+    },
+    {
+      element: ".join-button",
+      placement: "top",
+      content: "Click here to either join or leave the flock."
+    }
+
+  ]
 })

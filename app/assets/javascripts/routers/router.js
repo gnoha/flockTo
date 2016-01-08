@@ -94,6 +94,12 @@ FlockTo.Routers.Router = Backbone.Router.extend({
 
       this._swapView(showView, this.$rootEl);
 
+      this.currentTour = FlockTo.EventShowTour;
+      this.tourActions(this.currentTour);
+
+      if (!FlockTo.Tour.eventShow && this.currentUser.isGuest()) {
+        FlockTo.Tour.eventShow = true
+      }
     }.bind(this));
   },
 
@@ -110,10 +116,13 @@ FlockTo.Routers.Router = Backbone.Router.extend({
 
       showView.map.initMap();
 
-     if (this.currentUser.isGuest() && !this.currentUser.guestTour.flockShow) {
-      this.currentUser.guestTour.flockShow = true;
-      $('.help').trigger('click');
-     }
+      
+      this.currentTour = FlockTo.FlockShowTour;
+      this.tourActions(this.currentTour);
+
+      if (!FlockTo.Tour.flockShow && this.currentUser.isGuest()) {
+        FlockTo.Tour.flockShow = true
+      }
     }.bind(this));
   },
 
