@@ -7,6 +7,8 @@ FlockTo.Routers.Router = Backbone.Router.extend({
     this.events = options.events;
     this.flocks = options.flocks;
     this.users = options.users;
+    this.currentTour = undefined;
+
     if (window.CURRENT_USER_ID) {
       this.currentUser = this.users.getOrFetch(CURRENT_USER_ID, function () {
         this.navbar();
@@ -42,7 +44,6 @@ FlockTo.Routers.Router = Backbone.Router.extend({
     view.render();
   },
 
-
   index: function () {
     this.events.fetch({
       success: function () {
@@ -56,15 +57,13 @@ FlockTo.Routers.Router = Backbone.Router.extend({
           index: true
         });
 
-        // FlockTo.tour && FlockTo.tour.hide();
-        // var tourButton = new FlockTo.Views.EventIndexTour();
-        // this.addHelpButton(tourButton);
-
         this._swapView(indexView, this.$rootEl);
 
-        if (this.currentUser.isGuest() && !this.currentUser.guestTour.indexTour) {
-          this.currentUser.guestTour.indexTour = true;
-          $('.help').trigger('click');
+        this.currentTour = FlockTo.EventIndexTour;
+        this.tourActions(this.currentTour);
+
+        if (!FlockTo.Tour.index && this.currentUser.isGuest()) {
+          FlockTo.Tour.index = true
         }
       }.bind(this)
     });
@@ -93,17 +92,8 @@ FlockTo.Routers.Router = Backbone.Router.extend({
         currentModel: eventModel,
       });
 
-      // FlockTo.tour && FlockTo.tour.hide();
-      // var tourButton = new FlockTo.Views.EventShowTour();
-      // this.addHelpButton(tourButton);
-
       this._swapView(showView, this.$rootEl);
 
-     if (this.currentUser.isGuest() && !this.currentUser.guestTour.eventShow) {
-      this.currentUser.guestTour.eventShow = true;
-      FlockTo.tour.hide();
-      $('.help').trigger('click');
-     }
     }.bind(this));
   },
 
@@ -117,10 +107,6 @@ FlockTo.Routers.Router = Backbone.Router.extend({
       });
       
       this._swapView(showView, this.$auxEl);
-
-      // FlockTo.tour && FlockTo.tour.hide();
-      // var tourButton = new FlockTo.Views.FlockShowTour();
-      // this.addHelpButton(tourButton);
 
       showView.map.initMap();
 
@@ -147,9 +133,19 @@ FlockTo.Routers.Router = Backbone.Router.extend({
   },
 
   _swapView: function (view, $el) {
+    if (this.currentTour) {
+      this.currentTour.end();
+      this.currentTour = undefined;
+    }
     this._currentView && this._currentView.remove();
     this._currentView = view;
     $el.html(view.$el);
     view.render();
+  }, 
+
+  tourActions: function(tour) {
+    tour.init();
+    tour.setCurrentStep(0);
+    tour.start(true);
   }
 });

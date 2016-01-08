@@ -5,7 +5,7 @@ window.FlockTo = {
   Routers: {},
   CURRENT_USER_ID: window.CURRENT_USER_ID,
   Tour: {
-    eventIndex: true,
+    index: true,
     eventShow: true,
     flockShow: true
   },
@@ -23,8 +23,6 @@ window.FlockTo = {
     Backbone.history.start();
   }
 };
-
-
 
 $(document).ready(function(){
     FlockTo.initialize();

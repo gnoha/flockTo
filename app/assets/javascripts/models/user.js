@@ -1,11 +1,11 @@
 FlockTo.Models.User = Backbone.Model.extend({
   urlRoot: '/api/users',
 
-  guestTour: {
-    'indexTour': false,
-    'eventShow': false,
-    'flockShow': false
-  },
+  // guestTour: {
+  //   'indexTour': false,
+  //   'eventShow': false,
+  //   'flockShow': false
+  // },
 
   been: function (){
     if (!this._been) {
