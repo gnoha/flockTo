@@ -5,9 +5,9 @@ window.FlockTo = {
   Routers: {},
   CURRENT_USER_ID: window.CURRENT_USER_ID,
   Tour: {
-    index: true,
-    eventShow: true,
-    flockShow: true
+    index: false,
+    event: false,
+    flock: false
   },
   initialize: function() {
     var router = new FlockTo.Routers.Router({
@@ -19,6 +19,8 @@ window.FlockTo = {
       flocks: new FlockTo.Collections.Flocks(),
       users: new FlockTo.Collections.Users()
     });
+
+    console.log('wakka wakka')
 
     Backbone.history.start();
   }

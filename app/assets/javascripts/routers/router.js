@@ -12,6 +12,11 @@ FlockTo.Routers.Router = Backbone.Router.extend({
     if (window.CURRENT_USER_ID) {
       this.currentUser = this.users.getOrFetch(CURRENT_USER_ID, function () {
         this.navbar();
+        FlockTo.Tour = {
+          index: true,
+          event: true,
+          flock:true
+        }
       }.bind(this));
     }
   },
@@ -37,13 +42,6 @@ FlockTo.Routers.Router = Backbone.Router.extend({
     map.initMap();
   },
 
-  addHelpButton: function (view) {
-    this._button && this._button.remove();
-    this._button = view;
-    this.$button.html(view.$el);
-    view.render();
-  },
-
   index: function () {
     this.events.fetch({
       success: function () {
@@ -62,9 +60,11 @@ FlockTo.Routers.Router = Backbone.Router.extend({
         this.currentTour = FlockTo.EventIndexTour;
         this.tourActions(this.currentTour);
 
-        if (!FlockTo.Tour.index && this.currentUser.isGuest()) {
-          FlockTo.Tour.index = true
+        if (this.currentUser.isGuest() && FlockTo.Tour.index) {
+          this.currentTour.start(true);
+          FlockTo.Tour.index = false;
         }
+
       }.bind(this)
     });
   },
@@ -97,8 +97,9 @@ FlockTo.Routers.Router = Backbone.Router.extend({
       this.currentTour = FlockTo.EventShowTour;
       this.tourActions(this.currentTour);
 
-      if (!FlockTo.Tour.eventShow && this.currentUser.isGuest()) {
-        FlockTo.Tour.eventShow = true
+      if (this.currentUser.isGuest() && FlockTo.Tour.event) {
+        this.currentTour.start(true);
+        FlockTo.Tour.event = false;
       }
     }.bind(this));
   },
@@ -116,12 +117,12 @@ FlockTo.Routers.Router = Backbone.Router.extend({
 
       showView.map.initMap();
 
-      
       this.currentTour = FlockTo.FlockShowTour;
       this.tourActions(this.currentTour);
 
-      if (!FlockTo.Tour.flockShow && this.currentUser.isGuest()) {
-        FlockTo.Tour.flockShow = true
+      if (this.currentUser.isGuest() && FlockTo.Tour.flock) {
+        this.currentTour.start(true);
+        FlockTo.Tour.flock = false;
       }
     }.bind(this));
   },
@@ -155,6 +156,5 @@ FlockTo.Routers.Router = Backbone.Router.extend({
   tourActions: function(tour) {
     tour.init();
     tour.setCurrentStep(0);
-    tour.start(true);
   }
 });
