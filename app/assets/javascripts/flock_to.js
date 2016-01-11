@@ -20,8 +20,6 @@ window.FlockTo = {
       users: new FlockTo.Collections.Users()
     });
 
-    console.log('wakka wakka')
-
     Backbone.history.start();
   }
 };
