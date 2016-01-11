@@ -152,11 +152,17 @@ a:hover {
   padding-left: 24px;
   padding-top: 10px;
   padding-bottom: 10px;
+  height: 45px;
   font-size: 18px;
+  transition: height 0.75s, padding-top 0.75s;
 }
 
 .sign-in-modal:hover {
   cursor:pointer;
+  background-color: rgba(0, 0, 0, 0.21);
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.21);
+  height: 60px;
+  padding-top: 25px;
 }
 
 .search-bar {
@@ -289,12 +295,21 @@ form textarea {
   text-align: center;
 }
 
-.splash-wrapper #tour-button {
+.splash-wrapper .btn-tour {
+  border: 2px solid white;
+  background: transparent;
   text-align: center;
   margin: 60px auto;
   display: block;
   padding: 16px;
   font-size: 18px;
+  transition: font-size 0.5s;
+}
+
+.btn-tour:hover {
+ background-color: rgba(0, 0, 0, 0.21);
+ box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.21);
+ font-size: 20px;
 }
 .splash-wrapper {
   font-size: 16px
