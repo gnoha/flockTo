@@ -1,4 +1,5 @@
 FlockTo.EventIndexTour = new Tour({
+  name: "EventIndexTour",
   steps: [
     {
       element: "#home-link",
@@ -6,7 +7,6 @@ FlockTo.EventIndexTour = new Tour({
       content: "flockTo is a web application where you can meet with like minded people who are also attending the event you are.<br><br>Join a flock in your community and attend the event together. You can even take it to the next level: join other flocks on the way to the event as a massive community.",
       placement: "bottom",
       next: 1,
-      // path: ""
     },
     {
       element: ".index-search-bar",
@@ -15,19 +15,21 @@ FlockTo.EventIndexTour = new Tour({
       content: "Here, you can scroll through upcoming events or even search for the event you are looking for.",
       next: 2,
       prev: 0,
-      // path: ""
     },
     {
       element: "#map-container",
       placement: "left",
       content: "You can check out where events are taking place on a global scale.",
       prev: 1,
-      // path: ""
     }
-  ]
+  ], 
+  onStart: function(tour) {
+    console.log("started");
+  }
 });
 
 FlockTo.EventShowTour = new Tour ({
+  name: "EventShowTour",
   steps: [
     {
       element: ".nav-tabs",
@@ -37,7 +39,6 @@ FlockTo.EventShowTour = new Tour ({
       onNext: function(tour) {
         $('#flock-tab').click();
       },
-      // path: RegExp("events\/\d+") 
     },
     {
       element: ".nav-tabs",
@@ -47,19 +48,17 @@ FlockTo.EventShowTour = new Tour ({
       onPrev: function(tour) {
         $('#detail-tab').click();
       },
-      // path: RegExp("events\/\d+") 
     },
     {
       element: "#map-container",
       placement: "left",
       content: "Check out the map to see where the event is and all of the flocks converging to it.<br><br>The red circle is the event and the blue circles and the blue dots are the flocks converging at the event. The paths of the flocks are indicated by the lines connecting the circles.",
-      // path: RegExp("events\/\d+") 
-
     } 
   ]
 });
 
 FlockTo.FlockShowTour = new Tour ({
+  name: "FlockShowTour",
   steps: [
     {
       element: ".nav-tabs",

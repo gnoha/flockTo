@@ -12,10 +12,12 @@ FlockTo.Routers.Router = Backbone.Router.extend({
     if (window.CURRENT_USER_ID) {
       this.currentUser = this.users.getOrFetch(CURRENT_USER_ID, function () {
         this.navbar();
-        FlockTo.Tour = {
-          index: true,
-          event: true,
-          flock:true
+        if (this.currentUser.isGuest()) {
+          FlockTo.Tour = {
+            index: true,
+            event: true,
+            flock:true
+          }
         }
       }.bind(this));
     }
@@ -58,13 +60,12 @@ FlockTo.Routers.Router = Backbone.Router.extend({
         this._swapView(indexView, this.$rootEl);
 
         this.currentTour = FlockTo.EventIndexTour;
-        this.tourActions(this.currentTour);
-
+        this.currentTour.init();
+          
         if (this.currentUser.isGuest() && FlockTo.Tour.index) {
-          this.currentTour.start(true);
+          this.autoTour(this.currentTour);
           FlockTo.Tour.index = false;
         }
-
       }.bind(this)
     });
   },
@@ -95,10 +96,10 @@ FlockTo.Routers.Router = Backbone.Router.extend({
       this._swapView(showView, this.$rootEl);
 
       this.currentTour = FlockTo.EventShowTour;
-      this.tourActions(this.currentTour);
+      this.currentTour.init();
 
       if (this.currentUser.isGuest() && FlockTo.Tour.event) {
-        this.currentTour.start(true);
+        this.autoTour(this.currentTour);
         FlockTo.Tour.event = false;
       }
     }.bind(this));
@@ -118,10 +119,10 @@ FlockTo.Routers.Router = Backbone.Router.extend({
       showView.map.initMap();
 
       this.currentTour = FlockTo.FlockShowTour;
-      this.tourActions(this.currentTour);
+      this.currentTour.init();
 
       if (this.currentUser.isGuest() && FlockTo.Tour.flock) {
-        this.currentTour.start(true);
+        this.autoTour(this.currentTour);
         FlockTo.Tour.flock = false;
       }
     }.bind(this));
@@ -153,8 +154,8 @@ FlockTo.Routers.Router = Backbone.Router.extend({
     view.render();
   }, 
 
-  tourActions: function(tour) {
-    tour.init();
+  autoTour: function(tour) {
+    tour.start(true);
     tour.setCurrentStep(0);
   }
 });
