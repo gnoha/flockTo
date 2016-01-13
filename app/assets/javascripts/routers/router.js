@@ -44,6 +44,12 @@ FlockTo.Routers.Router = Backbone.Router.extend({
     map.initMap();
   },
 
+  attachButton: function () {
+    console.log('attached');
+    $(".help-button").off("click");
+    $(".help-button").on("click", this.autoTour.bind(this));
+  },
+
   index: function () {
     this.events.fetch({
       success: function () {
@@ -63,9 +69,11 @@ FlockTo.Routers.Router = Backbone.Router.extend({
         this.currentTour.init();
           
         if (this.currentUser.isGuest() && FlockTo.Tour.index) {
-          this.autoTour(this.currentTour);
+          this.autoTour();
           FlockTo.Tour.index = false;
         }
+
+        this.attachButton();
       }.bind(this)
     });
   },
@@ -102,6 +110,7 @@ FlockTo.Routers.Router = Backbone.Router.extend({
         this.autoTour(this.currentTour);
         FlockTo.Tour.event = false;
       }
+      this.attachButton();
     }.bind(this));
   },
 
@@ -125,6 +134,7 @@ FlockTo.Routers.Router = Backbone.Router.extend({
         this.autoTour(this.currentTour);
         FlockTo.Tour.flock = false;
       }
+      this.attachButton();
     }.bind(this));
   },
 
@@ -140,6 +150,7 @@ FlockTo.Routers.Router = Backbone.Router.extend({
       this._button && this._button.remove();
 
       this._swapView(showView, this.$auxEl);
+      $('.help-button').css("display", "none");
     }.bind(this));
   },
 
@@ -154,8 +165,8 @@ FlockTo.Routers.Router = Backbone.Router.extend({
     view.render();
   }, 
 
-  autoTour: function(tour) {
-    tour.start(true);
-    tour.setCurrentStep(0);
+  autoTour: function() {
+    this.currentTour.start(true);
+    this.currentTour.setCurrentStep(0);
   }
 });

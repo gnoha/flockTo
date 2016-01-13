@@ -114,19 +114,24 @@ a:hover {
 //help 
 .help-button {
   color: white;
-  background-color: rgba(0, 0, 0, 0.5);;
   height: 50px;
   width: 50px;
-  font-size: 24px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 9px;
   border-radius: 25px;
-  position: absolute;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: black;
+  opacity: 0.5;
+  text-align: center;
+  padding-top: 13px;
+  font-size: 20px;
+  font-weight: 500;
 }
 
 .help-button:hover {
   cursor: pointer;
+  background-color: #286090;
+  border-color: #204d74;
 }
 
 .shepherd-content p {
