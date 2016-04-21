@@ -78,7 +78,7 @@ bmanimages = [
 FactoryGirl.create(
   :flock,
   location: "Portland, OR",
-  date: Date.new(2016, 8, 29),
+  date: Date.new(2016, 8, 27),
   title: "Stumptown to Burning Man!",
   description: "Good folks of Stumptowwwnnnnnnnnn, let's flock to Burning Man! Once a year, tens of thousands of people gather in Nevada’s Black Rock Desert to create Black Rock City, a temporary metropolis dedicated to community, art, self-expression, and self-reliance. In this crucible of creativity, all are welcome.",
   coordinator_id: 4,
