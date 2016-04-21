@@ -62,6 +62,8 @@ FactoryGirl.create(
   img_url: "http://www.mccullagh.org/db9/1ds3-3/rooster-art-car-burning-man.jpg"
 )
 
+sleep(20)
+
 bmanimages = [
   "http://www.thatcreativefeeling.com/wp-content/uploads/sowers-burning-man-2_525.jpg",
   "https://thenypost.files.wordpress.com/2014/09/usa-nevada_burningman-18.jpg?w=899",
@@ -199,10 +201,12 @@ FactoryGirl.create(
   parent_id: 4,
   img_url: bmanimages.sample
 )
+sleep(4)
 
 #F14, F15, F16
 i = 14
 ["Melbourne", "Perth", "Brisbane"].each do |city|
+  sleep(4)
   FactoryGirl.create(
     :flock,
     location: city + ", Australia",
@@ -232,6 +236,7 @@ FactoryGirl.create(
 #F18 F19 F20
 i = 18
 ["New York City, NY", "Chicago, IL", "Austin, TX"].each do |city|
+  sleep(4)
   FactoryGirl.create(
     :flock,
     location: city,
@@ -256,7 +261,7 @@ FactoryGirl.create(
   event_id: 1,
   img_url: bmanimages.sample
 )
-sleep(1)
+sleep(7)
 #**************************************OKTOBERFEST*********************************
 FactoryGirl.create(
   :event,
@@ -280,7 +285,7 @@ okfestimg = [
 #F22 F23 F24 F25 F26 F27
 i = 1
 ["Paris, France", "Berlin, Germany", "Milan, Italy", "Prague, Czech Republic", "Amsterdam, Netherlands", "Vienna, Austria"].each do |city|
-  sleep(4)
+  sleep(7)
   FactoryGirl.create(
     :flock,
     location: city,
@@ -370,7 +375,7 @@ i = 4
  "Paris, France", "Beijing, China", "Tokyo, Japan", "New York City, USA",
  "Cairo, Egypt", "Amsterdam, Netherlands", "Brisbane, Australia", "Tehran, Iran"].each do |city|
   c, country = city.split(", ")
-  sleep(1)
+  sleep(4)
   FactoryGirl.create(
     :flock,
     location: city,
@@ -567,6 +572,7 @@ FactoryGirl.create(
 # F70-F76
 i = 0
 ["New York, New York", "Los Angeles, California", "Boston, Massachusetts", "Seattle Washington", "Green Bay, Wisconsin", "Pheonix, Arizona", "Cincinnati, Ohio"].each do |city|
+  sleep(4)
   FactoryGirl.create(
     :flock,
     location: city,
